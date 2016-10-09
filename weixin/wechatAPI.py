@@ -45,6 +45,8 @@ class Wechat():
         msg = self.parse_msg(request)
         if msg['MsgType'] == 'text':
             return judge_text(msg)
+        else:
+            return donot_know(msg)
 
         # elif msg['MsgType'] == 'music':
         #     response_content = dict(content = judge_text(msg),

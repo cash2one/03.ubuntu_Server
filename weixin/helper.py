@@ -89,8 +89,10 @@ def judge_text(msg):
         #userinfo_add(msg)
         #print to_unicode(text_reply).format(**response_content)
         return make_response(to_unicode(text_reply).format(**response_content))
-    else:
-        return tuling(msg)
+
+
+    return tuling(msg)
+
 
 
 def tuling(msg):
@@ -99,7 +101,7 @@ def tuling(msg):
         r = requests.post(url,data=data)
         ans = json.loads(r.text)
         logging.debug(r.text)
-        
+
         if ans['code'] == 100000:
             content = ans['text']
             response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
@@ -109,7 +111,7 @@ def tuling(msg):
             response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
             return make_response(to_unicode(text_reply).format(**response_content))
 
-        return make_response("我不知道你说什么~")
+        return donot_know(msg)
         # ret = ''
         # if ans['code'] == 100000:
         #      = ans['text']
@@ -126,3 +128,8 @@ def tuling(msg):
         #     ret = 'error'
 
         #return ret
+
+def donot_know(msg):
+    content = "我不明白你说什么"
+    response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
+    return make_response(to_unicode(text_reply).format(**response_content))
