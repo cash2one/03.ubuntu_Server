@@ -60,8 +60,6 @@ class Wechat():
         #     return judge_location(msg)
         # elif msg['MsgType'] == 'voice':
         #     return judge_voice(msg)
-        
-
 
     def parse_msg(self,request):
         """此函数用于解析XML文档，确定XML的类型"""

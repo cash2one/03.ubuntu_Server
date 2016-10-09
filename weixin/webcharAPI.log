@@ -172,3 +172,67 @@ INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
 INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:54:06] "POST / HTTP/1.1" 200 -
 INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
 INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:55:04] "POST / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): www.tuling123.com
+DEBUG:requests.packages.urllib3.connectionpool:"POST /openapi/api HTTP/1.1" 200 None
+ERROR:__main__:Exception on / [POST]
+Traceback (most recent call last):
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1731, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 21:22:20] "POST / HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): www.tuling123.com
+DEBUG:requests.packages.urllib3.connectionpool:"POST /openapi/api HTTP/1.1" 200 None
+ERROR:__main__:Exception on / [POST]
+Traceback (most recent call last):
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1642, in full_dispatch_request
+    response = self.make_response(rv)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1731, in make_response
+    raise ValueError('View function did not return a response')
+ValueError: View function did not return a response
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 21:22:30] "POST / HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): www.tuling123.com
+DEBUG:requests.packages.urllib3.connectionpool:"POST /openapi/api HTTP/1.1" 200 None
+ERROR:__main__:Exception on / [POST]
+Traceback (most recent call last):
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/app.py", line 16, in wechat
+    return api.response_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 47, in response_msg
+    return judge_text(msg)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/helper.py", line 64, in judge_text
+    tuling(msg)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/helper.py", line 89, in tuling
+    return ret
+NameError: global name 'ret' is not defined
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 21:24:04] "POST / HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): www.tuling123.com
+DEBUG:requests.packages.urllib3.connectionpool:"POST /openapi/api HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 21:24:25] "POST / HTTP/1.1" 200 -
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): www.tuling123.com
+DEBUG:requests.packages.urllib3.connectionpool:"POST /openapi/api HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 21:24:44] "POST / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): www.tuling123.com
+DEBUG:requests.packages.urllib3.connectionpool:"POST /openapi/api HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 21:24:57] "POST / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
