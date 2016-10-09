@@ -236,3 +236,6 @@ DEBUG:requests.packages.urllib3.connectionpool:"POST /openapi/api HTTP/1.1" 200 
 INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 21:24:57] "POST / HTTP/1.1" 200 -
 INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
 INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): www.tuling123.com
+DEBUG:requests.packages.urllib3.connectionpool:"POST /openapi/api HTTP/1.1" 200 None
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 21:48:05] "POST / HTTP/1.1" 200 -

@@ -3,6 +3,11 @@ import time
 from flask import make_response
 import requests
 import json
+import logging
+
+LOG_FILENAME="helper.log"
+logging.basicConfig(filename=LOG_FILENAME,level=logging.NOTSET)
+
 
 text_reply ="""
 <xml>
@@ -93,7 +98,8 @@ def tuling(msg):
         data={'key':'fa78fe2fbb85c914c7126d42bc7c3ebb','info':msg['Content'],'userid':msg['FromUserName']}
         r = requests.post(url,data=data)
         ans = json.loads(r.text)
-
+        logging.debug(r.text)
+        
         if ans['code'] == 100000:
             content = ans['text']
             response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
@@ -103,6 +109,7 @@ def tuling(msg):
             response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
             return make_response(to_unicode(text_reply).format(**response_content))
 
+        return make_response("我不知道你说什么~")
         # ret = ''
         # if ans['code'] == 100000:
         #      = ans['text']
