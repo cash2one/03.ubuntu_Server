@@ -1,17 +1,18 @@
 
 # -*- coding:utf8 -*-
-import requests
 import hashlib
 import xml.etree.cElementTree as ET
-# from xml2json import Xml2json as x2j
-import json
-# from ct import *
 import time
-import requests
-# from  recvreplyaction import *
+import logging
+from flask import make_response
+from helper import *
+
+LOG_FILENAME="webcharAPI.log"
+logging.basicConfig(filename=LOG_FILENAME,level=logging.NOTSET)
 
 
-class WechatBase():
+
+class Wechat():
     def __init__(self):
         self.appid = 'wxe589b00c17795e10'
         self.secret = '577a346208002399faf26896e6462f12'
@@ -20,7 +21,7 @@ class WechatBase():
         self.expires = 0
         pass
 
-    def wechat_auth(self,request):
+    def check_signature(self,request):
         token = 'xq123456' # your token
         query = request.args  # GET 方法附上的参数
         signature = query.get('signature', '')  # 微信加密签名
@@ -34,10 +35,46 @@ class WechatBase():
         s = ''.join(s)
         # 3. 开发者获得加密后的字符串可与signature对比，标识该请求来源于微信
         key = hashlib.sha1(s).hexdigest()
+
         if (key == signature):
-            print "验证成功"
-            return echostr
-        raise Exception("验证失败")
+            logging.debug("验证成功")
+            return make_response(echostr)
+        else:
+            logging.error("验证失败")
+            return make_response('')
+
+    def response_msg(self,request):
+        msg = self.parse_msg(request)
+        print msg
+        # if msg['MsgType'] == 'text':
+        #     return judge_text(msg)
+        # elif msg['MsgType'] == 'music':
+        #     response_content = dict(content = judge_text(msg),
+        #         touser = msg['FromUserName'],
+        #         fromuser = msg['ToUserName'],
+        #         createtime = str(int(time.time())),)
+        #     return music_reply.format(**response_content)
+        #
+        # elif msg['MsgType'] == 'event':
+        #     return judge_event(msg)
+        #
+        # elif msg['MsgType'] == 'location':
+        #     return judge_location(msg)
+        # elif msg['MsgType'] == 'voice':
+        #     return judge_voice(msg)
+
+
+    def parse_msg(self,request):
+        """此函数用于解析XML文档，确定XML的类型"""
+        msg ={}
+        xlm_tree = request.body
+        print str(xlm_tree)
+        xlm_tree = request.raw_post_data         #此处可以代替上一个表达式
+        print repr(xlm_tree)
+        root= ET.fromstring(xlm_tree)
+        for child in root:
+            msg[child.tag] = to_unicode(child.text)
+        return msg
 
 
     def get_token(self):
