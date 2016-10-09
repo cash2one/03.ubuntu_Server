@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7767e8a7-4858-4c89-96e4-42b3822303de" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weixin/helper.py" afterPath="$PROJECT_DIR$/weixin/helper.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weixin/wechatAPI.py" afterPath="$PROJECT_DIR$/weixin/wechatAPI.py" />
     </list>
     <ignored path="03.ubuntu_Server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wechatAPI.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wechatAPI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/weixin/wechatAPI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4811321">
-              <caret line="48" column="29" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="48" column="33" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="33" />
               <folding>
                 <element signature="e#23#37#0" expanded="true" />
               </folding>
@@ -56,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="helper.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="helper.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/weixin/helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="113" column="29" selection-start-line="113" selection-start-column="29" selection-end-line="113" selection-end-column="29" />
+            <state vertical-scroll-proportion="1.3679246">
+              <caret line="132" column="15" selection-start-line="132" selection-start-column="15" selection-end-line="132" selection-end-column="15" />
               <folding>
                 <element signature="e#22#33#0" expanded="true" />
               </folding>
@@ -395,6 +394,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/weixin/wechatAPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="33" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="33" />
+          <folding>
+            <element signature="e#23#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/weixin/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -405,20 +414,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/weixin/helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="113" column="29" selection-start-line="113" selection-start-column="29" selection-end-line="113" selection-end-column="29" />
+        <state vertical-scroll-proportion="1.3679246">
+          <caret line="132" column="15" selection-start-line="132" selection-start-column="15" selection-end-line="132" selection-end-column="15" />
           <folding>
             <element signature="e#22#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/weixin/wechatAPI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4811321">
-          <caret line="48" column="29" selection-start-line="48" selection-start-column="19" selection-end-line="48" selection-end-column="29" />
-          <folding>
-            <element signature="e#23#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

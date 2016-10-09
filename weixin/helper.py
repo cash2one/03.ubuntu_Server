@@ -130,6 +130,6 @@ def tuling(msg):
         #return ret
 
 def donot_know(msg):
-    content = "我不明白你说什么"
+    content = u"我不明白你说什么"
     response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
     return make_response(to_unicode(text_reply).format(**response_content))
