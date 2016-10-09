@@ -1,6 +1,6 @@
 # -*- coding:utf8 -*-
 import time
-from flask import Flask,request, make_response,render_template,request,flash,url_for
+from flask import Flask,request,render_template,request,flash,url_for
 from wechatAPI import Wechat
 
 app = Flask(__name__)

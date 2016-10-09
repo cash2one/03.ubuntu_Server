@@ -43,15 +43,14 @@ class Wechat():
 
     def response_msg(self,request):
         msg = self.parse_msg(request)
-        print msg
-        return make_response("")
-        # if msg['MsgType'] == 'text':
-        #     return judge_text(msg)
+        if msg['MsgType'] == 'text':
+            return judge_text(msg)
+
         # elif msg['MsgType'] == 'music':
         #     response_content = dict(content = judge_text(msg),
-        #         touser = msg['FromUserName'],
-        #         fromuser = msg['ToUserName'],
-        #         createtime = str(int(time.time())),)
+        #     touser = msg['FromUserName'],
+        #     fromuser = msg['ToUserName'],
+        #     createtime = str(int(time.time())),)
         #     return music_reply.format(**response_content)
         #
         # elif msg['MsgType'] == 'event':
@@ -61,15 +60,13 @@ class Wechat():
         #     return judge_location(msg)
         # elif msg['MsgType'] == 'voice':
         #     return judge_voice(msg)
+        
 
 
     def parse_msg(self,request):
         """此函数用于解析XML文档，确定XML的类型"""
         msg ={}
-        xlm_tree = request.body
-        print str(xlm_tree)
-        xlm_tree = request.raw_post_data         #此处可以代替上一个表达式
-        print repr(xlm_tree)
+        xlm_tree = request.data
         root= ET.fromstring(xlm_tree)
         for child in root:
             msg[child.tag] = to_unicode(child.text)

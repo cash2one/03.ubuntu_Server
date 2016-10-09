@@ -1,2 +1,174 @@
 INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
 INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+ERROR:root:验证失败
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:29:58] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:29:58] "GET /favicon.ico HTTP/1.1" 404 -
+ERROR:__main__:Exception on / [POST]
+Traceback (most recent call last):
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/app.py", line 16, in wechat
+    return api.response_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 45, in response_msg
+    msg = self.parse_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 69, in parse_msg
+    xlm_tree = request.body
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'body'
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:30:27] "POST / HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+ERROR:__main__:Exception on / [POST]
+Traceback (most recent call last):
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/app.py", line 16, in wechat
+    return api.response_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 45, in response_msg
+    msg = self.parse_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 70, in parse_msg
+    xlm_tree = request.text
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'text'
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:34:27] "POST / HTTP/1.1" 500 -
+ERROR:__main__:Exception on / [POST]
+Traceback (most recent call last):
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/app.py", line 16, in wechat
+    return api.response_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 45, in response_msg
+    msg = self.parse_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 70, in parse_msg
+    xlm_tree = request.text
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'text'
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:34:50] "POST / HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+ERROR:__main__:Exception on / [POST]
+Traceback (most recent call last):
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/app.py", line 16, in wechat
+    return api.response_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 45, in response_msg
+    msg = self.parse_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 70, in parse_msg
+    xlm_tree = request.text
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'text'
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:34:59] "POST / HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+ERROR:__main__:Exception on / [POST]
+Traceback (most recent call last):
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/app.py", line 16, in wechat
+    return api.response_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 45, in response_msg
+    msg = self.parse_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 69, in parse_msg
+    print request.raw_post_data
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'raw_post_data'
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:43:08] "POST / HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+ERROR:__main__:Exception on / [POST]
+Traceback (most recent call last):
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/app.py", line 16, in wechat
+    return api.response_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 45, in response_msg
+    msg = self.parse_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 72, in parse_msg
+    xlm_tree = request.raw_post_data         #此处可以代替上一个表达式
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/werkzeug/local.py", line 343, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Request' object has no attribute 'raw_post_data'
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:44:23] "POST / HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:44:59] "POST / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:50:45] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:51:15] "POST / HTTP/1.1" 200 -
+ERROR:__main__:Exception on / [POST]
+Traceback (most recent call last):
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/xuqi/anaconda/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/app.py", line 16, in wechat
+    return api.response_msg(request)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/wechatAPI.py", line 47, in response_msg
+    print judge_text(msg)
+  File "/Users/xuqi/Documents/proj/03.ubuntu_Server/weixin/helper.py", line 56, in judge_text
+    response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
+NameError: global name 'time' is not defined
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:51:50] "POST / HTTP/1.1" 500 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:52:34] "POST / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:54:06] "POST / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://0.0.0.0:5001/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [09/Oct/2016 20:55:04] "POST / HTTP/1.1" 200 -
