@@ -10,8 +10,6 @@ from helper import *
 LOG_FILENAME="webcharAPI.log"
 logging.basicConfig(filename=LOG_FILENAME,level=logging.NOTSET)
 
-
-
 class Wechat():
     def __init__(self):
         self.appid = 'wxe589b00c17795e10'
@@ -46,6 +44,7 @@ class Wechat():
     def response_msg(self,request):
         msg = self.parse_msg(request)
         print msg
+        return make_response("")
         # if msg['MsgType'] == 'text':
         #     return judge_text(msg)
         # elif msg['MsgType'] == 'music':

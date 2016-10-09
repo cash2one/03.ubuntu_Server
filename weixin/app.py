@@ -5,15 +5,16 @@ from wechatAPI import Wechat
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
-wechat = Wechat()
+api = Wechat()
 
 @app.route('/', methods = ['GET', 'POST'] )
 def wechat():
     if request.method == 'GET':
         # 用于接入微信
-        return wechat.check_signature(request)
+        return api.check_signature(request)
     if request.method == 'POST':
-        return wechat.response_msg(request)
+        return api.response_msg(request)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5001)
