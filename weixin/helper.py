@@ -83,17 +83,36 @@ def to_unicode(value):
     return value
 
 def judge_text(msg):
+    # 自定义对话
     if msg['Content'] == '0':
-        content = u'欢迎关注【乐影客】，我们将为你提供最新而且实用的观影信息!\n1.先看看最火的影片。\n2.找个影院去看电影。\n3.有优惠吗？\n4.很无聊不知道干什么。\n0.任何时候回复0，都将回到这里。'
+        content = u'欢迎关注一恒~'
         response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
         #userinfo_add(msg)
         #print to_unicode(text_reply).format(**response_content)
         return make_response(to_unicode(text_reply).format(**response_content))
-
-
     return tuling(msg)
 
-
+def judge_event(msg):
+    #关注事件
+    if msg['Event'] == 'subscribe':
+        content = u'欢迎关注一恒~\n我应该怎么称呼您?'
+        response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
+        #userinfo_add(msg)
+        #print to_unicode(text_reply).format(**response_content)
+        return make_response(to_unicode(text_reply).format(**response_content))
+    #上报地理位置事件
+    elif msg['Event'] == 'LOCATION':
+        return make_response('')
+        pass
+    #点击菜单拉取消息时的事件推送
+    elif msg['Event'] == 'CLICK':
+        return make_response('')
+        pass
+    #点击菜单跳转链接时的事件推送
+    elif msg['Event'] == 'VIEW':
+        return make_response('')
+        pass
+    return make_response('')
 
 def tuling(msg):
         url='http://www.tuling123.com/openapi/api'

@@ -1,11 +1,23 @@
 # -*- coding:utf8 -*-
 import time
-from flask import Flask,request,render_template,request,flash,url_for
+from flask import Flask,g,request,render_template,request,flash,url_for
 from wechatAPI import Wechat
+
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 api = Wechat()
+
+
+@app.before_request
+def before_request():
+    pass
+
+
+@app.teardown_request
+def teardown_request(exception):
+    pass
+
 
 @app.route('/', methods = ['GET', 'POST'] )
 def wechat():
@@ -18,3 +30,4 @@ def wechat():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5001)
+
