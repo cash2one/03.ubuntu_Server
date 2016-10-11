@@ -1,4 +1,4 @@
-from common.dbhelper import Table
+from dbhelper import Table
 DATABASE = '../data/database/database.db'
 
 class User(Table):
