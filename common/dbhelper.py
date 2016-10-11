@@ -1,3 +1,4 @@
+# -*- coding:utf8 -*-
 import sqlite3
 
 DATABASE = '../db/database.db'
@@ -119,36 +120,7 @@ class Table(DatabaseObject):
         return super(Table, self).drop_table(self.table_name)
 
 
-class User(Table):
 
-    def __init__(self, data_file= DATABASE):
-        super(User, self).__init__(data_file, 'users',
-                                   ['username TEXT', 'createtime TEXT'])
-
-    def select(self, *args, **kwargs):
-        cursor = super(User, self).select(*args, **kwargs)
-        results = cursor.fetchall()
-        cursor.close()
-        return results
-
-    def insert(self, *args):
-        self.free(super(User, self).insert(*args))
-
-    def update(self, set_args, **kwargs):
-        self.free(super(User, self).update(set_args, **kwargs))
-
-    def delete(self, **kwargs):
-        self.free(super(User, self).delete(**kwargs))
-
-    def delete_all(self):
-        self.free(super(User, self).delete_all())
-
-    def drop(self):
-        self.free(super(User, self).drop())
-
-    def exists(self, username):
-        results = self.select('username', username=username)
-        return len(results) > 0
 
 
 # Sample
