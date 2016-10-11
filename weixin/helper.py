@@ -1,10 +1,14 @@
 # -*- coding:utf8 -*-
-import time
-from flask import make_response
-import requests
 import json
 import logging
+import time
 
+import requests
+from flask import make_response
+
+from weixinDB import Photo,User
+
+import multiprocessing
 LOG_FILENAME="helper.log"
 logging.basicConfig(filename=LOG_FILENAME,level=logging.NOTSET)
 
@@ -90,6 +94,14 @@ def judge_text(msg):
         #userinfo_add(msg)
         #print to_unicode(text_reply).format(**response_content)
         return make_response(to_unicode(text_reply).format(**response_content))
+    if msg['Content'] == 'p1':
+        sync(save_photo,msg)
+        content = u'图片已保存~~'
+        response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
+        #userinfo_add(msg)
+        #print to_unicode(text_reply).format(**response_content)
+        return make_response(to_unicode(text_reply).format(**response_content))
+
     return tuling(msg)
 
 def judge_event(msg):
@@ -113,6 +125,13 @@ def judge_event(msg):
         return make_response('')
         pass
     return make_response('')
+
+def judge_image(msg):
+
+    sync(add_photo,msg)
+    content = u'这张图片怎么了?\np1.保存\np2.删除\np3.上头条\n输入以上编号执行对应操作,如p1'
+    response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
+    return make_response(to_unicode(text_reply).format(**response_content))
 
 def tuling(msg):
         url='http://www.tuling123.com/openapi/api'
@@ -152,3 +171,36 @@ def donot_know(msg):
     content = u"我不明白你说什么"
     response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
     return make_response(to_unicode(text_reply).format(**response_content))
+
+
+def sync(targget,args):
+    p = multiprocessing.Process(target = targget, args = (args,))
+    p.daemon = True
+    p.start()
+
+def add_user(msg):
+    user_tb = User()
+    user_tb.insert_user(msg['FromUserName'],'',msg['CreateTime'])
+
+def add_photo(msg):
+    photo_tb = Photo()
+    photo_tb.insert(msg['MediaId'],msg['PicUrl'],'',msg['CreateTime'],msg['FromUserName'])
+
+
+def save_photo(msg):
+
+    photo_tb = Photo()
+
+    result = photo_tb.select('mediaid','picurl',localpath='',user=msg['FromUserName'])
+
+    rootpath = "../data/photo/%s"
+    picurl =  result[-1][1]
+    mediaid = result[-1][0]
+    picname = picurl.split('/')[-1]
+
+    ir = requests.get(picurl)
+
+    if ir.status_code == 200:
+        open((rootpath % picname), 'wb').write(ir.content)
+
+    photo_tb.update({'localpath':rootpath % picname},mediaid=mediaid,picurl=picurl)

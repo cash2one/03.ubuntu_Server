@@ -2,12 +2,8 @@
 # -*- coding:utf8 -*-
 import hashlib
 import xml.etree.cElementTree as ET
-import time
-import logging
-from flask import make_response
-from helper import *
-from dbhelper import User
 
+from helper import *
 
 LOG_FILENAME="webcharAPI.log"
 logging.basicConfig(filename=LOG_FILENAME,level=logging.NOTSET)
@@ -43,29 +39,16 @@ class Wechat():
             logging.error("验证失败")
             return make_response('')
 
-    def _add_user(self,msg):
-        user_tb = User()
-        result = user_tb.select("*",username=msg['FromUserName'])
-        if len(result) == 0:
-            user_tb.insert(msg['FromUserName'],msg['CreateTime'])
-        else:
-            user_tb.update({'createtime':msg['CreateTime']},username=msg['FromUserName'])
-        self._print_table()
-        pass
-
-    def _print_table(self):
-        user_tb = User()
-        c = user_tb.select_all('*')
-        print c.fetchall()
-        c.close()
 
     def response_msg(self,request):
         msg = self.parse_msg(request)
-        self._add_user(msg)
+        sync(add_user,msg)
         if msg['MsgType'] == 'text':
             return judge_text(msg)
         elif msg['MsgType'] == 'event':
             return judge_event(msg)
+        elif msg['MsgType'] == 'image':
+            return judge_image(msg)
         else:
             return donot_know(msg)
 
