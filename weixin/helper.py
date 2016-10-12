@@ -202,5 +202,5 @@ def save_photo(msg):
 
     if ir.status_code == 200:
         open((rootpath % picname), 'wb').write(ir.content)
-
+    logging.debug("图片保存成功　%s"%roorootpath % picname)
     photo_tb.update({'localpath':rootpath % picname},mediaid=mediaid,picurl=picurl)
