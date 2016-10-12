@@ -1,5 +1,5 @@
 #!/bin/sh
-rm *.log *.out
+#rm *.log *.out
 cd weixin
 python app.py
 nginx -s reload

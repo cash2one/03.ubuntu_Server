@@ -1,4 +1,0 @@
-#!/bin/sh
-cd weixin
-python app.py
-nginx -s reload
