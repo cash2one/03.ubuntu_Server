@@ -196,11 +196,10 @@ def save_photo(msg):
     rootpath = "../data/photo/%s"
     picurl =  result[-1][1]
     mediaid = result[-1][0]
-    picname = picurl.split('/')[-1]
-
+    picname = ("%s.jpg" % mediaid)
     ir = requests.get(picurl)
 
     if ir.status_code == 200:
         open((rootpath % picname), 'wb').write(ir.content)
-    logging.debug(u"图片保存成功　%s"%rootpath % picname)
+    logging.debug(u"photo save success　%s"%rootpath % picname)
     photo_tb.update({'localpath':rootpath % picname},mediaid=mediaid,picurl=picurl)
