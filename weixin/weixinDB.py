@@ -1,5 +1,5 @@
 from dbhelper import Table
-DATABASE = '../data/database/database.db'
+DATABASE = '/data/database/weixin.db'
 
 class User(Table):
 

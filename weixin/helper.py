@@ -193,7 +193,7 @@ def save_photo(msg):
 
     result = photo_tb.select('mediaid','picurl',localpath='',user=msg['FromUserName'])
 
-    rootpath = "../data/photo/%s"
+    rootpath = "/data/photo/%s"
     picurl =  result[-1][1]
     mediaid = result[-1][0]
     picname = ("%s.jpg" % mediaid)

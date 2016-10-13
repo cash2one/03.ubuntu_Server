@@ -1,7 +1,7 @@
 # -*- coding:utf8 -*-
 import sqlite3
 
-DATABASE = '../db/database.db'
+
 queries = {
     'SELECT': 'SELECT %s FROM %s WHERE %s',
     'SELECT_ALL': 'SELECT %s FROM %s',
