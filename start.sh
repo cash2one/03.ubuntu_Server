@@ -3,4 +3,5 @@
 cd weixin
 python app.py
 nginx -s reload
-sqlite_web data/database/database.db
+aria2c --enable-rpc --rpc-listen-all
+#sqlite_web data/database/database.db
