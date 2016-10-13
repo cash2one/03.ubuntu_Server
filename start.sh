@@ -1,5 +1,12 @@
 #!/bin/sh
 #rm *.log *.out
+if [ ! -d /data ]; then
+
+	mkdir -p /data/photo	
+	mkdir -p /data/database
+	mkdir -p /data/download
+	chmod -R 755 /data
+fi;
 cd weixin
 python app.py
 nginx -s reload
