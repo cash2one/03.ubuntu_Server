@@ -1,13 +1,18 @@
 #!/bin/sh
 #rm *.log *.out
+rm -rf /data/html
 if [ ! -d /data ]; then
 
 	mkdir -p /data/photo	
 	mkdir -p /data/database
 	mkdir -p /data/download
+	rm -rf /data/html
+	cp ./html /data/
 	chmod -R 755 /data
+
 fi;
 cd weixin
+
 python app.py
 nginx -s reload
 aria2c --enable-rpc --rpc-listen-all
