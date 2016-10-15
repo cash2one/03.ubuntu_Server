@@ -25,7 +25,7 @@ $(function () {
         $.each(data, function(indx, item){
 
           carouselLinks.push({
-            href: './photo/' + item[0] + '.jpg',
+            href: '../' + item[0] + '.jpg',
             title: ''
           })          
         });

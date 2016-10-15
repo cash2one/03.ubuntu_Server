@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7767e8a7-4858-4c89-96e4-42b3822303de" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/html/photo/js/sql.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/photo/index.html" afterPath="$PROJECT_DIR$/html/photo/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/photo/js/demo.js" afterPath="$PROJECT_DIR$/html/photo/js/demo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weixin/helper.py" afterPath="$PROJECT_DIR$/weixin/helper.py" />
     </list>
     <ignored path="03.ubuntu_Server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,21 +91,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="demo.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="demo.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/html/photo/js/demo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.47556144">
+              <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/photo/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7953615">
-              <caret line="56" column="52" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
+            <state vertical-scroll-proportion="-4.9166665">
+              <caret line="25" column="32" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -159,8 +156,8 @@
         <option value="$PROJECT_DIR$/tmp/weixin.cfg" />
         <option value="$PROJECT_DIR$/start.sh" />
         <option value="$PROJECT_DIR$/weixin/helper.py" />
-        <option value="$PROJECT_DIR$/html/photo/js/demo.js" />
         <option value="$PROJECT_DIR$/html/photo/index.html" />
+        <option value="$PROJECT_DIR$/html/photo/js/demo.js" />
       </list>
     </option>
   </component>
@@ -877,18 +874,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/photo/js/demo.js">
+    <entry file="file://$PROJECT_DIR$/html/photo/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
+        <state vertical-scroll-proportion="-4.9166665">
+          <caret line="25" column="32" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/photo/index.html">
+    <entry file="file://$PROJECT_DIR$/html/photo/js/demo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7953615">
-          <caret line="56" column="52" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
+        <state vertical-scroll-proportion="0.47556144">
+          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
           <folding />
         </state>
       </provider>
