@@ -7,10 +7,14 @@ if [ ! -d /data ]; then
 	mkdir -p /data/database
 	mkdir -p /data/download
 	rm -rf /data/html
-	cp ./html /data/
+	cp -rf html/ /data/
 	chmod -R 755 /data
 
 fi;
+
+rm -f /data/html
+cp -rf html/ /data/
+chmod  -R 755 /data
 cd weixin
 
 python app.py
