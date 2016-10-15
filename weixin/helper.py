@@ -207,7 +207,7 @@ def save_photo(msg):
 
 def get_photolist():
     photo_tb = Photo()
-    cursor =  photo_tb.select_all('PicUrl')
+    cursor =  photo_tb.select_all('localpath')
     result = cursor.fetchall()
     cursor.close()
     print result
