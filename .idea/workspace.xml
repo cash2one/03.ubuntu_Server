@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7767e8a7-4858-4c89-96e4-42b3822303de" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/weixin/helper.py" afterPath="$PROJECT_DIR$/weixin/helper.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tmp/weixin.cfg" afterPath="$PROJECT_DIR$/tmp/weixin.cfg" />
     </list>
     <ignored path="03.ubuntu_Server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,16 +45,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/weixin/config.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="12" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="wechatAPI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/weixin/wechatAPI.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -63,6 +53,16 @@
               <folding>
                 <element signature="e#23#37#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="weixin.cfg" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tmp/weixin.cfg">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.03963012">
+              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,10 +79,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="helper.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="helper.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/weixin/helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.18758257">
+            <state vertical-scroll-proportion="0.0">
               <caret line="100" column="53" selection-start-line="100" selection-start-column="53" selection-end-line="100" selection-end-column="53" />
               <folding>
                 <element signature="e#22#33#0" expanded="true" />
@@ -153,11 +153,11 @@
         <option value="$PROJECT_DIR$/weixin/weixinDB.py" />
         <option value="$PROJECT_DIR$/weixin/config.py" />
         <option value="$PROJECT_DIR$/weixin/app.py" />
-        <option value="$PROJECT_DIR$/tmp/weixin.cfg" />
         <option value="$PROJECT_DIR$/start.sh" />
         <option value="$PROJECT_DIR$/html/photo/index.html" />
         <option value="$PROJECT_DIR$/html/photo/js/demo.js" />
         <option value="$PROJECT_DIR$/weixin/helper.py" />
+        <option value="$PROJECT_DIR$/tmp/weixin.cfg" />
       </list>
     </option>
   </component>
@@ -794,14 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tmp/weixin.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/weixin/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -882,11 +874,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/weixin/helper.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18758257">
+        <state vertical-scroll-proportion="0.0">
           <caret line="100" column="53" selection-start-line="100" selection-start-column="53" selection-end-line="100" selection-end-column="53" />
           <folding>
             <element signature="e#22#33#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmp/weixin.cfg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03963012">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
