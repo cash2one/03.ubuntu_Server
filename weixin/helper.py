@@ -98,7 +98,7 @@ def judge_text(msg):
         return make_response(to_unicode(text_reply).format(**response_content))
     if msg['Content'] == 'p1':
         sync(save_photo,msg)
-        content = u'图片已保存~~'
+        content = u'图片已经保存到相册:http://x2020.top/photo/'
         response_content = dict(content = content,touser = msg['FromUserName'],fromuser = msg['ToUserName'],createtime = str(int(time.time())))
         #userinfo_add(msg)
         #print to_unicode(text_reply).format(**response_content)
