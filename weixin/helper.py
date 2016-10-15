@@ -5,6 +5,8 @@ import time
 
 import requests
 from flask import make_response
+from config import *
+from flask import jsonify
 
 from weixinDB import Photo,User
 
@@ -190,10 +192,9 @@ def add_photo(msg):
 def save_photo(msg):
 
     photo_tb = Photo()
-
     result = photo_tb.select('mediaid','picurl',localpath='',user=msg['FromUserName'])
 
-    rootpath = "/data/photo/%s"
+    rootpath = getphoto() + "%s"
     picurl =  result[-1][1]
     mediaid = result[-1][0]
     picname = ("%s.jpg" % mediaid)
@@ -203,3 +204,13 @@ def save_photo(msg):
         open((rootpath % picname), 'wb').write(ir.content)
     logging.debug(u"photo save success　%s"%rootpath % picname)
     photo_tb.update({'localpath':rootpath % picname},mediaid=mediaid,picurl=picurl)
+
+def get_photolist():
+    photo_tb = Photo()
+    cursor =  photo_tb.select_all('PicUrl')
+    result = cursor.fetchall()
+    cursor.close()
+    print result
+    resp = jsonify(result)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp

@@ -3,7 +3,7 @@ import time
 from flask import Flask,g,request,render_template,request,flash,url_for
 from wechatAPI import Wechat
 
-
+from helper import *
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 api = Wechat()
@@ -18,6 +18,9 @@ def before_request():
 def teardown_request(exception):
     pass
 
+@app.route('/photolist/')
+def getphotolist():
+    return get_photolist()
 
 @app.route('/', methods = ['GET', 'POST'] )
 def wechat():
