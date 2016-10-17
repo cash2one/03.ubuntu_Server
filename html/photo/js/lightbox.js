@@ -24,7 +24,7 @@ $(function () {
         var json = eval(data); //数组 
         $.each(data, function(indx, item){
           console.log('<a href="../'+item[0]+ '.jpg" title="Banana"><img src=../thumbnails/' + item[0] + '.jpg alt="Banana"></a>')
-          $("#links").append('<a href="../'+item[0]+ '.jpg" title="Banana"><img src=../thumbnails/' + item[0] + '.jpg alt="Banana"></a>')       
+          $("#links").append('<a href="./'+item[0]+ '.jpg" title="Banana"><img src=../thumbnails/' + item[0] + '.jpg alt="Banana"></a>')       
         });
       }
     })
