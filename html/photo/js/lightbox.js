@@ -10,32 +10,69 @@
  */
 
 /* global blueimp, $ */
+
 $(function () {
   'use strict'
 
-  $.ajax({
+    // load image
+    $.ajax({
       type: "GET",
-      url:'http://x2020.top/photolist/',
+      url:'http://192.243.112.162/photolist/',
       dataType: 'json',
       // esponse中，包含了 Access-Control-Allow-Origin 这个header，并且它的值里有我们自己的域名时，浏览器才允许我们拿到它页面的数据进行下一步处理。
       success: function(data){
-        var carouselLinks = []
         var json = eval(data); //数组 
         $.each(data, function(indx, item){
-
-          carouselLinks.push({
-            href: '../' + item[0] + '.jpg',
-            title: ''
-          })          
+          console.log('<a href="../'+item[0]+ '.jpg" title="Banana"><img src=../thumbnails/' + item[0] + '.jpg alt="Banana"></a>')
+          $("#links").append('<a href="../'+item[0]+ '.jpg" title="Banana"><img src=../thumbnails/' + item[0] + '.jpg alt="Banana"></a>')       
         });
-
-      blueimp.Gallery(carouselLinks, {
-      container: '#blueimp-image-carousel',
-      carousel: true
-      })
-        
       }
     })
+
+
+   $("#links").onclick = function (event) {
+    event = event || window.event;
+
+    var target = event.target || event.srcElement,
+    link = target.src ? target.parentNode : target,
+
+    options = {index: link, event: event},
+
+    links = this.getElementsByTagName('a');
+    console.log(links)
+    blueimp.Gallery(links, options);
+  };
+})
+
+
+
+// $(function () {
+//   'use strict'
+
+//   $.ajax({
+//       type: "GET",
+//       url:'http://x2020.top/photolist/',
+//       dataType: 'json',
+//       // esponse中，包含了 Access-Control-Allow-Origin 这个header，并且它的值里有我们自己的域名时，浏览器才允许我们拿到它页面的数据进行下一步处理。
+//       success: function(data){
+//         var carouselLinks = []
+//         var json = eval(data); //数组 
+//         $.each(data, function(indx, item){
+
+//           carouselLinks.push({
+//             href: '../' + item[0] + '.jpg',
+//             title: ''
+//           })          
+//         });
+
+//       blueimp.Gallery(carouselLinks, {
+//       container: '#blueimp-image-carousel',
+//       carousel: true
+//       })
+        
+//       }
+//     })
+//   })
 
   // .done(function (result) {
   //     var carouselLinks = []
@@ -52,7 +89,6 @@ $(function () {
     // container: '#blueimp-image-carousel',
     // carousel: true
     // })
-  })
 
 
   // // Load demo images from flickr:
