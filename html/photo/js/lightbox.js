@@ -17,7 +17,7 @@ $(function () {
     // load image
     $.ajax({
       type: "GET",
-      url:'http://192.243.112.162/photolist/',
+      url:'http://x2020.top/photolist/',
       dataType: 'json',
       // esponse中，包含了 Access-Control-Allow-Origin 这个header，并且它的值里有我们自己的域名时，浏览器才允许我们拿到它页面的数据进行下一步处理。
       success: function(data){
