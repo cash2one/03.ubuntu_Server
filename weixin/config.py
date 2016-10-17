@@ -10,6 +10,9 @@ def getweixindb():
 
 def getphoto():
     return conf.get('weixin','photo')
+
+def getthumbnail():
+    return conf.get('weixin','thumbnail')
 #以列表形式返回所有的section
 #sections = conf.sections()
 # #得到指定section的所有option

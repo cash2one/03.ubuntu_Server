@@ -6,6 +6,7 @@ if [ ! -d /data ]; then
 	mkdir -p /data/photo	
 	mkdir -p /data/database
 	mkdir -p /data/download
+	mkdir -p /data/photo/thumbnails
 	rm -rf /data/html
 	cp -rf html/ /data/
 	chmod -R 755 /data

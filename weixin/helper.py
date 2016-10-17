@@ -7,7 +7,7 @@ import requests
 from flask import make_response
 from config import *
 from flask import jsonify
-
+from PIL import Image
 from weixinDB import Photo,User
 
 import multiprocessing
@@ -204,6 +204,15 @@ def save_photo(msg):
         open((rootpath % picname), 'wb').write(ir.content)
     logging.debug(u"photo save success　%s"%rootpath % picname)
     photo_tb.update({'localpath':rootpath % picname},mediaid=mediaid,picurl=picurl)
+
+
+    size = (128, 128)
+    try:
+        im = Image.open((rootpath % picname))
+        im.thumbnail(size)
+        im.save(getthumbnail() + picname, "JPEG")
+    except IOError:
+        print("cannot create thumbnail for", getthumbnail() + picname)
 
 def get_photolist():
     photo_tb = Photo()
