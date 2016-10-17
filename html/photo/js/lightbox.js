@@ -23,8 +23,13 @@ $(function () {
       success: function(data){
         var json = eval(data); //数组 
         $.each(data, function(indx, item){
+<<<<<<< HEAD
           console.log('<a href="./'+item[0]+ '.jpg" title="Banana"><img src=./thumbnails/' + item[0] + '.jpg alt="Banana"></a>')
           $("#links").append('<a href="./'+item[0]+ '.jpg" title="Banana"><img src=./thumbnails/' + item[0] + '.jpg alt="Banana"></a>')       
+=======
+          console.log('<a href="../'+item[0]+ '.jpg" title="Banana"><img src=../thumbnails/' + item[0] + '.jpg alt="Banana"></a>')
+          $("#links").append('<a href="./'+item[0]+ '.jpg" title="Banana"><img src=../thumbnails/' + item[0] + '.jpg alt="Banana"></a>')       
+>>>>>>> e7a1275370bfd21d7c4ba9e2701b1fb79f06316c
         });
       }
     })
