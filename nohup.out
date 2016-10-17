@@ -13915,3 +13915,208 @@ FILE: /root/proj/03.ubuntu_Server/810013.zip
 FILE: /data//1012-81416-01-10/[thz.la]081416_01-10mu-1080p.mp4 (4more)
 -------------------------------------------------------------------------------
 
+[(u'i8kHD2mZmL5H6RyCgG_qllBXA8TccTO2mB8U8ZrLCqRKYnR5YxCEHcIyE8w13s-e',), (u'YDayg0RYtcCH56OiboUER8sM3g_3ITK3xQxFNTQ0dzlYaYgQKQISvNdkpwFK-SPq',), (u'OqvkcDVq2k86K9P88VkEPHijraYNI3WIDsmNW_vx7I7acZdYTzqYXzQautaigCXj',)]
+[(u'i8kHD2mZmL5H6RyCgG_qllBXA8TccTO2mB8U8ZrLCqRKYnR5YxCEHcIyE8w13s-e',), (u'YDayg0RYtcCH56OiboUER8sM3g_3ITK3xQxFNTQ0dzlYaYgQKQISvNdkpwFK-SPq',), (u'OqvkcDVq2k86K9P88VkEPHijraYNI3WIDsmNW_vx7I7acZdYTzqYXzQautaigCXj',)]
+[(u'i8kHD2mZmL5H6RyCgG_qllBXA8TccTO2mB8U8ZrLCqRKYnR5YxCEHcIyE8w13s-e',), (u'YDayg0RYtcCH56OiboUER8sM3g_3ITK3xQxFNTQ0dzlYaYgQKQISvNdkpwFK-SPq',), (u'OqvkcDVq2k86K9P88VkEPHijraYNI3WIDsmNW_vx7I7acZdYTzqYXzQautaigCXj',)]
+[(u'i8kHD2mZmL5H6RyCgG_qllBXA8TccTO2mB8U8ZrLCqRKYnR5YxCEHcIyE8w13s-e',), (u'YDayg0RYtcCH56OiboUER8sM3g_3ITK3xQxFNTQ0dzlYaYgQKQISvNdkpwFK-SPq',), (u'OqvkcDVq2k86K9P88VkEPHijraYNI3WIDsmNW_vx7I7acZdYTzqYXzQautaigCXj',)]
+[(u'i8kHD2mZmL5H6RyCgG_qllBXA8TccTO2mB8U8ZrLCqRKYnR5YxCEHcIyE8w13s-e',), (u'YDayg0RYtcCH56OiboUER8sM3g_3ITK3xQxFNTQ0dzlYaYgQKQISvNdkpwFK-SPq',), (u'OqvkcDVq2k86K9P88VkEPHijraYNI3WIDsmNW_vx7I7acZdYTzqYXzQautaigCXj',)]
+[(u'i8kHD2mZmL5H6RyCgG_qllBXA8TccTO2mB8U8ZrLCqRKYnR5YxCEHcIyE8w13s-e',), (u'YDayg0RYtcCH56OiboUER8sM3g_3ITK3xQxFNTQ0dzlYaYgQKQISvNdkpwFK-SPq',), (u'OqvkcDVq2k86K9P88VkEPHijraYNI3WIDsmNW_vx7I7acZdYTzqYXzQautaigCXj',)]
+[(u'i8kHD2mZmL5H6RyCgG_qllBXA8TccTO2mB8U8ZrLCqRKYnR5YxCEHcIyE8w13s-e',), (u'YDayg0RYtcCH56OiboUER8sM3g_3ITK3xQxFNTQ0dzlYaYgQKQISvNdkpwFK-SPq',), (u'OqvkcDVq2k86K9P88VkEPHijraYNI3WIDsmNW_vx7I7acZdYTzqYXzQautaigCXj',)]
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+INSERT INTO users VALUES(?,?,?)
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+INSERT INTO photo VALUES(?,?,?,?,?)
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+Process Process-8:
+Traceback (most recent call last):
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/proj/03.ubuntu_Server/weixin/helper.py", line 197, in save_photo
+    rootpath = getphoto() + "%s"
+  File "/root/proj/03.ubuntu_Server/weixin/config.py", line 12, in getphoto
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+    return conf.get('weixin','photo')
+  File "/root/anaconda2/lib/python2.7/ConfigParser.py", line 618, in get
+    raise NoOptionError(option, section)
+NoOptionError: No option 'photo' in section: 'weixin'
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+INSERT INTO users VALUES(?,?,?)
+Process Process-12:
+Traceback (most recent call last):
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/proj/03.ubuntu_Server/weixin/helper.py", line 197, in save_photo
+    rootpath = getphoto() + "%s"
+  File "/root/proj/03.ubuntu_Server/weixin/config.py", line 12, in getphoto
+    return conf.get('weixin','photo')
+  File "/root/anaconda2/lib/python2.7/ConfigParser.py", line 618, in get
+    raise NoOptionError(option, section)
+NoOptionError: No option 'photo' in section: 'weixin'
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+INSERT INTO photo VALUES(?,?,?,?,?)
+Process Process-16:
+Traceback (most recent call last):
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/proj/03.ubuntu_Server/weixin/helper.py", line 197, in save_photo
+    rootpath = getphoto() + "%s"
+  File "/root/proj/03.ubuntu_Server/weixin/config.py", line 12, in getphoto
+    return conf.get('weixin','photo')
+  File "/root/anaconda2/lib/python2.7/ConfigParser.py", line 618, in get
+    raise NoOptionError(option, section)
+NoOptionError: No option 'photo' in section: 'weixin'
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+Process Process-20:
+Traceback (most recent call last):
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/proj/03.ubuntu_Server/weixin/helper.py", line 197, in save_photo
+    rootpath = getphoto() + "%s"
+  File "/root/proj/03.ubuntu_Server/weixin/config.py", line 12, in getphoto
+    return conf.get('weixin','photo')
+  File "/root/anaconda2/lib/python2.7/ConfigParser.py", line 618, in get
+    raise NoOptionError(option, section)
+NoOptionError: No option 'photo' in section: 'weixin'
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+[(u'Jyvekyzk0dfUWwcl1X8IC8UnlzQ8BgNY5-n9PP0TxCtBhPgFTfWy6-N8f1cMj9cQ',), (u'92xwndLf7SLnS2huR2zwr11_VHHh2CkJ5o6SP9OP3XzBoTASqk5k4TV7-dU1pIhg',), (u'Ih_-r60Vjb0EFt1cuZHHOh_LPQ2PQ_l6aF9Nvcmjzsv9MsQoTGieKdZJkn5dVWPf',)]
+[(u'Jyvekyzk0dfUWwcl1X8IC8UnlzQ8BgNY5-n9PP0TxCtBhPgFTfWy6-N8f1cMj9cQ',), (u'92xwndLf7SLnS2huR2zwr11_VHHh2CkJ5o6SP9OP3XzBoTASqk5k4TV7-dU1pIhg',), (u'Ih_-r60Vjb0EFt1cuZHHOh_LPQ2PQ_l6aF9Nvcmjzsv9MsQoTGieKdZJkn5dVWPf',)]
+[(u'Jyvekyzk0dfUWwcl1X8IC8UnlzQ8BgNY5-n9PP0TxCtBhPgFTfWy6-N8f1cMj9cQ',), (u'92xwndLf7SLnS2huR2zwr11_VHHh2CkJ5o6SP9OP3XzBoTASqk5k4TV7-dU1pIhg',), (u'Ih_-r60Vjb0EFt1cuZHHOh_LPQ2PQ_l6aF9Nvcmjzsv9MsQoTGieKdZJkn5dVWPf',)]
+[(u'Jyvekyzk0dfUWwcl1X8IC8UnlzQ8BgNY5-n9PP0TxCtBhPgFTfWy6-N8f1cMj9cQ',), (u'92xwndLf7SLnS2huR2zwr11_VHHh2CkJ5o6SP9OP3XzBoTASqk5k4TV7-dU1pIhg',), (u'Ih_-r60Vjb0EFt1cuZHHOh_LPQ2PQ_l6aF9Nvcmjzsv9MsQoTGieKdZJkn5dVWPf',)]
+[(u'Jyvekyzk0dfUWwcl1X8IC8UnlzQ8BgNY5-n9PP0TxCtBhPgFTfWy6-N8f1cMj9cQ',), (u'92xwndLf7SLnS2huR2zwr11_VHHh2CkJ5o6SP9OP3XzBoTASqk5k4TV7-dU1pIhg',), (u'Ih_-r60Vjb0EFt1cuZHHOh_LPQ2PQ_l6aF9Nvcmjzsv9MsQoTGieKdZJkn5dVWPf',)]
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+Process Process-24:
+Traceback (most recent call last):
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+    self.run()
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/proj/03.ubuntu_Server/weixin/helper.py", line 197, in save_photo
+    rootpath = getphoto() + "%s"
+  File "/root/proj/03.ubuntu_Server/weixin/config.py", line 12, in getphoto
+    return conf.get('weixin','photo')
+  File "/root/anaconda2/lib/python2.7/ConfigParser.py", line 618, in get
+    raise NoOptionError(option, section)
+NoOptionError: No option 'photo' in section: 'weixin'
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+INSERT INTO users VALUES(?,?,?)
+Process Process-4:
+Traceback (most recent call last):
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/root/anaconda2/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/proj/03.ubuntu_Server/weixin/helper.py", line 197, in save_photo
+    rootpath = getphoto() + "%s"
+  File "/root/proj/03.ubuntu_Server/weixin/config.py", line 12, in getphoto
+    return conf.get('weixin','photo')
+  File "/root/anaconda2/lib/python2.7/ConfigParser.py", line 618, in get
+    raise NoOptionError(option, section)
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+NoOptionError: No option 'photo' in section: 'weixin'
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+INSERT INTO users VALUES(?,?,?)
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+UPDATE photo SET localpath=? WHERE mediaid=? and picurl=?
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',)]
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+UPDATE photo SET localpath=? WHERE mediaid=? and picurl=?
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',)]
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+UPDATE photo SET localpath=? WHERE mediaid=? and picurl=?
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',)]
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+INSERT INTO users VALUES(?,?,?)
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+UPDATE photo SET localpath=? WHERE mediaid=? and picurl=?
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+UPDATE photo SET localpath=? WHERE mediaid=? and picurl=?
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',)]
+INSERT INTO photo VALUES(?,?,?,?,?)
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+SELECT * FROM users WHERE id=?
+UPDATE users SET name=?,createtime=? WHERE id=?
+SELECT mediaid,picurl FROM photo WHERE localpath=? and user=?
+UPDATE photo SET localpath=? WHERE mediaid=? and picurl=?
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',), (u'46grmXcDAYLYExRzXybDU_W4SrHg7C2ZXNsLAWnSjh9ZVWC3hDXswdOspSP1rnch',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',), (u'46grmXcDAYLYExRzXybDU_W4SrHg7C2ZXNsLAWnSjh9ZVWC3hDXswdOspSP1rnch',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',), (u'46grmXcDAYLYExRzXybDU_W4SrHg7C2ZXNsLAWnSjh9ZVWC3hDXswdOspSP1rnch',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',), (u'46grmXcDAYLYExRzXybDU_W4SrHg7C2ZXNsLAWnSjh9ZVWC3hDXswdOspSP1rnch',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',), (u'46grmXcDAYLYExRzXybDU_W4SrHg7C2ZXNsLAWnSjh9ZVWC3hDXswdOspSP1rnch',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',), (u'46grmXcDAYLYExRzXybDU_W4SrHg7C2ZXNsLAWnSjh9ZVWC3hDXswdOspSP1rnch',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',), (u'46grmXcDAYLYExRzXybDU_W4SrHg7C2ZXNsLAWnSjh9ZVWC3hDXswdOspSP1rnch',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',), (u'46grmXcDAYLYExRzXybDU_W4SrHg7C2ZXNsLAWnSjh9ZVWC3hDXswdOspSP1rnch',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztNDfxYGYXw7ob2I_',), (u'AEHNQj_6UrLvj_6wwt3gyd5Ft5-BEAbBNFdC6X1ZU2JsNd8N2NCqlmXjXTJ0hSVJ',), (u'n1bgm3LMcJslvetdvUS-JH_OuhBXwdAOqrIT1KMVN_g8UQ6wJ7e8nkkI0fvRoFRz',), (u'46grmXcDAYLYExRzXybDU_W4SrHg7C2ZXNsLAWnSjh9ZVWC3hDXswdOspSP1rnch',)]
+[(u'iJy7GAWdqTijQyohtsoIPpDgDIkob390yjBsEFU2CAjhITFzA418E7IfeBDJJDLS',), (u'URz4OyTs-ScsKYOKA-5hH5Lqhspu3KAqAIWu6O5PIe5s5n4duMt9qKdeCT-RQjEo',), (u'8Ah2cVz_O_cgacCI6U3Tc7wa2yp1sSArfxD1wFUe5KCIAyiztND
