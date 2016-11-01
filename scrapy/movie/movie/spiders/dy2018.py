@@ -2,6 +2,11 @@
 import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
+from scrapy.selector import Selector
+from movie.items import *
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 class Dy2018Spider(CrawlSpider):
     name = "dy2018"
@@ -19,5 +24,26 @@ class Dy2018Spider(CrawlSpider):
     )
 
     def parse_item(self, response):
-        print response
-        pass
+        sel = Selector(response)
+        item = MovieInfo()
+
+
+        item['title'] =  u''.join(sel.xpath('//div[contains(@class,"title_all")]/h1/text()').extract())
+        item['cate']  = code(sel.xpath('//div[contains(@class,"bd3l")]/a/text()').extract()[-1])
+        item['img'] =  u''.join(sel.xpath('//div[contains(@id,"Zoom")]/p/img/@src').extract())
+        item['link'] = u'\n'.join(sel.xpath('//td[@bgcolor]/a/text()').extract())
+
+        # print '-'*50
+        # print u''.join(sel.xpath('//div[contains(@class,"title_all")]/h1/text()').extract())
+        # print code(sel.xpath('//div[contains(@class,"bd3l")]/a/text()').extract()[-1])
+        # print u''.join(sel.xpath('//div[contains(@id,"Zoom")]/p/img/@src').extract())
+        # print u'\n'.join(sel.xpath('//td[@bgcolor]/a/text()').extract())
+        # print '='*50
+        return item
+
+    def closed(self, reason):
+        print("DoubanBookSpider Closed:" + reason)
+
+def code(tmp):
+
+    return eval("u'%s'"%tmp)

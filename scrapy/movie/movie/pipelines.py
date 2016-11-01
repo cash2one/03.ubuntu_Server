@@ -7,5 +7,9 @@
 
 
 class MoviePipeline(object):
+
+    def __init(self):
+
+        pass
     def process_item(self, item, spider):
         return item

@@ -1,4 +1,4 @@
-from dbhelper import Table
+from common.dbhelper import Table
 from config import *
 DATABASE = getweixindb()
 

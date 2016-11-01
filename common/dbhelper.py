@@ -119,10 +119,6 @@ class Table(DatabaseObject):
     def drop(self):
         return super(Table, self).drop_table(self.table_name)
 
-
-
-
-
 # Sample
     # user = User('test.dat')
     # user.delete_all()
