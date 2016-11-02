@@ -1,16 +1,16 @@
 # -*- coding:utf8 -*-
 import json
 import logging
-import time
-
+import multiprocessing
 import requests
-from flask import make_response
-from config import *
-from flask import jsonify
+import time
 from PIL import Image
+from flask import jsonify
+from flask import make_response
+
+from common.config import *
 from weixinDB import Photo,User
 
-import multiprocessing
 LOG_FILENAME="helper.log"
 logging.basicConfig(filename=LOG_FILENAME,level=logging.NOTSET)
 

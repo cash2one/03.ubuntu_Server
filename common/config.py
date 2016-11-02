@@ -1,9 +1,15 @@
 # -* - coding: UTF-8 -* -
 import ConfigParser
+import os
 #生成config对象
 conf = ConfigParser.ConfigParser()
-#用config对象读取配置文件
-conf.read("../tmp/weixin.cfg")
+
+if os.path.exists("weixin.cfg"):
+    #用config对象读取配置文件
+    conf.read("weixin.cfg")
+else:
+    print os.getcwd()
+    print "file not find"
 
 def getweixindb():
     return conf.get('weixin','database')
@@ -13,6 +19,10 @@ def getphoto():
 
 def getthumbnail():
     return conf.get('weixin','thumbnail')
+
+def getmoviedb():
+    return conf.get('movie','database')
+
 #以列表形式返回所有的section
 #sections = conf.sections()
 # #得到指定section的所有option

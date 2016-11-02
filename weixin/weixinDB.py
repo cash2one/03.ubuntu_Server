@@ -1,5 +1,6 @@
+from common.config import *
 from common.dbhelper import Table
-from config import *
+
 DATABASE = getweixindb()
 
 class User(Table):
