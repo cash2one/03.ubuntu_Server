@@ -4,9 +4,9 @@ import sqlite3
 
 queries = {
     'SELECT': 'SELECT %s FROM %s WHERE %s',
-    'SELECT_TOP':'SELECT TOP 1 * from %s ORDER BY %s DESC',
+    'SELECT_TOP':'SELECT * from %s ORDER BY %s DESC LIMIT 1',
     'SELECT_ALL': 'SELECT %s FROM %s',
-    'INSERT': 'INSERT INTO %s VALUES(%s)',
+    'INSERT': 'INSERT INTO %s (%s) VALUES (%s)',
     'UPDATE': 'UPDATE %s SET %s WHERE %s',
     'DELETE': 'DELETE FROM %s where %s',
     'DELETE_ALL': 'DELETE FROM %s',
@@ -52,8 +52,7 @@ class DatabaseObject(object):
     def select_top(self, tables, order_arg):
         locs = ','.join(tables)
         query = queries['SELECT_TOP'] % (locs,order_arg)
-        print query
-        return self.read(query)
+        return self.read(query).fetchall()[0][0]
 
     def select_all(self, tables, *args):
         vals = ','.join([l for l in args])
@@ -66,6 +65,12 @@ class DatabaseObject(object):
         query = queries['INSERT'] % (table_name, values)
         print query
         return self.write(query, args)
+
+    def insert_key(self, table_name, **kwargs):
+        subs = ','.join([k for k in kwargs])
+        vals = ','.join(["'%s'" % kwargs[k] for k in kwargs])
+        query = queries['INSERT'] % (table_name, subs,vals)
+        return self.write(query)
 
     def update(self, table_name, set_args, **kwargs):
         updates = ','.join(['%s=?' % k for k in set_args])
@@ -117,6 +122,9 @@ class Table(DatabaseObject):
 
     def insert(self, *args):
         return super(Table, self).insert(self.table_name, *args)
+
+    def insert_key(self, **kwargs):
+        return super(Table, self).insert_key(self.table_name, **kwargs)
 
     def update(self, set_args, **kwargs):
         return super(Table, self).update(self.table_name, set_args, **kwargs)

@@ -12,17 +12,23 @@ else:
     print "file not find"
 
 def getweixindb():
-    return conf.get('weixin','database')
+    return getrootpath('weixin') + conf.get('weixin','database')
 
 def getphoto():
-    return conf.get('weixin','photo')
+    return getrootpath('weixin') + conf.get('weixin','photo')
 
 def getthumbnail():
-    return conf.get('weixin','thumbnail')
+    return getrootpath('weixin')+ conf.get('weixin','thumbnail')
 
 def getmoviedb():
-    return conf.get('movie','database')
+    return getrootpath('movie') + conf.get('movie','database')
 
+
+def getrootpath(section):
+    if os.path.exists(conf.get(section,'root')):
+        return conf.get(section,'root')
+    else:
+        return './'
 #以列表形式返回所有的section
 #sections = conf.sections()
 # #得到指定section的所有option

@@ -1,10 +1,13 @@
 # -*- coding:utf8 -*-
-import sys
-sys.path.append("../../../")
+import sys,os
+print '-'*100
+print os.getcwd()
+sys.path.append("../../")
 from common.config import *
 from common.dbhelper import Table
 
-
+print '-'*100
+print os.getcwd()
 DATABASE = getmoviedb()
 
 class MovieInfo_tb(Table):
@@ -77,12 +80,18 @@ class MovieModule():
         self.link = DownloadLink_tb()
         self.id = 0
 
-    def insert_movieinfo(self,*args):
-        self.movieinfo.insert({'title':'ssss'})
-        #self.id = self.movieinfo.select_top('ID')
+    def insert_movieinfo(self,**kwargs):
+        self.movieinfo.insert_key(**kwargs)
+        self.id = self.movieinfo.select_top('ID')
+
+
+    def insert_linkinfo(self,**kwargs):
+        self.link.insert_key(movieinfoid=self.id,**kwargs)
+
+
+    def test(self):
+        self.insert_movieinfo(title='a')
+        self.insert_linkinfo(sourceurl='wwww.baidu.com')
         cursor =  self.movieinfo.select_all('*')
         print cursor.fetchall()
         cursor.close()
-
-    def insert_linkinfo(self,*args):
-        pass

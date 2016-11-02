@@ -29,16 +29,28 @@ class Dy2018Spider(CrawlSpider):
 
 
         item['title'] =  u''.join(sel.xpath('//div[contains(@class,"title_all")]/h1/text()').extract())
+
+        if item['title'].find(u"《") > 0 and item['title'].find(u"》") > 0:
+            startindex = item['title'].index(u"《")+1
+            endindex = item['title'].index(u"》")
+            item['name'] = item['title'][startindex:endindex]
+        else:
+            item['name'] = ''
+
         item['cate']  = code(sel.xpath('//div[contains(@class,"bd3l")]/a/text()').extract()[-1])
+
         item['img'] =  u''.join(sel.xpath('//div[contains(@id,"Zoom")]/p/img/@src').extract())
         item['link'] = u'\n'.join(sel.xpath('//td[@bgcolor]/a/text()').extract())
 
-        # print '-'*50
+        #print '-'*50
+        #print  startindex
+        #print endindex
+        #print item['name']
         # print u''.join(sel.xpath('//div[contains(@class,"title_all")]/h1/text()').extract())
         # print code(sel.xpath('//div[contains(@class,"bd3l")]/a/text()').extract()[-1])
         # print u''.join(sel.xpath('//div[contains(@id,"Zoom")]/p/img/@src').extract())
         # print u'\n'.join(sel.xpath('//td[@bgcolor]/a/text()').extract())
-        # print '='*50
+        #print '='*50
         return item
 
     def closed(self, reason):
