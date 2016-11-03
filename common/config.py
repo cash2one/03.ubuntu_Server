@@ -3,10 +3,10 @@ import ConfigParser
 import os
 #生成config对象
 conf = ConfigParser.ConfigParser()
-
-if os.path.exists("weixin.cfg"):
+print os.getcwd()
+if os.path.exists("conf.cfg"):
     #用config对象读取配置文件
-    conf.read("weixin.cfg")
+    conf.read("conf.cfg")
 else:
     print os.getcwd()
     print "file not find"

@@ -1,6 +1,6 @@
+# -*- coding:utf8 -*-
 import sys,os
 sys.path.append("../")
-
 from common.config import *
 from common.dbhelper import Table
 

@@ -1,4 +1,5 @@
 # -*- coding:utf8 -*-
+
 import json
 import logging
 import multiprocessing
@@ -8,8 +9,11 @@ from PIL import Image
 from flask import jsonify
 from flask import make_response
 
+import sys,os
+sys.path.append("../")
+
 from common.config import *
-from weixinDB import Photo,User
+from database.weixinDB import Photo,User
 
 LOG_FILENAME="helper.log"
 logging.basicConfig(filename=LOG_FILENAME,level=logging.NOTSET)

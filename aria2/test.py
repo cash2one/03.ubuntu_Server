@@ -3,7 +3,8 @@
 from pyaria2 import PyAria2
 import time
 a = PyAria2()
-gid = a.addUri([u'ftp://a:a@dygod18.com:21/[电影天堂www.dy2018.com]名侦探柯南：纯黑的噩梦BD日语中字.mkv'])
+print a.getGlobalOption()
+gid = a.addUri([u'ftp://a:a@dygod18.com:21/[电影天堂www.dy2018.com]名侦探柯南：纯黑的噩梦BD日语中字.mkv'],{"dir":"/downloads"})
 
 print gid
 

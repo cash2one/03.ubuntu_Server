@@ -1,13 +1,9 @@
 # -*- coding:utf8 -*-
 import sys,os
-# print '-'*100
-print os.getcwd()
-sys.path.append("../../")
+sys.path.append("../")
 from common.config import *
 from common.dbhelper import Table
 
-# print '-'*100
-# print os.getcwd()
 DATABASE = getmoviedb()
 
 class MovieInfo_tb(Table):
