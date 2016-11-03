@@ -1,6 +1,5 @@
 # -*- coding:utf8 -*-
-import sys,os
-sys.path.append("../")
+
 from common.config import *
 from common.dbhelper import Table
 
@@ -84,6 +83,11 @@ class MovieModule():
     def insert_linkinfo(self,**kwargs):
         self.link.insert_key(movieinfoid=self.id,**kwargs)
 
+    def search_name(self,key):
+        cursor =  self.movieinfo.select_query("name like '%" + key + "%'","*")
+        result = cursor.fetchall()
+        cursor.close()
+        return result
 
     def test(self):
         self.insert_movieinfo(title='a')

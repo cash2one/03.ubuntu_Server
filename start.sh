@@ -16,9 +16,8 @@ fi;
 rm -f /data/html
 cp -rf html/ /data/
 chmod  -R 755 /data
-cd weixin
 
-python app.py
+python AppMgr.py
 nginx -s reload
 #aria2c --enable-rpc --rpc-listen-all
 #sqlite_web data/database/database.db

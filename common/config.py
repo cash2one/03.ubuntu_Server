@@ -3,10 +3,11 @@ import ConfigParser
 import os
 #生成config对象
 conf = ConfigParser.ConfigParser()
+print '-'*40
 print os.getcwd()
-if os.path.exists("conf.cfg"):
+if os.path.exists("common/conf.cfg"):
     #用config对象读取配置文件
-    conf.read("conf.cfg")
+    conf.read("common/conf.cfg")
 else:
     print os.getcwd()
     print "file not find"

@@ -9,9 +9,6 @@ from PIL import Image
 from flask import jsonify
 from flask import make_response
 
-import sys,os
-sys.path.append("../")
-
 from common.config import *
 from database.weixinDB import Photo,User
 

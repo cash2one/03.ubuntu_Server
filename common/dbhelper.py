@@ -49,6 +49,13 @@ class DatabaseObject(object):
         print query
         return self.read(query, subs)
 
+    def select_query(self,tables,conds, *args):
+        vals = ','.join([l for l in args])
+        locs = ','.join(tables)
+        query = queries['SELECT'] % (vals, locs, conds)
+        print query
+        return self.read(query)
+
     def select_top(self, tables, order_arg):
         locs = ','.join(tables)
         query = queries['SELECT_TOP'] % (locs,order_arg)
@@ -112,6 +119,9 @@ class Table(DatabaseObject):
 
     def select(self, *args, **kwargs):
         return super(Table, self).select([self.table_name], *args, **kwargs)
+
+    def select_query(self,conds, *args):
+        return super(Table, self).select_query([self.table_name],conds,*args)
 
     def select_top(self, order_arg):
         return super(Table,self).select_top([self.table_name],order_arg)
