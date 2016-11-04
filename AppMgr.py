@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 import subprocess
-import os
 import time
+
 from common.tools import *
+from resetful.resetfulapi import startresetful
 from weixin.weixin import startweixin
-from movie.movieflask import startmovie
+
+
 def isRunning(name):
     pgrep_process = subprocess.Popen('pgrep -l %s'%name, shell=True, stdout=subprocess.PIPE)
 
@@ -30,7 +32,7 @@ if __name__ == '__main__':
 
     # 开始一次
     sync(startweixin,5001)
-    sync(startmovie,5002)
+    sync(startresetful,5002)
 
     # 循环任务
     count = 1

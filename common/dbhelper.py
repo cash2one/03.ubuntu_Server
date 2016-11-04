@@ -113,10 +113,14 @@ class DatabaseObject(object):
 
 class Table(DatabaseObject):
 
+
     def __init__(self, data_file, table_name, values):
         super(Table, self).__init__(data_file)
         self.create_table(table_name, values)
         self.table_name = table_name
+
+    def exe(self,sql):
+        return super(Table,self).read(sql)
 
     def select(self, *args, **kwargs):
         return super(Table, self).select([self.table_name], *args, **kwargs)

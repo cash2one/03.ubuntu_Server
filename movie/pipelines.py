@@ -13,7 +13,7 @@ class MoviePipeline(object):
         pass
     def process_item(self, item, spider):
 
-        if item['cate'].find(u'电影') > 0 or item['cate'].find(u'电视剧') > 0 :
+        if (item['cate'].find(u'电影') > 0 or item['cate'].find(u'电视剧') > 0 ) and len(item['link']) > 0 :
             self.db.insert_movieinfo(title=item['title'],cate=item['cate'],img=item['img'],name=item['name'])
             for link in item['link'].split('\n'):
                 self.db.insert_linkinfo(sourceurl=link)

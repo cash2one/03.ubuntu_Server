@@ -41,7 +41,7 @@ class DownloadLink_tb(Table):
 
     def __init__(self, data_file=DATABASE):
         super(DownloadLink_tb, self).__init__(data_file, 'links',
-                                   ['ID INTEGER PRIMARY KEY AUTOINCREMENT', 'movieinfoid INTEGER NOT NULL','gid TEXT','status TEXT','sourceurl TEXT','localpath TEXT','remotepath TEXT'])
+                                   ['ID INTEGER PRIMARY KEY AUTOINCREMENT', 'movieinfoid INTEGER NOT NULL','gid TEXT','status TEXT','sourceurl TEXT','downloadpath TEXT','playpath TEXT'])
 
     def select(self, *args, **kwargs):
         cursor = super(DownloadLink_tb, self).select(*args, **kwargs)
@@ -84,7 +84,8 @@ class MovieModule():
         self.link.insert_key(movieinfoid=self.id,**kwargs)
 
     def search_name(self,key):
-        cursor =  self.movieinfo.select_query("name like '%" + key + "%'","*")
+        sql = "select id,title,name,cate,img from movieinfo where name like '%" + key + "%';"
+        cursor = self.movieinfo.exe(sql)
         result = cursor.fetchall()
         cursor.close()
         return result
