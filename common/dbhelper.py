@@ -6,7 +6,8 @@ queries = {
     'SELECT': 'SELECT %s FROM %s WHERE %s',
     'SELECT_TOP':'SELECT * from %s ORDER BY %s DESC LIMIT 1',
     'SELECT_ALL': 'SELECT %s FROM %s',
-    'INSERT': 'INSERT INTO %s (%s) VALUES (%s)',
+    'INSERT_KEY': 'INSERT INTO %s (%s) VALUES (%s)',
+    'INSERT': 'INSERT INTO %s VALUES (%s)',
     'UPDATE': 'UPDATE %s SET %s WHERE %s',
     'DELETE': 'DELETE FROM %s where %s',
     'DELETE_ALL': 'DELETE FROM %s',
@@ -76,7 +77,7 @@ class DatabaseObject(object):
     def insert_key(self, table_name, **kwargs):
         subs = ','.join([k for k in kwargs])
         vals = ','.join(["'%s'" % kwargs[k] for k in kwargs])
-        query = queries['INSERT'] % (table_name, subs,vals)
+        query = queries['INSERT_KEY'] % (table_name, subs,vals)
         return self.write(query)
 
     def update(self, table_name, set_args, **kwargs):
