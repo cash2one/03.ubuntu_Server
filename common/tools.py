@@ -3,5 +3,5 @@ import multiprocessing
 
 def sync(targget,args):
     p = multiprocessing.Process(target = targget, args = (args,))
-    p.daemon = True
+    p.daemon = False
     p.start()

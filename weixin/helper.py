@@ -178,7 +178,7 @@ def donot_know(msg):
 
 def sync(targget,args):
     p = multiprocessing.Process(target = targget, args = (args,))
-    p.daemon = False
+    p.daemon = True
     p.start()
 
 def add_user(msg):
