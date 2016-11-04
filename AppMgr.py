@@ -45,7 +45,7 @@ if __name__ == '__main__':
             sync(Run,'scrapy crawl dy2018 >>scrapy.log')
 
         if count % 2 == 0:
-            print "2"
+            pass
 
         count =(count + 1) % MAX
 
