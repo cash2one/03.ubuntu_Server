@@ -3,6 +3,10 @@
 from common.config import *
 from common.dbhelper import Table
 
+from peewee import *
+from playhouse.sqlite_ext import SqliteExtDatabase
+
+
 DATABASE = getmoviedb()
 
 class MovieInfo_tb(Table):
@@ -96,3 +100,39 @@ class MovieModule():
         cursor =  self.movieinfo.select_all('*')
         print cursor.fetchall()
         cursor.close()
+
+
+movie_database = SqliteDatabase(DATABASE)
+
+def connect():
+    movie_database.connect()
+
+def close():
+    movie_database.cloes()
+
+
+class BaseModel(Model):
+    class Meta:
+        database = movie_database
+
+class links(BaseModel):
+    id = IntegerField()
+    movieinfoid = IntegerField()
+
+    gid = TextField()
+    status = TextField()
+    sourceurl=TextField()
+    localpath = TextField()
+    remotepath = TextField()
+
+class movieinfo(BaseModel):
+
+    id = IntegerField()
+    title =TextField()
+
+    name = TextField()
+    cate = TextField()
+    rank = TextField()
+    actor = TextField()
+    updatetime = TextField()
+    img = TextField()
