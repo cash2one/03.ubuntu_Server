@@ -27,11 +27,17 @@ def before_request():
 def index():
     return make_response("test")
 
-@apiapp.route('/movies/<name>',methods = ['GET'])
+@apiapp.route('/movies/<name>',methods = ['GET','POST'])
 def search(name):
-    response = [dic for dic in Movie_tb.select(Movie_tb.id,Movie_tb.name).where(Movie_tb.name.contains(name)).dicts()]
-    json_response = json.dumps(response, indent=4, sort_keys=False, ensure_ascii=False)
-    return make_response(json_response)
+
+    if request.method == "GET":
+        data = [dic for dic in Movie_tb.select(Movie_tb.id,Movie_tb.name).where(Movie_tb.name.contains(name)).dicts()]
+        json_response = json.dumps(data, indent=4, sort_keys=False, ensure_ascii=False)
+        response = make_response(json_response)
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        return response
+    else:
+        pass
 
 # def export(table, sql, export_format):
 #     model_class = dataset[table].model_class
