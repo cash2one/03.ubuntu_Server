@@ -13,6 +13,7 @@ else:
     print "file not find"
 
 def getweixindb():
+    print "getweixindb: " + getrootpath('weixin') + conf.get('weixin','database')
     return getrootpath('weixin') + conf.get('weixin','database')
 
 def getphoto():
@@ -22,6 +23,7 @@ def getthumbnail():
     return getrootpath('weixin')+ conf.get('weixin','thumbnail')
 
 def getmoviedb():
+    print "getmoviedb : "  +  getrootpath('movie') + conf.get('movie','database')
     return getrootpath('movie') + conf.get('movie','database')
 
 
