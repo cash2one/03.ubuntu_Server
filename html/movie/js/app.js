@@ -4,48 +4,99 @@
 /**
  * Created by xuqi on 16/11/5.
  */
-$(function () {
-    'use strict'
-})
 
 $(document).ready(function(){
+
+
 
     $('#datatable-keytable').bootstrapTable({
 
         columns: [{
-            field: 'id',
-            title: 'Item ID'
-        }, {
             field: 'name',
-            title: 'Item Name'
-        },],
+            title: '名称'
+        }, {
+            field: 'cate',
+            title: '类别'
+        }, {
+            field: 'sourceurl',
+            title: '下载到远端服务器',
+            formatter:function(value,row,index) {
+                var e = '<button type="button" class="btn btn-primary btn-sm">下载</button>'
+                return e;
+            }
+        }, {
+            field: 'sourceurl',
+            title: '播放',
+            formatter:function(value,row,index) {
+                var e = '<button type="button" class="btn btn-primary btn-sm">播放</button>'
+                return e;
+            }
+        }],
+
+        onClickCell:function(field, value, row, $element) {
+            $.ajax({
+                type: "GET",
+                //url: 'http://x2020.top/v1/movies/' + row.id,
+                url: 'http://localhost:5002/localpaths/' + row.id,
+                dataType: 'json',
+                // response中，包含了 Access-Control-Allow-Origin 这个header，并且它的值里有我们自己的域名时，浏览器才允许我们拿到它页面的数据进行下一步处理。
+                success: function (data) {
+                    console.log(data)
+                }
+            })
+        },
+
+        rowStyle:function(row,index) {
+            var strclass = "";
+            if(row.sourceurl == null) {
+                strclass = 'danger';
+            }
+            else if (row.downloadpath == null) {
+                strclass = '';
+            }
+            else if (row.playpath == null) {
+                strclass = 'info'
+            }
+            else {
+                strclass = 'success'
+            }
+            return { classes: strclass }
+        },
 
         data: []
+
+
 
     });
 
     $("button").click(function() {
 
         key = $("input:text").val()
-        console.log(key)
-        $('#datatable-keytable').bootstrapTable('showLoading');
-        $.ajax({
-            type: "GET",
-            url: 'http://x2020.top/v1/movies/' + key,
-            dataType: 'json',
+        if (key != "") {
 
-            // response中，包含了 Access-Control-Allow-Origin 这个header，并且它的值里有我们自己的域名时，浏览器才允许我们拿到它页面的数据进行下一步处理。
-            success: function (data) {
+            $('#datatable-keytable').bootstrapTable('showLoading');
+            $.ajax({
+                type: "GET",
+                //url: 'http://x2020.top/v1/movies/' + key,
+                url: 'http://localhost:5002/movies/' + key,
+                dataType: 'json',
 
-                var json = eval(data); //数组
-                $('#datatable-keytable').bootstrapTable('hideLoading');
-                $('#datatable-keytable').bootstrapTable('load',json);
+                // response中，包含了 Access-Control-Allow-Origin 这个header，并且它的值里有我们自己的域名时，浏览器才允许我们拿到它页面的数据进行下一步处理。
+                success: function (data) {
+
+                    var json = eval(data); //数组
+                    console.log(json)
+                    $('#datatable-keytable').bootstrapTable('hideLoading');
+                    $('#datatable-keytable').bootstrapTable('load', json);
 
 
-            }
-        })
+                }
+            })
+
+        }
     })
 });
+
 
 //
 //$('#table').bootstrapTable({

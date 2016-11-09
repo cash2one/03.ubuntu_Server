@@ -45,7 +45,7 @@ class DownloadLink_tb(Table):
 
     def __init__(self, data_file=DATABASE):
         super(DownloadLink_tb, self).__init__(data_file, 'links',
-                                   ['ID INTEGER PRIMARY KEY AUTOINCREMENT', 'movieinfoid INTEGER NOT NULL','gid TEXT','status TEXT','sourceurl TEXT','downloadpath TEXT','playpath TEXT'])
+                                   ['ID INTEGER PRIMARY KEY AUTOINCREMENT', 'movieinfoid INTEGER NOT NULL','gid TEXT','status TEXT','sourceurl TEXT','downloadpath TEXT','playpath TEXT',' FOREIGN KEY (ID) REFERENCES movieinfo(ID)'])
 
     def select(self, *args, **kwargs):
         cursor = super(DownloadLink_tb, self).select(*args, **kwargs)
@@ -122,8 +122,9 @@ class links(BaseModel):
     gid = TextField()
     status = TextField()
     sourceurl=TextField()
-    localpath = TextField()
-    remotepath = TextField()
+    downloadpath = TextField()
+    playpath = TextField()
+
 
 class movieinfo(BaseModel):
 
