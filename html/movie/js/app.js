@@ -31,7 +31,7 @@ $(document).ready(function(){
         $('#datatable-keytable').bootstrapTable('showLoading');
         $.ajax({
             type: "GET",
-            url: 'http://localhost:5002/movies/' + key,
+            url: 'http://x2020.top/v1/movies/' + key,
             dataType: 'json',
 
             // response中，包含了 Access-Control-Allow-Origin 这个header，并且它的值里有我们自己的域名时，浏览器才允许我们拿到它页面的数据进行下一步处理。
