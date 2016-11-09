@@ -35,7 +35,7 @@ if __name__ == '__main__':
     sync(startresetful,5002)
 
     # 循环任务
-    count = 0
+    count = 1
     SCRAPY_MOVIE = 60 * 60 * 12
     MAX = SCRAPY_MOVIE + 1
 
