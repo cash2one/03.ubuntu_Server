@@ -3,6 +3,7 @@ import time
 from flask import Flask,g,request,render_template,request,flash,url_for,make_response,g
 
 from database.movieDB import MovieModule,connect,close,movieinfo as Movie_tb,links as Links_tb
+from resetfulutils import *
 import json
 
 apiapp = Flask(__name__)
@@ -20,8 +21,6 @@ def before_request():
 # @apiapp.teardown_request
 # def teardown_request():
 #     close()
-
-
 
 @apiapp.route('/',methods = ['GET', 'POST'])
 def index():
@@ -42,7 +41,10 @@ def search(name):
 @apiapp.route('/localpaths/<id>',methods = ['GET','POST'])
 def localpaths(id):
 
-    response = make_response(id)
+    data = download(id)
+
+    json_response = json.dumps(data, indent=4, sort_keys=False, ensure_ascii=False)
+    response = make_response(json_response)
     response.headers['Access-Control-Allow-Origin'] = '*'
     return response
     pass
