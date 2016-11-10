@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7767e8a7-4858-4c89-96e4-42b3822303de" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/movie/index.html" afterPath="$PROJECT_DIR$/html/movie/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/html/movie/js/app.js" afterPath="$PROJECT_DIR$/html/movie/js/app.js" />
     </list>
     <ignored path="03.ubuntu_Server.iws" />
@@ -23,16 +24,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="helper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/weixin/helper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3210">
-              <caret line="224" column="38" selection-start-line="224" selection-start-column="33" selection-end-line="224" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="syscall.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/aria/js/services/rpc/syscall.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -63,11 +54,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/movie/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
+            <state relative-caret-position="645">
+              <caret line="94" column="75" selection-start-line="94" selection-start-column="75" selection-end-line="94" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/html/movie/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -119,7 +120,7 @@
             <state relative-caret-position="2055">
               <caret line="138" column="16" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="16" />
               <folding>
-                <element signature="e#23#50#0" expanded="true" />
+                <marker date="1478778423706" expanded="true" signature="23:84" ph="import ..." />
               </folding>
             </state>
           </provider>
@@ -140,7 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/html/photo/index.html" />
         <option value="$PROJECT_DIR$/html/photo/js/demo.js" />
         <option value="$PROJECT_DIR$/weixin/config.py" />
         <option value="$PROJECT_DIR$/html/photo/js/lightbox.js" />
@@ -191,6 +191,7 @@
         <option value="$PROJECT_DIR$/database/movieDB.py" />
         <option value="$PROJECT_DIR$/resetful/resetfulapi.py" />
         <option value="$PROJECT_DIR$/html/movie/js/app.js" />
+        <option value="$PROJECT_DIR$/html/movie/index.html" />
       </list>
     </option>
   </component>
@@ -619,13 +620,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/weixin/weixin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/weixin/wechatAPI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -963,7 +957,7 @@
         <state relative-caret-position="2055">
           <caret line="138" column="16" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="16" />
           <folding>
-            <element signature="e#23#50#0" expanded="true" />
+            <marker date="1478778423706" expanded="true" signature="23:84" ph="import ..." />
           </folding>
         </state>
       </provider>
@@ -978,8 +972,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/html/movie/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
+        <state relative-caret-position="645">
+          <caret line="94" column="75" selection-start-line="94" selection-start-column="75" selection-end-line="94" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/movie/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
           <folding />
         </state>
       </provider>

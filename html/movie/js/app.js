@@ -19,10 +19,10 @@ $(document).ready(function(){
             title: '类别'
         }, {
             field: 'sourceurl',
-            title: '下载到远端服务器',
+            title: '下载',
             formatter:function(value,row,index) {
                 var e = '<button type="button" class="btn btn-primary btn-sm">下载</button>'
-                return e;
+                return e
             }
         }, {
             field: 'sourceurl',
@@ -90,6 +90,9 @@ $(document).ready(function(){
                     $('#datatable-keytable').bootstrapTable('load', json);
 
 
+                },
+                error: function(data) {
+                    $('#datatable-keytable').bootstrapTable('hideLoading');
                 }
             })
 
