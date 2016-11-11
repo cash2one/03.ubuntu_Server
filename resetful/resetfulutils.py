@@ -20,7 +20,7 @@ def download(id,path='/data/download'):
         query = Links_tb.update(gid = gid,status=result['status'],downloadpath=result['files'][0]['path']).where(Links_tb.id == id)
         query.execute()
 
-
+        print result['status']
     return result
     pass
 
