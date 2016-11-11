@@ -56,7 +56,7 @@ class PyAria2(object):
                   ' --continue' \
                   ' --max-concurrent-downloads=20' \
                   ' --max-connection-per-server=10' \
-                  ' --rpc-max-request-size=1024M' % port
+                  ' --rpc-max-request-size=1024M'
 
             if not session is None:
                 cmd += ' --input-file=%s' \
