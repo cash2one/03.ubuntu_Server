@@ -1,7 +1,7 @@
 # -*- coding:utf8 -*-
 from aria2.pyaria2 import *
 from database.movieDB import MovieModule,connect,close,movieinfo as Movie_tb,links as Links_tb
-from urllib.parse import unquote
+import urllib
 
 aria2 = PyAria2()
 print aria2.getGlobalOption()
@@ -14,7 +14,7 @@ def download(id,path='/data/download'):
         gid = data[0]['gid']
 
         if gid == None:
-            gid = aria2.addUri([unquote(data[0]['sourceurl'], encoding="GBK")],{"dir":path})
+            gid = aria2.addUri([urllib.unquote(data[0]['sourceurl'])],{"dir":path})
             result = aria2.tellStatus(gid)
         else:
             result = aria2.tellStatus(gid)
