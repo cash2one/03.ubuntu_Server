@@ -14,6 +14,9 @@ def download(id,path='/data/download'):
         gid = data[0]['gid']
 
         if gid == None:
+            print data[0]['sourceurl']
+            print urllib.unquote(data[0]['sourceurl'])
+            print urllib.unquote(data[0]['sourceurl']).decode("utf8","ignore")
             gid = aria2.addUri([urllib.unquote(data[0]['sourceurl'])],{"dir":path})
             result = aria2.tellStatus(gid)
         else:
