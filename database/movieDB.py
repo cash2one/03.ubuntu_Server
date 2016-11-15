@@ -94,6 +94,13 @@ class MovieModule():
         cursor.close()
         return result
 
+    def search_title_exist(self,title):
+        sql = "select * from movieinfo where title=" +title + ";"
+        cursor = self.movieinfo.exe(sql)
+        result = cursor.fetchall()
+        cursor.close()
+        return len(result) > 0
+
     def test(self):
         self.insert_movieinfo(title='a')
         self.insert_linkinfo(sourceurl='wwww.baidu.com')
