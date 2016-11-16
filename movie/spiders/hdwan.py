@@ -22,9 +22,9 @@ class HdwanSpider(CrawlSpider):
     )
 
     def parse_item(self, response):
-	print "-"*100
-	print response.url
-	print "="*100
+        print "-"*100
+        print response.url
+        print "="*100
         sel = Selector(response)
         item = MovieInfo()
 

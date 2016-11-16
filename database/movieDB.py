@@ -99,6 +99,8 @@ class MovieModule():
         cursor = self.movieinfo.exe(sql)
         result = cursor.fetchall()
         cursor.close()
+        print "=======================search_title_exist========================"
+        print result
         return len(result) > 0
 
     def test(self):
