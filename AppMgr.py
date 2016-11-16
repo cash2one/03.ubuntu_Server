@@ -44,7 +44,7 @@ if __name__ == '__main__':
         if count % SCRAPY_MOVIE == 0:
             print "-"*50
             print "\nstart scrapy\n"
-            sync(Run,'scrapy crawl dy2018 >>scrapy.log')
+            sync(Run,'scrapy crawl hdwan >>scrapy.log')
 
         if count % 2 == 0:
             pass
