@@ -95,12 +95,10 @@ class MovieModule():
         return result
 
     def search_title_exist(self,title):
-        sql = "select * from movieinfo where title=" +title + ";"
+        sql = "select * from movieinfo where title='" +title + "';"
         cursor = self.movieinfo.exe(sql)
         result = cursor.fetchall()
         cursor.close()
-        print "=======================search_title_exist========================"
-        print result
         return len(result) > 0
 
     def test(self):

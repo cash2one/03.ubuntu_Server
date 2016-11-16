@@ -78,6 +78,7 @@ class DatabaseObject(object):
         subs = ','.join([k for k in kwargs])
         vals = ','.join(["'%s'" % kwargs[k] for k in kwargs])
         query = queries['INSERT_KEY'] % (table_name, subs,vals)
+        print query
         return self.write(query)
 
     def update(self, table_name, set_args, **kwargs):

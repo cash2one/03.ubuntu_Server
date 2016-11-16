@@ -15,36 +15,35 @@ class HdwanSpider(CrawlSpider):
 
     rules = (
         # 提取匹配 'category.php' (但不匹配 'subsection.php') 的链接并跟进链接(没有callback意味着follow默认为True)
-       # Rule(LinkExtractor(allow=('/[a-zA-Z]+', ),deny=('/tag/.*','/wp-login\.php.*' )),follow= True),
+        Rule(LinkExtractor(allow=('[a-zA-Z]*/page/\d+', ),deny=('/tag/.*','/wp-login\.php.*' )),follow= True),
 
         # 提取匹配 'item.php' 的链接并使用spider的parse_item方法进行分析
         Rule(LinkExtractor(allow=('\d+\.html', )), callback='parse_item'),
     )
 
     def parse_item(self, response):
-        print "-"*100
-        print response.url
-        print "="*100
         sel = Selector(response)
         item = MovieInfo()
 
-
+        print response.url
         item['title'] =  u''.join(sel.xpath('//span[@class="current"]/text()').extract())
-        item['name'] = u''.join(sel.xpath('//meta[@name="description"]/@content').extract())
-        item['cate']  = u''.join(sel.xpath('//a[@itemprop="breadcrumb"]/text()').extract())
+        item['name'] = u''.join(sel.xpath('//meta[@name="description"]/@content').extract()).replace(u"影片名：", u"")
+        if len(sel.xpath('//a[@itemprop="breadcrumb"]/text()').extract()) > 1:
+            item['cate']  = u''.join(sel.xpath('//a[@itemprop="breadcrumb"]/text()').extract()[1])
+        else:
+            item['cate'] = u''
 
-        item['img'] =  u''.join(sel.xpath('//div[@id="post_content"]/p/a/@href').extract())
-        #item['link'] = u'\n'.join(sel.xpath('//td[@bgcolor]/a/text()').extract())
+        if len(sel.xpath('//div[@id="post_content"]/p/a/@href').extract()) > 0:
+            item['img'] =  u''.join(sel.xpath('//div[@id="post_content"]/p/a/@href').extract()[0])
+        else:
+            item['img'] = u''
 
-        print '-'*100
-       # print  startindex
-       # print endindex
-        print item['name']
-        print item['title']
-        print item['cate']
-        print item['img']
-        print '='*50
+        item['link'] = u''.join(sel.xpath('//div[@class="dw-box dw-box-download"]/a/@href').extract())
+
+
         return item
 
     def closed(self, reason):
         print("HdwanSpider Closed:" + reason)
+
+
