@@ -87,6 +87,12 @@ class MovieModule():
     def insert_linkinfo(self,**kwargs):
         self.link.insert_key(movieinfoid=self.id,**kwargs)
 
+    def select_all(self, *args):
+        cursor =  self.movieinfo.select_all(args)
+        result = cursor.fetchall()
+        cursor.close()
+        return result
+
     def search_name(self,key):
         sql = "select id,title,name,cate,img from movieinfo where name like '%" + key + "%';"
         cursor = self.movieinfo.exe(sql)
