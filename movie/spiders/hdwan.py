@@ -28,6 +28,10 @@ class HdwanSpider(CrawlSpider):
         print response.url
         item['title'] =  u''.join(sel.xpath('//span[@class="current"]/text()').extract())
         item['name'] = u''.join(sel.xpath('//meta[@name="description"]/@content').extract()).replace(u"影片名：", u"")
+        
+        if item['name'].find(u"。") > 0:
+            item['name'] = item['title'].split(']')[0][1:]
+            
         if len(sel.xpath('//a[@itemprop="breadcrumb"]/text()').extract()) > 1:
             item['cate']  = u''.join(sel.xpath('//a[@itemprop="breadcrumb"]/text()').extract()[1])
         else:

@@ -11,8 +11,8 @@ class MoviePipeline(object):
 
     def __init__(self):
         self.db = MovieModule()
-        self.sets = self.db.select_all("title")
-        print self.sets
+        # self.sets = self.db.select_all("title")
+        # print self.sets
         pass
 
     def process_item(self, item, spider):
