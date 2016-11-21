@@ -2,7 +2,7 @@
 import time
 from flask import Flask,g,request,render_template,request,flash,url_for,make_response,g
 
-from database.movieDB import MovieModule,connect,close,movieinfo as Movie_tb,links as Links_tb
+from database.movieDB import MovieModule,before_request_handler,after_request_handler,movieinfo as Movie_tb,links as Links_tb
 from resetfulutils import *
 import json
 
@@ -15,11 +15,12 @@ def startresetful(port):
 
 @apiapp.before_request
 def before_request():
-    connect()
+    before_request_handler()
 
-# @apiapp.teardown_request
-# def teardown_request():
-#     close()
+
+@apiapp.teardown_request
+def teardown_request():
+    after_request_handler()
 
 @apiapp.route('/movies/',methods = ['GET'])
 def searchall():

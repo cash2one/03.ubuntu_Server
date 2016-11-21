@@ -1,6 +1,6 @@
 # -*- coding:utf8 -*-
 from aria2.pyaria2 import *
-from database.movieDB import MovieModule,connect,close,movieinfo as Movie_tb,links as Links_tb
+from database.movieDB import MovieModule,before_request_handler,after_request_handler,movieinfo as Movie_tb,links as Links_tb
 import urllib
 
 aria2 = PyAria2()

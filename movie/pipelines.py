@@ -6,13 +6,13 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 from database.movieDB import MovieModule
 from scrapy.exceptions import DropItem
+from database.datamodule import tb_movies,tb_links,create_table
 
 class MoviePipeline(object):
 
     def __init__(self):
-        self.db = MovieModule()
-        # self.sets = self.db.select_all("title")
-        # print self.sets
+        create_table()
+        before_request_handler()
         pass
 
     def process_item(self, item, spider):
@@ -29,6 +29,10 @@ class MoviePipeline(object):
             print item['img']
             print item['link']
             print '='*100
+
+            if tb_movies.select().where(title==item['title').count() > 0:
+                pass
+
 
             if not self.db.search_title_exist(item['title']):
                 self.db.insert_movieinfo(title=item['title'],cate=item['cate'],img=item['img'],name=item['name'])

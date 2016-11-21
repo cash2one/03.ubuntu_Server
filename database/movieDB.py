@@ -13,7 +13,7 @@ class MovieInfo_tb(Table):
 
     def __init__(self, data_file=DATABASE):
         super(MovieInfo_tb, self).__init__(data_file, 'movieinfo',
-                                   ['ID INTEGER PRIMARY KEY AUTOINCREMENT', 'title TEXT','name TEXT','cate TEXT','rank TEXT','actor TEXT','updatetime TEXT','img TEXT'])
+                                   ['ID INTEGER PRIMARY KEY AUTOINCREMENT', 'title TEXT','name TEXT','cate TEXT','rank TEXT','actor TEXT','updatetime TEXT','img TEXT','detaillink TEXT'])
 
     def select(self, *args, **kwargs):
         cursor = super(MovieInfo_tb, self).select(*args, **kwargs)
@@ -117,10 +117,10 @@ class MovieModule():
 
 movie_database = SqliteDatabase(DATABASE)
 
-def connect():
+def before_request_handler():
     movie_database.connect()
 
-def close():
+def after_request_handler():
     movie_database.cloes()
 
 
@@ -140,7 +140,6 @@ class links(BaseModel):
 
 
 class movieinfo(BaseModel):
-
     id = IntegerField()
     title =TextField()
 
