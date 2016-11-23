@@ -2,7 +2,7 @@
 import time
 from flask import Flask,g,request,render_template,request,flash,url_for,make_response,g
 
-from database.movieDB import MovieModule,before_request_handler,after_request_handler,movieinfo as Movie_tb,links as Links_tb
+from database.datamodule import before_request_handler,after_request_handler,tb_movies,tb_links
 from resetfulutils import *
 import json
 
@@ -19,19 +19,19 @@ def before_request():
 
 
 @apiapp.teardown_request
-def teardown_request():
+def teardown_request(exception):
     after_request_handler()
 
 @apiapp.route('/movies/',methods = ['GET'])
 def searchall():
     if request.method == "GET":
-        data = [dic for dic in Movie_tb.select(Movie_tb.title,Movie_tb.name,Movie_tb.cate,Movie_tb.img,Links_tb.id,Links_tb.sourceurl,Links_tb.downloadpath,Links_tb.playpath).join(Links_tb,on=(Links_tb.movieinfoid ==Movie_tb.id)).dicts()]
+        data = [dic for dic in tb_movies.select(tb_movies,tb_links).join(tb_links).dicts()]
         return make_jsonresponse(data)
 
 @apiapp.route('/movies/<name>',methods = ['GET','POST'])
 def search(name):
     if request.method == "GET":
-        data = [dic for dic in Movie_tb.select(Movie_tb.title,Movie_tb.name,Movie_tb.cate,Movie_tb.img,Links_tb.id,Links_tb.sourceurl,Links_tb.downloadpath,Links_tb.playpath).join(Links_tb,on=(Links_tb.movieinfoid ==Movie_tb.id)).where(Movie_tb.name.contains(name)).dicts()]
+        data = [dic for dic in tb_movies.select(tb_movies,tb_links).join(tb_links).where(tb_movies.name.contains(name)).dicts()]
         return make_jsonresponse(data)
     else:
         pass

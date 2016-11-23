@@ -25,7 +25,7 @@ class HdwanSpider(CrawlSpider):
         sel = Selector(response)
         item = MovieInfo()
 
-        print response.url
+
         item['title'] =  u''.join(sel.xpath('//span[@class="current"]/text()').extract())
         item['name'] = u''.join(sel.xpath('//meta[@name="description"]/@content').extract()).replace(u"影片名：", u"")
         
@@ -44,7 +44,7 @@ class HdwanSpider(CrawlSpider):
 
         item['link'] = u''.join(sel.xpath('//div[@class="dw-box dw-box-download"]/a/@href').extract())
 
-
+        item['url'] = response.url
         return item
 
     def closed(self, reason):

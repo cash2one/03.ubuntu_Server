@@ -16,7 +16,7 @@ def before_request_handler():
     database_object.connect()
 
 def after_request_handler():
-    database_object.cloes()
+    database_object.close()
 
 
 
@@ -28,6 +28,7 @@ class BaseModel(Model):
 
 class tb_movies(BaseModel):
     id = IntegerField(primary_key=True)
+    url = TextField(default=u'')
     title =TextField(default=u'')
 
     name = TextField(default=u'')
@@ -39,7 +40,7 @@ class tb_movies(BaseModel):
 
 class tb_links(BaseModel):
     id = IntegerField(primary_key=True)
-    movieinfoid = ForeignKeyField(tb_movies,related_name='links')
+    movie = ForeignKeyField(tb_movies)
 
     gid = TextField(default=u'')
     status = TextField(default=u'')

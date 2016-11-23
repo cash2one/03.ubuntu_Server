@@ -121,7 +121,7 @@ def before_request_handler():
     movie_database.connect()
 
 def after_request_handler():
-    movie_database.cloes()
+    movie_database.close()
 
 
 class BaseModel(Model):

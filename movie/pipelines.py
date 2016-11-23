@@ -6,7 +6,7 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 from database.movieDB import MovieModule
 from scrapy.exceptions import DropItem
-from database.datamodule import tb_movies,tb_links,create_table
+from database.datamodule import tb_movies,tb_links,create_table,before_request_handler
 
 class MoviePipeline(object):
 
@@ -22,22 +22,22 @@ class MoviePipeline(object):
 
         if (item['cate'].find(u'综艺') < 0 ) and len(item['link']) > 0  and len(item['title']) > 0:
 
-            print '-'*100
-            print item['name']
-            print item['title']
-            print item['cate']
-            print item['img']
-            print item['link']
-            print '='*100
+            # print '-'*100
+            # print item['name']
+            # print item['title']
+            # print item['cate']
+            # print item['img']
+            # print item['link']
+            # print '='*100
 
-            if tb_movies.select().where(title==item['title').count() > 0:
-                pass
+            if tb_movies.select().where(tb_movies.title==item['title']).count() == 0:
 
-
-            if not self.db.search_title_exist(item['title']):
-                self.db.insert_movieinfo(title=item['title'],cate=item['cate'],img=item['img'],name=item['name'])
+                print '-'*100
+                tb_movies.create(title=item['title'],cate=item['cate'],img=item['img'],name=item['name'],url=item['url'])
+                id = tb_movies.get(tb_movies.title==item['title']).id
                 for link in item['link'].split('\n'):
-                    self.db.insert_linkinfo(sourceurl=link)
+                    tb_links.insert(movie=id,sourceurl=link).execute()
+                print '='*100
                 return item
             else:
                 raise DropItem(u"重复项: %s" % item['title'])

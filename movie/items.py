@@ -16,4 +16,5 @@ class MovieInfo(Item):
     updatetime = Field()
     img = Field()
     link = Field()
+    url = Field()
 
