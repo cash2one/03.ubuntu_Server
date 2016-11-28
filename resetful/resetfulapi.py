@@ -36,6 +36,7 @@ def search(name):
     else:
         pass
 
+
 @apiapp.route('/localpaths/<id>',methods = ['GET','POST'])
 def localpaths(id):
     if request.method == "GET":
@@ -44,13 +45,11 @@ def localpaths(id):
     else:
         pass
 
+
+
 @apiapp.route('/remotepaths/<id>',methods = ['GET'])
 def remotepaths(id):
     pass
-
-
-
-
 
 
 def make_jsonresponse(data):
