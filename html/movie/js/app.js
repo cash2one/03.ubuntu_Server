@@ -7,6 +7,8 @@
 
 $(document).ready(function(){
 
+    app.init()
+
     $('#datatable-keytable').bootstrapTable({
 
         columns: [{
@@ -95,7 +97,7 @@ $(document).ready(function(){
             })
 
         }
-    })
+    });
 });
 
 

@@ -2,7 +2,7 @@
 #rm *.log *.out
 rm -rf /data/html
 if [ ! -d /data ]; then
-
+    mkdir -p /data/image
 	mkdir -p /data/photo	
 	mkdir -p /data/database
 	mkdir -p /data/download
@@ -13,6 +13,7 @@ if [ ! -d /data ]; then
 
 fi;
 
+rm -f /data/image
 rm -f /data/html
 cp -rf html/ /data/
 chmod  -R 755 /data

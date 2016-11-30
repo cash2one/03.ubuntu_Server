@@ -1,6 +1,5 @@
 from oss import OssSDK
 
-sdk = OssSDK()
+sdk = OssSDK('x2020')
 
-sdk.init()
-sdk.test()
+sdk.test2()

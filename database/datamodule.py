@@ -1,6 +1,7 @@
 # -* - coding: UTF-8 -* -
 from common.config import *
 
+import datetime
 from peewee import *
 from playhouse.sqlite_ext import SqliteExtDatabase
 
@@ -35,7 +36,7 @@ class tb_movies(BaseModel):
     cate = TextField(default=u'')
     rank = TextField(default=u'')
     actor = TextField(default=u'')
-    updatetime = TextField(default=u'')
+    updatetime = TextField(default=datetime.datetime.now().strftime(u"%Y-%m-%d %H:%M:%S"))
     img = TextField(default=u'')
 
 class tb_links(BaseModel):

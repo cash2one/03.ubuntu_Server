@@ -1,15 +1,19 @@
 # -*- coding: utf-8 -*-
 import oss2
 import os, sys
+import requests
+import uuid
+
+
 
 class OssSDK():
-    def __init__(self):
-        pass
-
-    def init(self):
+    def __init__(self,bucket):
+        self.url= "http://%s.oss-cn-shanghai.aliyuncs.com"%bucket
         self.endpoint = "http://oss-cn-shanghai.aliyuncs.com"
+        print self.endpoint
         self.auth = oss2.Auth('LTAI4oPl28gTR8pH', 'dg3FXdjjn94p4BMKRbTpO6ryaNfrBn')
-        self.bucket = oss2.Bucket(self.auth, self.endpoint, 'x2020')
+        self.bucket = oss2.Bucket(self.auth, self.endpoint, bucket)
+        pass
 
     def test(self):
 
@@ -26,5 +30,29 @@ class OssSDK():
             print '\r{0}% '.format(rate)
             sys.stdout.flush()
 
-    def put(self,remotefile,localfile,callback=percentage):
-        return self.bucket.put_object_from_file(remotefile,localfile,progress_callback=callback)
+    def put_local(self,key,localfile,callback=percentage):
+        return self.bucket.put_object_from_file(key,localfile,progress_callback=callback)
+
+    def put_url(self,key,url,callback=percentage):
+        r = requests.get(url)
+        print "--"
+        if r.status_code == 200:
+            self.put_data(key,r.content,callback=callback)
+        else:
+            print "Error!"
+        pass
+
+    def put_url_auto_name(self,url,callback=percentage):
+        key = str(uuid.uuid1()) + '.jpg'
+        self.put_url(key,url,callback=callback)
+        return self.url + "/" + key
+
+
+    def put_data(self,key,data,callback=percentage):
+        return  self.bucket.put_object(key,data,progress_callback=callback)
+
+
+    def test2(self):
+        self.put_url_auto_name("http://img.hdwan.net/2016/11/p2389668649.jpg")
+
+        #self.put('2.jpg',"http://img.hdwan.net/2016/11/p2389668649.jpg")
