@@ -35,8 +35,8 @@ var app = {
 
         $.ajax({
             type: "GET",
-            //url: 'http://x2020.top/v1/movies/',
-            url:'http://localhost:5002/movies/',
+            url: 'http://x2020.top/v1/movies/',
+            //url:'http://localhost:5002/movies/',
             dataType: 'json',
             success: function (data) {
                 var json = eval(data); //数组
