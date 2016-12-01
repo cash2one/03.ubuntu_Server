@@ -3,10 +3,12 @@ from aria2.pyaria2 import *
 from database.datamodule import before_request_handler,after_request_handler,tb_movies,tb_links
 import urllib
 
-aria2 = PyAria2()
-print aria2.getGlobalOption()
+def init_aria2():
+    aria2 = PyAria2()
+    return aria2
 
 def download(id,path='/data/download'):
+    aria2 = init_aria2()
     data = [dic for dic in  tb_links.select().where(tb_links.id == id).dicts()]
     print data
     result = []
