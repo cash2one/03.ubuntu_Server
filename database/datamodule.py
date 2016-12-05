@@ -12,15 +12,14 @@ database_object = SqliteDatabase(DATABASE)
 def create_table():
     database_object.create_table(tb_links,safe=True)
     database_object.create_table(tb_movies,safe=True)
+    database_object.create_table(tb_douban,safe=True)
+
 
 def before_request_handler():
     database_object.connect()
 
 def after_request_handler():
     database_object.close()
-
-
-
 
 class BaseModel(Model):
     class Meta:
@@ -38,6 +37,13 @@ class tb_movies(BaseModel):
     actor = TextField(default=u'')
     updatetime = TextField(default=datetime.datetime.now().strftime(u"%Y-%m-%d %H:%M:%S"))
     img = TextField(default=u'')
+
+class tb_subscript(BaseModel):
+    id = IntegerField(primary_key=True)
+
+class tb_douban(BaseModel):
+    id = IntegerField(primary_key=True)
+
 
 class tb_links(BaseModel):
     id = IntegerField(primary_key=True)

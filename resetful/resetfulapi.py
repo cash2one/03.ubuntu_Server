@@ -1,6 +1,6 @@
 # -*- coding:utf8 -*-
 import time
-from flask import Flask,g,request,render_template,request,flash,url_for,make_response,g
+from flask import Flask,g,request,render_template,request,flash,url_for,make_response,g,redirect
 
 from database.datamodule import before_request_handler,after_request_handler,tb_movies,tb_links
 from resetfulutils import *
@@ -21,6 +21,19 @@ def before_request():
 @apiapp.teardown_request
 def teardown_request(exception):
     after_request_handler()
+
+
+@apiapp.route('/movies/new_update_movies/',methods= ['GET'])
+def new_update_movies_count():
+    if request.method == "GET":
+        data = [dic for dic in tb_movies.select(tb_movies,tb_links).join(tb_links).order_by(tb_movies.updatetime.desc()).limit(100).dicts()]
+        return make_jsonresponse(data)
+
+@apiapp.route('/movies/new_update_movies/<count>',methods= ['GET'])
+def new_update_movies(count):
+    if request.method == "GET":
+        data = [dic for dic in tb_movies.select(tb_movies,tb_links).join(tb_links).order_by(tb_movies.updatetime.desc()).limit(count).dicts()]
+        return make_jsonresponse(data)
 
 @apiapp.route('/movies/',methods = ['GET'])
 def searchall():

@@ -5,6 +5,10 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.selector import Selector
 from movie.items import *
 import sys
+import re
+from douban import DoubanClient
+
+
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
@@ -27,10 +31,18 @@ class HdwanSpider(CrawlSpider):
 
 
         item['title'] =  u''.join(sel.xpath('//span[@class="current"]/text()').extract())
+
+        # 过滤名字
         item['name'] = u''.join(sel.xpath('//meta[@name="description"]/@content').extract()).replace(u"影片名：", u"")
         
         if item['name'].find(u"。") > 0:
             item['name'] = item['title']
+
+        if item['name'].find(u']') > 0:
+
+            name = sel.xpath('//a[@id="post_content"]/h3/text()').extract()
+            if len(name) > 0 and name[0].find(u'影片名：') > 0:
+                item['name'] = name[0].replace(u"影片名：", u"")
             
         if len(sel.xpath('//a[@itemprop="breadcrumb"]/text()').extract()) > 1:
             item['cate']  = u''.join(sel.xpath('//a[@itemprop="breadcrumb"]/text()').extract()[1])
@@ -42,12 +54,21 @@ class HdwanSpider(CrawlSpider):
         else:
             item['img'] = u''
 
-        item['link'] = u''.join(sel.xpath('//div[@class="dw-box dw-box-download"]/a/@href').extract())
+        item['link'] = u'\n'.join(sel.xpath('//div[contains(@class,"dw-box")]/a/@href').extract())
 
+
+        print "-"*100
+        print item['name']
+        print item['cate']
+        print item['link']
+        print "-"*100
         item['url'] = response.url
         return item
 
     def closed(self, reason):
         print("HdwanSpider Closed:" + reason)
+
+
+
 
 
