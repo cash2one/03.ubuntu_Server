@@ -10,8 +10,8 @@ apiapp = Flask(__name__)
 apiapp.secret_key = 'some_secret'
 
 def startresetful(port):
+    print u"启动电影的api"
     apiapp.run(host='0.0.0.0',port=port)
-
 
 @apiapp.before_request
 def before_request():
