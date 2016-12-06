@@ -12,7 +12,7 @@ database_object = SqliteDatabase(DATABASE)
 def create_table():
     database_object.create_table(tb_links,safe=True)
     database_object.create_table(tb_movies,safe=True)
-    database_object.create_table(tb_douban,safe=True)
+    database_object.create_table(tb_doubans,safe=True)
 
 
 def before_request_handler():
@@ -26,6 +26,7 @@ class BaseModel(Model):
         database = database_object
 
 
+
 class tb_movies(BaseModel):
     id = IntegerField(primary_key=True)
     url = TextField(default=u'')
@@ -37,12 +38,23 @@ class tb_movies(BaseModel):
     actor = TextField(default=u'')
     updatetime = TextField(default=datetime.datetime.now().strftime(u"%Y-%m-%d %H:%M:%S"))
     img = TextField(default=u'')
+    #douban = ForeignKeyField(tb_doubans,related_name='douban')
 
 class tb_subscript(BaseModel):
     id = IntegerField(primary_key=True)
 
-class tb_douban(BaseModel):
+class tb_doubans(BaseModel):
     id = IntegerField(primary_key=True)
+    title = TextField(default=u'')
+    #original_title = TextField(default=u'')
+    alt = TextField(default=u'')
+    rating = TextField(default=u'')
+    directors = TextField(default=u'')
+    genres = TextField(default=u'')
+    pubdates = TextField(default=u'')
+    year = TextField(default=u'')
+    rating_betterthan = TextField(default=u'')
+    movie = ForeignKeyField(tb_movies)
 
 
 class tb_links(BaseModel):

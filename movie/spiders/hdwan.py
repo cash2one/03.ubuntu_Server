@@ -6,7 +6,7 @@ from scrapy.selector import Selector
 from movie.items import *
 import sys
 import re
-from douban import DoubanClient
+from douban import DoubanMovie
 
 
 reload(sys)
@@ -31,19 +31,8 @@ class HdwanSpider(CrawlSpider):
 
 
         item['title'] =  u''.join(sel.xpath('//span[@class="current"]/text()').extract())
+        item['name'] = self._get_name(sel)
 
-        # 过滤名字
-        item['name'] = u''.join(sel.xpath('//meta[@name="description"]/@content').extract()).replace(u"影片名：", u"")
-        
-        if item['name'].find(u"。") > 0:
-            item['name'] = item['title']
-
-        if item['name'].find(u']') > 0:
-
-            name = sel.xpath('//a[@id="post_content"]/h3/text()').extract()
-            if len(name) > 0 and name[0].find(u'影片名：') > 0:
-                item['name'] = name[0].replace(u"影片名：", u"")
-            
         if len(sel.xpath('//a[@itemprop="breadcrumb"]/text()').extract()) > 1:
             item['cate']  = u''.join(sel.xpath('//a[@itemprop="breadcrumb"]/text()').extract()[1])
         else:
@@ -56,7 +45,6 @@ class HdwanSpider(CrawlSpider):
 
         item['link'] = u'\n'.join(sel.xpath('//div[contains(@class,"dw-box")]/a/@href').extract())
 
-
         print "-"*100
         print item['name']
         print item['cate']
@@ -68,6 +56,29 @@ class HdwanSpider(CrawlSpider):
     def closed(self, reason):
         print("HdwanSpider Closed:" + reason)
 
+
+    def _get_name(self,sel):
+                # 过滤名字
+        movie_name = u''.join(sel.xpath('//meta[@name="description"]/@content').extract()).replace(u"影片名：", u"")
+
+        if movie_name.find(u"。") > 0:
+            movie_name = u''.join(sel.xpath('//span[@class="current"]/text()').extract())
+
+        if movie_name.find(u']') > 0:
+
+            name = sel.xpath('//a[@id="post_content"]/h3/text()').extract()
+            if len(name) > 0 and name[0].find(u'影片名：') > 0:
+                movie_name = name[0].replace(u"影片名：", u"")
+
+        if movie_name.find(u' ') >0:
+            movie_name = movie_name.split(' ')[0]
+
+        pattern = re.compile(r'\[')
+        if pattern.search(movie_name):
+
+            pattern1 = re.compile('\[([^\]]+)\]')
+            movie_name = pattern1.findall(movie_name)[0]
+        return movie_name
 
 
 

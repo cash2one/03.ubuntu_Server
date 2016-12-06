@@ -6,7 +6,8 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 from database.movieDB import MovieModule
 from scrapy.exceptions import DropItem
-from database.datamodule import tb_movies,tb_links,create_table,before_request_handler
+from database.datamodule import tb_movies,tb_links,tb_doubans,create_table,before_request_handler
+from douban import DoubanMovie
 
 from oss.oss import OssSDK
 
@@ -16,6 +17,7 @@ class MoviePipeline(object):
         create_table()
         before_request_handler()
         self.oss = OssSDK('x2020-movie')
+        self.douban = DoubanMovie()
         pass
 
     def process_item(self, item, spider):
@@ -36,17 +38,26 @@ class MoviePipeline(object):
             # 如果没有重复
             if tb_movies.select().where(tb_movies.title==item['title']).count() == 0:
 
-                # 下载图片
-                item['img'] = self.oss.put_url_auto_name(item['img'])
+                if len(item['img']) > 0:
+                    # 下载图片
+                    item['img'] = self.oss.put_url_auto_name(item['img'])
 
                 # 插入数据库
-                tb_movies.create(title=item['title'],cate=item['cate'],img=item['img'],name=item['name'],url=item['url'])
+                tb_movies.insert(title=item['title'],cate=item['cate'],img=item['img'],name=item['name'],url=item['url']).execute()
 
                 # 更新链接
                 id = tb_movies.get(tb_movies.title==item['title']).id
                 for link in item['link'].split('\n'):
                     tb_links.insert(movie=id,sourceurl=link).execute()
 
+                # search douban by name
+                i = self.douban.searchMovie(item['name'])
+                if i.has_key('url'):
+                    data = self.douban.detailInfo(i['url'])
+                    # get detial info
+                    if data.has_key('title'):
+                        # 将电影保存到豆瓣数据库中
+                        tb_doubans.insert(movie=id,title=data['title'],year=data['year'],alt=data['alt'],rating=data['rating'],directors=data['directors'],genres=data['genres'],pubdates=data['pubdates'],rating_betterthan=data['rating_betterthan']).execute()
                 return item
             else:
                 raise DropItem(u"重复项: %s" % item['title'])
