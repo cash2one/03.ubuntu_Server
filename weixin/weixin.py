@@ -34,7 +34,7 @@ def test():
     return make_response('hello')
 
 def startweixin(port):
-    print u"启动微信服务"
+    print "启动微信服务"
     app.run(host='0.0.0.0',port=port)
 
 
