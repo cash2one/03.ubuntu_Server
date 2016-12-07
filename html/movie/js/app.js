@@ -7,9 +7,12 @@
 
 var app = angular.module('movieApp', []);
 
-app.controller('siteCtrl', function($scope, $http) {
-    url = 'http://localhost:5002/movies/new_update_movies/'
+app.controller('IndexSiteCtrl', function($scope, $http) {
+
+    // 初始化
+    //url = 'http://localhost:5002/movies/new_update_movies/'
     url = 'http://x2020.top/v1/movies/new_update_movies/'
+    // 获取电影列表
     $http.get(url)
         .success(function(response) {
             console.log(response)

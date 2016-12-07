@@ -2,7 +2,7 @@
 import time
 from flask import Flask,g,request,render_template,request,flash,url_for,make_response,g,redirect
 
-from database.datamodule import before_request_handler,after_request_handler,tb_movies,tb_links
+from database.datamodule import before_request_handler,after_request_handler,tb_movies,tb_links,tb_doubans
 from resetfulutils import *
 import json
 
@@ -26,19 +26,19 @@ def teardown_request(exception):
 @apiapp.route('/movies/new_update_movies/',methods= ['GET'])
 def new_update_movies_count():
     if request.method == "GET":
-        data = [dic for dic in tb_movies.select(tb_movies,tb_links).join(tb_links).order_by(tb_movies.updatetime.desc()).limit(100).dicts()]
+        data = [dic for dic in tb_movies.select(tb_movies,tb_doubans).join(tb_doubans).order_by(tb_movies.updatetime.desc()).limit(40).dicts()]
         return make_jsonresponse(data)
 
 @apiapp.route('/movies/new_update_movies/<count>',methods= ['GET'])
 def new_update_movies(count):
     if request.method == "GET":
-        data = [dic for dic in tb_movies.select(tb_movies,tb_links).join(tb_links).order_by(tb_movies.updatetime.desc()).limit(count).dicts()]
+        data = [dic for dic in tb_movies.select(tb_movies,tb_doubans).join(tb_doubans).order_by(tb_movies.updatetime.desc()).limit(count).dicts()]
         return make_jsonresponse(data)
 
 @apiapp.route('/movies/',methods = ['GET'])
 def searchall():
     if request.method == "GET":
-        data = [dic for dic in tb_movies.select(tb_movies,tb_links).join(tb_links).dicts()]
+        data = [dic for dic in tb_movies.select(tb_movies,tb_doubans).join(tb_doubans).dicts()]
         return make_jsonresponse(data)
 
 @apiapp.route('/movies/<name>',methods = ['GET','POST'])
@@ -49,6 +49,13 @@ def search(name):
     else:
         pass
 
+@apiapp.route('/links/<id>')
+def links(id):
+    if request.method == "GET":
+        data = [dic for dic in tb_links.select().where(tb_links.movie == id).dicts()]
+        return make_jsonresponse(data)
+    else:
+        pass
 
 @apiapp.route('/localpaths/<id>',methods = ['GET','POST'])
 def localpaths(id):

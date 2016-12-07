@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<div class="container" ng-app="movieApp" ng-controller="siteCtrl">
+<div class="container" ng-app="movieApp" ng-controller="IndexSiteCtrl">
     </br>
 
     <div class="row clearfix">
@@ -34,7 +34,7 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active">
-                            <a href="#">Link</a>
+                            <a href="#">最近更新</a>
                         </li>
                         <li>
                             <a href="#">Link</a>
@@ -58,19 +58,52 @@
                 <img src={{item.img+'?x-oss-process=image/resize,m_fill,h_370,w_250'}}
                      alt="通用的占位符缩略图">
                 <div class="caption">
-                    <p class="cut">{{item.name}}</p>
-                    <p class="cut">类别:{{item.cate}}</p>
-                    <p>
-                        <a href="{{item.sourceurl}}" class="btn btn-primary" role="button">
-                            种子
-                        </a>
-                        <a href="{{item.url}}" class="btn btn-default" role="button">
-                            详细
-                        </a>
-                        <button ng-click="onItemClick($index)" class="btn btn-default" role="button">
-                            详细
-                        </button>
-                    </p>
+                    <ul class="list-unstyled">
+                        <li class="cut">
+                            <h4>{{item.name}} <small>{{item.year}}</small></h4>
+                        </li>
+
+                        <li>
+                            <h4>{{item.rating}} <small>{{item.cate}} </small>
+                                <a class="text-muted" data-toggle="collapse" data-parent="#accordion" href="#collapseThree{{$index}}">
+                                    详细
+                                </a>
+                            </h4>
+                        </li>
+                    </ul>
+
+
+                    <div id="collapseThree{{$index}}" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href={{item.org_url}}>电影原地址</a>
+                                </li>
+                                <li>
+                                    <a href={{item.douban_url}}>豆瓣地址 </a>
+                                </li>
+
+                                <li>
+                                    {{item.rating_betterthan}}
+                                </li>
+                                <li>
+                                    {{item.pubdates}}
+                                </li>
+                                <li>
+                                    {{item.directors}}
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    </div>
+                        <!--<button ng-click="onItemClick($index)" class="btn btn-default" role="button">-->
+                            <!--详细-->
+                        <!--</button>-->
+
                 </div>
             </div>
         </div>

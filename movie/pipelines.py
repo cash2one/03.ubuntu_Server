@@ -39,11 +39,12 @@ class MoviePipeline(object):
             if tb_movies.select().where(tb_movies.title==item['title']).count() == 0:
 
                 if len(item['img']) > 0:
+
                     # 下载图片
                     item['img'] = self.oss.put_url_auto_name(item['img'])
 
                 # 插入数据库
-                tb_movies.insert(title=item['title'],cate=item['cate'],img=item['img'],name=item['name'],url=item['url']).execute()
+                tb_movies.insert(title=item['title'],cate=item['cate'],img=item['img'],name=item['name'],org_url=item['url']).execute()
 
                 # 更新链接
                 id = tb_movies.get(tb_movies.title==item['title']).id
@@ -57,7 +58,7 @@ class MoviePipeline(object):
                     # get detial info
                     if data.has_key('title'):
                         # 将电影保存到豆瓣数据库中
-                        tb_doubans.insert(movie=id,title=data['title'],year=data['year'],alt=data['alt'],rating=data['rating'],directors=data['directors'],genres=data['genres'],pubdates=data['pubdates'],rating_betterthan=data['rating_betterthan']).execute()
+                        tb_doubans.insert(movie=id,title=data['title'],year=data['year'],douban_url=data['alt'],rating=data['rating'],directors=data['directors'],genres=data['genres'],pubdates=data['pubdates'],rating_betterthan=data['rating_betterthan']).execute()
                 return item
             else:
                 raise DropItem(u"重复项: %s" % item['title'])

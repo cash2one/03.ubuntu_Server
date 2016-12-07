@@ -74,7 +74,7 @@ class HdwanSpider(CrawlSpider):
             movie_name = movie_name.split(' ')[0]
 
         pattern = re.compile(r'\[')
-        if pattern.search(movie_name):
+        if pattern.search(movie_name) and movie_name.startswith(u'['):
 
             pattern1 = re.compile('\[([^\]]+)\]')
             movie_name = pattern1.findall(movie_name)[0]

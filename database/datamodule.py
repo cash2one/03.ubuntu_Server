@@ -29,14 +29,11 @@ class BaseModel(Model):
 
 class tb_movies(BaseModel):
     id = IntegerField(primary_key=True)
-    url = TextField(default=u'')
+    org_url = TextField(default=u'')
     title =TextField(default=u'')
-
     name = TextField(default=u'')
     cate = TextField(default=u'')
-    rank = TextField(default=u'')
-    actor = TextField(default=u'')
-    updatetime = TextField(default=datetime.datetime.now().strftime(u"%Y-%m-%d %H:%M:%S"))
+    updatetime = TextField(default=datetime.datetime.now().strftime(u"%Y-%m-%d"))
     img = TextField(default=u'')
     #douban = ForeignKeyField(tb_doubans,related_name='douban')
 
@@ -47,7 +44,7 @@ class tb_doubans(BaseModel):
     id = IntegerField(primary_key=True)
     title = TextField(default=u'')
     #original_title = TextField(default=u'')
-    alt = TextField(default=u'')
+    douban_url = TextField(default=u'')
     rating = TextField(default=u'')
     directors = TextField(default=u'')
     genres = TextField(default=u'')
