@@ -34,8 +34,10 @@ class OssSDK():
         return self.bucket.put_object_from_file(key,localfile,progress_callback=callback)
 
     def put_url(self,key,url,callback=percentage):
+        print "-"*100
+        print "Request Image:%s"%url
         r = requests.get(url)
-        print "--"
+        print "-"*100
         if r.status_code == 200:
             self.put_data(key,r.content,callback=callback)
         else:

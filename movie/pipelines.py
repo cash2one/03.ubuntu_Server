@@ -37,7 +37,7 @@ class MoviePipeline(object):
 
             # 如果没有重复
             if tb_movies.select().where(tb_movies.title==item['title']).count() == 0:
-
+                
                 if len(item['img']) > 0:
                     # 下载图片
                     print "up image==>%s"%item['img']
