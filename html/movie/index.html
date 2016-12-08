@@ -50,13 +50,19 @@
         </div>
     </div>
 
-    <div class="row" id="list" >
+    <div class="row" id="list" ng-show="show_list" ng-init="init_list()" ng-cloak>
 
 
         <div class="col-sm-6 col-md-3" ng-repeat="item in new_movie_list_data">
             <div class="thumbnail">
-                <img src={{item.img+'?x-oss-process=image/resize,m_fill,h_370,w_250'}}
-                     alt="通用的占位符缩略图">
+
+                <span ng-switch="item.img">
+
+                <img ng-switch-when='' src="http://x2020-movie.oss-cn-shanghai.aliyuncs.com/NotFind.jpg?x-oss-process=image/resize,m_pad,h_370,w_250,color_ffffff"}
+                     alt="">
+                <img ng-switch-default src={{item.img+'?x-oss-process=image/resize,m_fill,h_370,w_250'}}
+                     alt="">
+                </span>
                 <div class="caption">
                     <ul class="list-unstyled">
                         <li class="cut">
@@ -64,11 +70,26 @@
                         </li>
 
                         <li>
-                            <h4>{{item.rating}} <small>{{item.cate}} </small>
+                            <h4 ng-init="init_item($index,item.id)">{{item.rating}} <small>{{item.cate}} </small>
+                                <span ng-repeat="link in links_data(item.id)">
+                                    <button class="btn btn-info" ng-click="onItemClick(link.sourceurl)" ng-disabled="link.status !=''" >下载</button>
+                                </span>
+                                <span>
                                 <a class="text-muted" data-toggle="collapse" data-parent="#accordion" href="#collapseThree{{$index}}">
                                     详细
                                 </a>
+                                </span>
+
                             </h4>
+
+                        </li>
+                        <li>
+                            <span ng-repeat="link in links_data(item.id)">
+
+                                <a class="btn btn-info" href={{link.downloadpath}} ng-if="link.downloadpath !=''" >播放{{link.status}}</a>
+                                <a class="btn btn-info" href={{link.playpath}} ng-if="link.playpath !=''" >播放</a>
+
+                            </span>
                         </li>
                     </ul>
 
@@ -77,10 +98,10 @@
                         <div class="panel-body">
                             <ul class="list-unstyled">
                                 <li>
-                                    <a href={{item.org_url}}>电影原地址</a>
+                                    电影地址:<a href={{item.org_url}}>Link</a>
                                 </li>
                                 <li>
-                                    <a href={{item.douban_url}}>豆瓣地址 </a>
+                                    豆瓣地址:<a href={{item.douban_url}}>Link</a>
                                 </li>
 
                                 <li>

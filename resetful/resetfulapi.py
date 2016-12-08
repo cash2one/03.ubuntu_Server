@@ -49,7 +49,7 @@ def search(name):
     else:
         pass
 
-@apiapp.route('/links/<id>')
+@apiapp.route('/movies/link/<id>')
 def links(id):
     if request.method == "GET":
         data = [dic for dic in tb_links.select().where(tb_links.movie == id).dicts()]
