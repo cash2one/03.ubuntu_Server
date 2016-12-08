@@ -27,20 +27,19 @@ class MoviePipeline(object):
 
         if (item['cate'].find(u'综艺') < 0 ) and len(item['link']) > 0  and len(item['title']) > 0:
 
-            # print '-'*100
-            # print item['name']
-            # print item['title']
-            # print item['cate']
-            # print item['img']
-            # print item['link']
-            # print '='*100
+            print '-'*100
+            print item['name']
+            print item['title']
+            print item['cate']
+            print item['img']
+            print item['link']
+            print '='*100
 
             # 如果没有重复
             if tb_movies.select().where(tb_movies.title==item['title']).count() == 0:
                 
                 if len(item['img']) > 0:
                     # 下载图片
-                    print "up image==>%s"%item['img']
                     item['img'] = self.oss.put_url_auto_name(item['img'])
 
                 # 插入数据库
