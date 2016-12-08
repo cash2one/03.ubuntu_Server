@@ -39,8 +39,8 @@ class MoviePipeline(object):
             if tb_movies.select().where(tb_movies.title==item['title']).count() == 0:
 
                 if len(item['img']) > 0:
-
                     # 下载图片
+                    print "up image==>%s"%item['img']
                     item['img'] = self.oss.put_url_auto_name(item['img'])
 
                 # 插入数据库
