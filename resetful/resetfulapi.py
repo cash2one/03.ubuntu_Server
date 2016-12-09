@@ -52,7 +52,7 @@ def search(name):
 @apiapp.route('/movies/link/<id>')
 def links(id):
     if request.method == "GET":
-        data = [dic for dic in tb_links.select().where(tb_links.movie == id).dicts()]
+        data = [dic for dic in tb_links.select().where(tb_links.id == id).dicts()]
         return make_jsonresponse(data)
     else:
         pass
