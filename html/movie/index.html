@@ -70,8 +70,8 @@
                         </li>
 
                         <li>
-                            <h4 ng-init="init_item($index,item.id)">{{item.rating}} <small>{{item.cate}} </small>
-                                <span ng-repeat="link in links_data(item.id)">
+                            <h4 ng-init="init_item($index,item.movie)">{{item.rating}} <small>{{item.cate}} </small>
+                                <span ng-repeat="link in links_data(item.movie)">
                                     <button class="btn btn-info" ng-click="onItemClick(link.sourceurl)" ng-disabled="link.status !=''" >下载</button>
                                 </span>
                                 <span>
