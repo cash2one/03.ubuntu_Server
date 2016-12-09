@@ -28,17 +28,14 @@ class OssSDK():
         if total_bytes:
             rate = int(100 * (float(consumed_bytes) / float(total_bytes)))
             print '\r{0}% '.format(rate)
-            sys.stdout.flush()
 
     def put_local(self,key,localfile,callback=percentage):
         return self.bucket.put_object_from_file(key,localfile,progress_callback=callback)
 
     def put_url(self,key,url,callback=percentage):
-        print "-"*100
-        print "Request Image:%s"%url
         r = requests.get(url)
-        print "-"*100
         if r.status_code == 200:
+            print "==================================>Start Upload"
             self.put_data(key,r.content,callback=callback)
         else:
             print "Error!"

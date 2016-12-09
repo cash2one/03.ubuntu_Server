@@ -13,8 +13,8 @@ app.controller('IndexSiteCtrl', function($scope, $http) {
     $scope.init_list = function() {
         $scope.show_list = false;
         // 初始化
-        url = 'http://localhost:5002/movies/new_update_movies/'
-        //url = 'http://x2020.top/v1/movies/new_update_movies/'
+        //url = 'http://localhost:5002/movies/new_update_movies/'
+        url = 'http://x2020.top/v1/movies/new_update_movies/'
         // 获取电影列表
         $http.get(url)
             .success(function(response) {
@@ -29,8 +29,8 @@ app.controller('IndexSiteCtrl', function($scope, $http) {
     }
 
     $scope.init_item = function(index,id) {
-        url = 'http://localhost:5002/movies/link/'+id
-        //url = 'http://x2020.top/v1/movies/link/'
+        //url = 'http://localhost:5002/movies/link/'+id
+        url = 'http://x2020.top/v1/movies/link/'
         $http.get(url)
             .success(function(response) {
 
