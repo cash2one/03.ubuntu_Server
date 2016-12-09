@@ -30,7 +30,7 @@ app.controller('IndexSiteCtrl', function($scope, $http) {
 
     $scope.init_item = function(index,id) {
         //url = 'http://localhost:5002/movies/link/'+id
-        url = 'http://x2020.top/v1/movies/link/'
+        url = 'http://x2020.top/v1/movies/link/' + id
         $http.get(url)
             .success(function(response) {
 
