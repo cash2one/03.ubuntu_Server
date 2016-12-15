@@ -7,6 +7,7 @@
 
 var app = angular.module('movieApp', []);
 
+
 app.controller('IndexSiteCtrl', function($scope, $http) {
     $scope.links = []
 
@@ -18,7 +19,7 @@ app.controller('IndexSiteCtrl', function($scope, $http) {
         // 获取电影列表
         $http.get(url)
             .success(function(response) {
-                console.log(response)
+                //console.log(response)
                 $scope.new_movie_list_data = response;
                 $scope.show_list = true;
             })
@@ -35,7 +36,7 @@ app.controller('IndexSiteCtrl', function($scope, $http) {
             .success(function(response) {
 
                 $scope.links = $scope.links.concat(response)
-                console.log(response)
+                //console.log(response)
             })
             .error(function(response) {
                 console.error("request error!" + url)
