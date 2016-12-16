@@ -2,11 +2,12 @@
  * Created by admini on 16-12-16.
  */
 
-app.controller('MovieListController', function($scope, $http) {
+app.controller('MovieListController', function($scope, $http,moviedataservice) {
     $scope.links = []
 
     $scope.init_list = function() {
         $scope.show_list = false;
+        moviedataservice.req_new_update_list(10)
         // 初始化
         //url = 'http://localhost:5002/movies/new_update_movies/'
         url = 'http://x2020.top/v1/movies/new_update_movies/'
