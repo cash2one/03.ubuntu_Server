@@ -1,7 +1,7 @@
-<div class="row" id="list" ng-controller="MovieListController" ng-show="show_list" ng-init="init_list()" ng-cloak>
+<div class="row" id="list"  ng-show="show_list" ng-init="" ng-cloak>
 
 
-    <div class="col-sm-6 col-md-3" ng-repeat="item in new_movie_list_data">
+    <div class="col-sm-6 col-md-3" ng-repeat="item in list_datas">
         <div class="thumbnail">
 
                 <span ng-switch="item.img">
@@ -32,12 +32,12 @@
 
                     </li>
                     <li>
-                            <span ng-repeat="link in links_data(item.id)">
+                            <!--<span ng-repeat="link in links_data(item.id)">-->
 
-                                <a class="btn btn-info" href={{link.downloadpath}} ng-if="link.downloadpath !=''" >播放{{link.status}}</a>
-                                <a class="btn btn-info" href={{link.playpath}} ng-if="link.playpath !=''" >播放</a>
+                                <!--<a class="btn btn-info" href={{link.downloadpath}} ng-if="link.downloadpath !=''" >播放{{link.status}}</a>-->
+                                <!--<a class="btn btn-info" href={{link.playpath}} ng-if="link.playpath !=''" >播放</a>-->
 
-                            </span>
+                            <!--</span>-->
                     </li>
                 </ul>
 

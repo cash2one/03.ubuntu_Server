@@ -50,7 +50,7 @@ var app= angular.module('movieApp', ['ngResource', 'ngRoute'])
             controller: 'EventController'
         });
 
-        $routeProvider.otherwise({redirectTo:'/new_update_list/:maxnum'});
+        $routeProvider.otherwise({redirectTo:'/search_list/:maxnum'});
 
         console.log('App called.');
     });
