@@ -76,4 +76,7 @@ def make_jsonresponse(data):
     json_response = json.dumps(data, indent=4, sort_keys=False, ensure_ascii=False)
     response = make_response(json_response)
     response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET'
+    response.headers['Access-Control-Max-Age'] = '60'
+    response.headers['Access-Control-Allow-Headers']='x-requested-with,content-type'
     return response

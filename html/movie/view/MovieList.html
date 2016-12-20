@@ -1,77 +1,102 @@
-<div class="row" id="list" ng-controller="MovieListController" ng-show="show_list" ng-init="init_list()" ng-cloak>
+<div class="row" id="list" ng-controller="MovieListController" ng-init="initList('new_update_list')">
 
 
-    <div class="col-sm-6 col-md-3" ng-repeat="item in new_movie_list_data">
-        <div class="thumbnail">
-
+    <div class="col-sm-6 col-md-3" ng-repeat="item in list_datas">
+        <div class="thumbnail" data-toggle="modal" data-target="#myModal{{$index}}">
+            <span ng-click="loadlink(item.movie)">
                 <span ng-switch="item.img">
 
-                <img ng-switch-when='' src="http://x2020-movie.oss-cn-shanghai.aliyuncs.com/NotFind.jpg?x-oss-process=image/resize,m_pad,h_370,w_250,color_ffffff"}
+                <img ng-switch-when=''
+                     ng-src="http://x2020-movie.oss-cn-shanghai.aliyuncs.com/NotFind.jpg?x-oss-process=image/resize,m_pad,h_370,w_250,color_ffffff"
                      alt="">
-                <img ng-switch-default src={{item.img+'?x-oss-process=image/resize,m_fill,h_370,w_250'}}
+                <img ng-switch-default ng-src={{item.img+'?x-oss-process=image/resize,m_fill,h_370,w_250'}}
                      alt="">
                 </span>
             <div class="caption">
                 <ul class="list-unstyled">
                     <li class="cut">
-                        <h4>{{item.name}} <small>{{item.year}}</small></h4>
+                        <h4>{{item.name}}
+                            <small>{{item.year}}</small>
+
+                        </h4>
                     </li>
 
-                    <li>
-                        <h4 ng-init="init_item($index,item.movie)">{{item.rating}} <small>{{item.cate}} </small>
-                            <span ng-repeat="link in links_data(item.movie)">
-                                    <button class="btn btn-info" ng-click="onItemClick(link.sourceurl)" ng-disabled="link.status !=''" >下载</button>
-                                </span>
-                            <span>
-                                <a class="text-muted" data-toggle="collapse" data-parent="#accordion" href="#collapseThree{{$index}}">
-                                    详细
-                                </a>
-                                </span>
+                    <li class="cut">
+                        <h4 ng-init="init_item($index,item.movie)">{{item.rating}}
+                            <small>{{item.cate}}</small>
+                            <small> {{item.directors}}</small>
 
                         </h4>
 
                     </li>
                     <li>
-                            <span ng-repeat="link in links_data(item.id)">
+                        <!--<span ng-repeat="link in links_data(item.id)">-->
 
-                                <a class="btn btn-info" href={{link.downloadpath}} ng-if="link.downloadpath !=''" >播放{{link.status}}</a>
-                                <a class="btn btn-info" href={{link.playpath}} ng-if="link.playpath !=''" >播放</a>
+                        <!--<a class="btn btn-info" href={{link.downloadpath}} ng-if="link.downloadpath !=''" >播放{{link.status}}</a>-->
+                        <!--<a class="btn btn-info" href={{link.playpath}} ng-if="link.playpath !=''" >播放</a>-->
 
-                            </span>
+                        <!--</span>-->
                     </li>
                 </ul>
 
 
-                <div id="collapseThree{{$index}}" class="panel-collapse collapse">
-                    <div class="panel-body">
-                        <ul class="list-unstyled">
-                            <li>
-                                电影地址:<a href={{item.org_url}}>Link</a>
-                            </li>
-                            <li>
-                                豆瓣地址:<a href={{item.douban_url}}>Link</a>
-                            </li>
+            </div>
+            </span>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal{{$index}}" tabindex="-1" role="dialog"
+                 aria-labelledby="myModalLabel{{$index}}" aria-hidden="true">
+                <div class="modal-dialog" ng-="loadlink(item.movie)">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal{{$index}}"><span
+                                    aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel{{$index}}">{{item.title}}</h4>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="list-group">
+                                <li class="list-group-item"><h5>电影地址:</h5> {{item.org_url}}</li>
+                                <li class="list-group-item"><h5>豆瓣地址:</h5> {{item.douban_url}}</li>
+                                <li class="list-group-item" ng-if="item.rating_betterthan"><h5>与其它比较:</h5>
+                                    好于{{item.rating_betterthan}}
+                                </li>
 
-                            <li>
-                                {{item.rating_betterthan}}
-                            </li>
-                            <li>
-                                {{item.pubdates}}
-                            </li>
-                            <li>
-                                {{item.directors}}
-                            </li>
+                                <li class="list-group-item" ng-if="item.pubdates"><h5>上映时间:</h5>{{item.pubdates}}</li>
 
-                        </ul>
+                                <span ng-repeat="link in download_links">
+                                    <li class="list-group-item">
+                                        <h5>下载地址:
+                                            <small class="text-primary">{{link.status}}</small>
+                                            <button type="button" class="btn btn-primary" ng-click="download(link.sourceurl)">下载
+                                            </button>
+                                        </h5>
+
+
+                                        <small class="text-muted">{{link.sourceurl}}</small>
+                                    </li>
+
+                                    <li class="list-group-item" ng-if="link.playpath">
+                                        <h5>播放地址:
+                                            <button type="button" class="btn btn-primary" ng-if="link.playpath"
+                                                    ng-click="play(link.playpath)">播放
+                                            </button>
+                                        </h5>
+
+                                        <small class="text-muted">{{link.playpath}}</small>
+                                    </li>
+
+                                </span>
+
+
+                            </ul>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal{{$index}}">关闭</button>
+
+                        </div>
                     </div>
                 </div>
-
-
-
             </div>
-            <!--<button ng-click="onItemClick($index)" class="btn btn-default" role="button">-->
-            <!--详细-->
-            <!--</button>-->
 
         </div>
     </div>
