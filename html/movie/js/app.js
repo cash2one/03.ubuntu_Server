@@ -12,7 +12,7 @@ var app= angular.module('movieApp', ['ngResource', 'ngRoute'])
         $routeProvider.when('/new_update_list/:maxnum',{
 
             templateUrl:'view/MovieList.html',
-            controller: 'MovieListController'
+           // controller: 'MovieListController'
 
         });
 
