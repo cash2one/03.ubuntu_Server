@@ -3,6 +3,7 @@
  */
 app.factory('moviedataservice',['$http','$q','$resource',function ($http,$q,$resource) {
 
+
     root = "http://localhost:5002"
 
     var service = {
@@ -22,16 +23,6 @@ app.factory('moviedataservice',['$http','$q','$resource',function ($http,$q,$res
             })
 
             return deferred.promise;   // 返回承诺，这里并不是最终数据，而是访问最终数据的API
-        },
-
-        req_new_update_list:function (maxnum) {
-            console.log('req_new_update_list');
-            url = 'http://x2020.top/v1/movies/new_update_movies/:num'
-            var new_update_movies = $resource(url,{num:'@maxnum'},function (resp) {
-                console.log(resp)
-            },function (err) {
-                console.error("no data!!!")
-            });
         },
 
         req_high_rank_list:function (maxnum) {
