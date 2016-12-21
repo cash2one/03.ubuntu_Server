@@ -13,7 +13,7 @@ def create_table():
     database_object.create_table(tb_links,safe=True)
     database_object.create_table(tb_movies,safe=True)
     database_object.create_table(tb_doubans,safe=True)
-
+    database_object.create_table(tb_downloads,safe=True)
 
 def before_request_handler():
     database_object.connect()
@@ -64,6 +64,9 @@ class tb_links(BaseModel):
     downloadpath = TextField(default=u'')
     playpath = TextField(default=u'')
 
+class tb_downloads(BaseModel):
+    id = IntegerField(primary_key=True)
+    link = ForeignKeyField(tb_links)
 
 class testdb(BaseModel):
     id = IntegerField(primary_key=True)

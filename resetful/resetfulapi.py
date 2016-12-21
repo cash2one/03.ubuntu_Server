@@ -57,10 +57,10 @@ def links(id):
     else:
         pass
 
-@apiapp.route('/localpaths/<id>',methods = ['GET','POST'])
-def localpaths(id):
+@apiapp.route('/movies/<linkid>/download/',methods = ['GET','POST'])
+def localpaths(linkid):
     if request.method == "GET":
-        data = download(id)
+        data = download(linkid)
         return make_jsonresponse(data)
     else:
         pass

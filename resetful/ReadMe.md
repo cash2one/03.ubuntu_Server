@@ -3,3 +3,4 @@
 /movies/done/
 /movies/top250/
 /movies/new_movies/
+/movies/<id>/download/

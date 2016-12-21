@@ -16,11 +16,11 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
         }
     }
 
-    $scope.download = function(url){
+    $scope.download = function(url,linkid){
        console.log(url)
     };
 
-    $scope.play = function(url) {
+    $scope.play = function(url,linkid) {
         console.log(url)
     };
 

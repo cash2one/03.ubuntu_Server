@@ -66,7 +66,7 @@
                                     <li class="list-group-item">
                                         <h5>下载地址:
                                             <small class="text-primary">{{link.status}}</small>
-                                            <button type="button" class="btn btn-primary" ng-click="download(link.sourceurl)">下载
+                                            <button type="button" class="btn btn-primary" ng-click="download(link.sourceurl,link.movie)">下载
                                             </button>
                                         </h5>
 
@@ -77,7 +77,7 @@
                                     <li class="list-group-item" ng-if="link.playpath">
                                         <h5>播放地址:
                                             <button type="button" class="btn btn-primary" ng-if="link.playpath"
-                                                    ng-click="play(link.playpath)">播放
+                                                    ng-click="play(link.playpath,link.movie)">播放
                                             </button>
                                         </h5>
 
