@@ -3,8 +3,8 @@
  */
 app.factory('moviedataservice',['$http','$q','$resource',function ($http,$q,$resource) {
 
-
-    root = "http://localhost:5002"
+    root = "http://x2020.top/v1"
+    //root = "http://localhost:5002"
 
     var service = {
         list_datas:[],
