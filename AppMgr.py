@@ -31,8 +31,8 @@ def runWeixin():
 if __name__ == '__main__':
 
     # 开始一次
-    sync(startweixin,5001)
-    sync(startresetful,5002)
+    sync(startweixin,(5001,))
+    sync(startresetful,(5002,))
 
     # 循环任务
     count = 1
@@ -44,7 +44,7 @@ if __name__ == '__main__':
         if count % SCRAPY_MOVIE == 0:
             print "-"*50
             print "\nstart scrapy\n"
-            sync(Run,'scrapy crawl hdwan >>scrapy.log')
+            sync(Run,('scrapy crawl hdwan >>scrapy.log',))
 
         if count % 2 == 0:
             pass

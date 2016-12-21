@@ -106,6 +106,7 @@ class PyAria2(object):
         '''
         return self.server.aria2.addTorrent(xmlrpclib.Binary(open(torrent, 'rb').read()), uris, options, position)
 
+
     def addMetalink(self, metalink, options=None, position=None):
         '''
         This method adds Metalink download by uploading ".metalink" file.

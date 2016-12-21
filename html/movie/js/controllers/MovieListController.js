@@ -17,7 +17,11 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
     }
 
     $scope.download = function(url,linkid){
-       console.log(url)
+        moviedataservice.req_start_download(linkid).then(function(data){
+            
+        },function(data) {
+
+        });
     };
 
     $scope.play = function(url,linkid) {

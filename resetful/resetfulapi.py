@@ -6,11 +6,12 @@ from database.datamodule import before_request_handler,after_request_handler,tb_
 from resetfulutils import *
 import json
 
+
 apiapp = Flask(__name__)
 apiapp.secret_key = 'some_secret'
 
 def startresetful(port):
-    print "启动电影的api"
+    print "启动电影的api %s" %port
     apiapp.run(host='0.0.0.0',port=port)
 
 @apiapp.before_request
@@ -60,8 +61,8 @@ def links(id):
 @apiapp.route('/movies/<linkid>/download/',methods = ['GET','POST'])
 def localpaths(linkid):
     if request.method == "GET":
-        data = download(linkid)
-        return make_jsonresponse(data)
+        download_task(linkid)
+        return make_jsonresponse("")
     else:
         pass
 

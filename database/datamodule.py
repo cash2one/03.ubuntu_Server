@@ -63,6 +63,11 @@ class tb_links(BaseModel):
     sourceurl=TextField(default=u'')
     downloadpath = TextField(default=u'')
     playpath = TextField(default=u'')
+    dir = TextField(default=u'')
+    completedLength = TextField(default=u'')
+    downloadSpeed =TextField(default=u'')
+    errorMessage = TextField(default=u'')
+    totalLength = TextField(default=u'')
 
 class tb_downloads(BaseModel):
     id = IntegerField(primary_key=True)
@@ -71,3 +76,4 @@ class tb_downloads(BaseModel):
 class testdb(BaseModel):
     id = IntegerField(primary_key=True)
     name = TextField(default=u'')
+
