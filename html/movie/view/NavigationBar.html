@@ -1,22 +1,22 @@
 <div class="row clearfix" >
-    <div class="col-md-12 column" >
+    <div class="col-md-12 column" ng-controller="NavigationController" ng-init="init()">
         <nav class="navbar navbar-default navbar-inverse" role="navigation">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="#/new_update_list/20">最近更新</a>
+                    <li>
+                        <a href="#/list/new_update/no">最近更新</a>
                     </li>
                     <li>
                         <a href="#/high_rank_list/20">高分</a>
                     </li>
                     <li>
-                        <a href="#/cate_list/20">分类</a>
+                        <a href="#/list/cate/science">科幻</a>
                     </li>
                     <li>
-                        <a href="#/new_year_list/20">2016</a>
+                        <a href="#/list/year/2016">2016</a>
                     </li>
                     <li>
                         <a href="#/downloaded_list">下载</a>
@@ -24,8 +24,8 @@
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="search" placeholder="输入电影名称">
-                    </div> <button type="submit" class="btn btn-default">检索</button>
+                        <input type="text" ng-model="search_name" class="form-control" id="search" placeholder="输入电影名称">
+                    </div> <button ng-click="btn_search(search_name)" class="btn btn-default">检索</button>
                 </form>
             </div>
         </nav>

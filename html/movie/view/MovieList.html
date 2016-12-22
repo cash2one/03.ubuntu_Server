@@ -1,4 +1,4 @@
-<div class="row" id="list" ng-controller="MovieListController" ng-init="initList('new_update_list')">
+<div class="row" id="list" ng-controller="MovieListController" ng-init="initList()">
 
 
     <div class="col-sm-6 col-md-3" ng-repeat="item in list_datas">
@@ -66,7 +66,7 @@
                                     <li class="list-group-item">
                                         <h5>下载地址:
                                             <small class="text-primary">{{link.status}}</small>
-                                            <button type="button" class="btn btn-primary" ng-click="download(link.sourceurl,link.movie)">下载
+                                            <button type="button" class="btn btn-primary" ng-click="download(link.sourceurl,link.id)">下载
                                             </button>
                                         </h5>
 

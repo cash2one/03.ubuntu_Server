@@ -6,19 +6,33 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
     console.log("MovieListController")
     $scope.links = []
 
-    $scope.initList  = function(fun){
-        if (fun == "new_update_list"){
-            moviedataservice.req_new_update_list($routeParams.maxnum).then(function(data) {
+    $scope.initList  = function(){
+        if ($routeParams.action == "new_update"){
+            moviedataservice.req_new_update_list().then(function(data) {
                 $scope.list_datas = data
             },function(data) {
-                $socpe.list_datas = []
+                $scope.list_datas = []
+            });
+        }
+        else if ($routeParams.action == "year"){
+            moviedataservice.req_year_list($routeParams.param).then(function(data) {
+                $scope.list_datas = data
+            },function(data) {
+                $scope.list_datas = []
+            });
+        }
+        else if ($routeParams.action == "cate"){
+            moviedataservice.req_cate_list($routeParams.param).then(function(data) {
+                $scope.list_datas = data
+            },function(data) {
+                $scope.list_datas = []
             });
         }
     }
 
     $scope.download = function(url,linkid){
         moviedataservice.req_start_download(linkid).then(function(data){
-            
+
         },function(data) {
 
         });

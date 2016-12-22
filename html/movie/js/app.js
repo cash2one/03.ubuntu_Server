@@ -9,19 +9,12 @@
 
 var app= angular.module('movieApp', ['ngResource', 'ngRoute'])
     .config(function($routeProvider){
-        $routeProvider.when('/new_update_list/:maxnum',{
+        $routeProvider.when('/list/:action/:param',{
 
             templateUrl:'view/MovieList.html',
            // controller: 'MovieListController'
 
         });
-
-        $routeProvider.when('/high_rank_list/:maxnum',{
-
-            templateUrl:'templates/EventDetails.html',
-            controller: 'EventController'
-        });
-
 
         $routeProvider.when('/cate_list/:maxnum',{
 
@@ -30,10 +23,10 @@ var app= angular.module('movieApp', ['ngResource', 'ngRoute'])
         });
 
 
-        $routeProvider.when('/new_year_list/:maxnum',{
+        $routeProvider.when('/movies/year/:year',{
 
-            templateUrl:'templates/EventDetails.html',
-            controller: 'EventController'
+            templateUrl:'view/MovieList.html',
+           // controller: 'EventController'
         });
 
 
@@ -50,7 +43,7 @@ var app= angular.module('movieApp', ['ngResource', 'ngRoute'])
             controller: 'EventController'
         });
 
-        $routeProvider.otherwise({redirectTo:'/search_list/:maxnum'});
+        $routeProvider.otherwise({redirectTo:'/list/:action/:num'});
 
         console.log('App called.');
     });
