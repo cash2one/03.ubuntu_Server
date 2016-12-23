@@ -5,11 +5,6 @@
 app.controller('NavigationController', function($scope,$rootScope, $http,moviedataservice) {
     $scope.init = function(){
 
-        moviedataservice.req_years($routeParams).then(function(data) {
-            $scope.list_years = data
-        },function(data) {
-            $socpe.list_years = []
-        });
     }
 
     $scope.btn_search = function(name){
