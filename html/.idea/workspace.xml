@@ -24,8 +24,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/movie/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.25">
-              <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
+            <state vertical-scroll-proportion="-13.125">
+              <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -35,7 +35,7 @@
         <entry file="file://$PROJECT_DIR$/movie/js/services/MovieDataService.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+              <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -54,8 +54,8 @@
       <file leaf-file-name="MovieListController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/movie/js/controllers/MovieListController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1923077">
-              <caret line="10" column="72" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
+            <state vertical-scroll-proportion="0.53846157">
+              <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -64,8 +64,8 @@
       <file leaf-file-name="MovieList.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/movie/view/MovieList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.9411764">
-              <caret line="64" column="37" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="37" />
+            <state vertical-scroll-proportion="-7.5">
+              <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="150" />
               <folding />
             </state>
           </provider>
@@ -85,7 +85,7 @@
         <entry file="file://$PROJECT_DIR$/movie/js/controllers/NavigationBarController.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -142,13 +142,13 @@
         <option value="$PROJECT_DIR$/movie/js/control.js" />
         <option value="$PROJECT_DIR$/movie/download.html" />
         <option value="$PROJECT_DIR$/movie/detail.html" />
-        <option value="$PROJECT_DIR$/movie/view/MovieList.html" />
-        <option value="$PROJECT_DIR$/movie/index.html" />
-        <option value="$PROJECT_DIR$/movie/js/controllers/MovieListController.js" />
         <option value="$PROJECT_DIR$/movie/view/NavigationBar.html" />
         <option value="$PROJECT_DIR$/movie/js/app.js" />
-        <option value="$PROJECT_DIR$/movie/js/services/MovieDataService.js" />
         <option value="$PROJECT_DIR$/movie/js/controllers/NavigationBarController.js" />
+        <option value="$PROJECT_DIR$/movie/js/services/MovieDataService.js" />
+        <option value="$PROJECT_DIR$/movie/index.html" />
+        <option value="$PROJECT_DIR$/movie/view/MovieList.html" />
+        <option value="$PROJECT_DIR$/movie/js/controllers/MovieListController.js" />
       </list>
     </option>
   </component>
@@ -394,7 +394,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1436" height="877" extended-state="0" />
+    <frame x="0" y="23" width="1436" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -741,6 +741,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/movie/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="66" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="66" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/movie/lib/bootstrap.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
@@ -765,10 +775,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/movie/index.html">
+    <entry file="file://$PROJECT_DIR$/movie/js/controllers/NavigationBarController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.25">
-          <caret line="51" column="51" selection-start-line="51" selection-start-column="51" selection-end-line="51" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -781,44 +791,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/movie/view/MovieList.html">
+    <entry file="file://$PROJECT_DIR$/movie/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9411764">
-          <caret line="64" column="37" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="37" />
+        <state vertical-scroll-proportion="-13.125">
+          <caret line="21" column="7" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/movie/js/app.js">
+    <entry file="file://$PROJECT_DIR$/movie/view/MovieList.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="66" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="66" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-7.5">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="150" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/movie/js/services/MovieDataService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/movie/js/controllers/NavigationBarController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/movie/js/controllers/MovieListController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1923077">
-          <caret line="10" column="72" selection-start-line="10" selection-start-column="72" selection-end-line="10" selection-end-column="72" />
+        <state vertical-scroll-proportion="0.53846157">
+          <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
           <folding />
         </state>
       </provider>
