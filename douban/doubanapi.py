@@ -20,7 +20,8 @@ class DoubanMovie():
             print "=====> status_code is not 200"
             return None
 
-    def searchMovie(self,key):
+    def searchMovie(self,*args):
+        key = "+".join(list(args))
         r = self._get(self.SEARCH_RUL%key)
         ret_dic = {}
         if r != None:

@@ -1,0 +1,18 @@
+<div class="row" id="list" ng-controller="DownloadListController" ng-init="initList()">
+    <div class="col-sm-12">
+        <ul class="list-group" ng-repeat="item in list_datas">
+            <li class="list-group-item">
+                <h5>{{item.sourceurl}}
+                </h5>
+                <div class="progress">
+
+                    <div class="progress-bar progress-bar-{{getstatus(item.status)}} progress-bar-striped" role="progressbar" aria-valuenow="{{getPer(item.totalLength,item.completedLength)}}" aria-valuemin="0" aria-valuemax="100" style={{getPer(item.totalLength,item.completedLength)}} >
+                    </div>
+                </div>
+                <p class="bg-info">{{item.downloadpath}}</p>
+                <p class="text-danger"><span class="label label-{{getstatus(item.status)}}">{{item.status}}</span>  {{item.errorMessage}}</p>
+                
+            </li>
+        </ul>
+    </div>
+</div>

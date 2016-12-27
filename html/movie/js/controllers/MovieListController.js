@@ -28,7 +28,15 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
                 $scope.list_datas = []
             });
         }
-    }
+        else if ($routeParams.action == "search") {
+            console.log("ssss")
+            moviedataservice.req_search_list($routeParams.param).then(function(data) {
+                $scope.list_datas = data
+            },function(data) {
+                $scope.list_datas = []
+            });
+        }
+    };
 
     $scope.download = function(url,linkid){
         moviedataservice.req_start_download(linkid).then(function(data){
@@ -99,7 +107,6 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
         }
 
         imgLoadAsync(surl).then(function(data){
-            console.log("success")
             spinner.stop();
             $("#image"+index).append(data);
         },function(data) {

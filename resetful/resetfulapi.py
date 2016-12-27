@@ -65,8 +65,6 @@ def cate_movies(cate):
             return make_jsonresponse(data)
 
 
-
-
 @apiapp.route('/movies/',methods = ['GET'])
 def searchall():
     if request.method == "GET":
@@ -99,11 +97,13 @@ def localpaths(linkid):
     else:
         pass
 
-
-
-
-@apiapp.route('/remotepaths/<id>',methods = ['GET'])
-def remotepaths(id):
+@apiapp.route('/movies/download/',methods = ['GET'])
+def remotepaths():
+    if request.method == "GET":
+        data = [dic for dic in tb_links.select().where(tb_links.gid != "").dicts()]
+        return make_jsonresponse(data)
+    else:
+        pass
     pass
 
 

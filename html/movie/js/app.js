@@ -16,6 +16,18 @@ var app= angular.module('movieApp', ['ngResource', 'ngRoute'])
 
         });
 
+        $routeProvider.when('/downloaded_list/',{
+
+            templateUrl:'view/DownloadList.html',
+            //controller: 'DownloadListController'
+        });
+
+        $routeProvider.when('/search_list/:key',{
+
+            templateUrl:'view/MovieList.html',
+            //controller: 'EventController'
+        });
+
         $routeProvider.when('/cate_list/:maxnum',{
 
             templateUrl:'templates/EventDetails.html',
@@ -30,18 +42,10 @@ var app= angular.module('movieApp', ['ngResource', 'ngRoute'])
         });
 
 
-        $routeProvider.when('/downloaded_list/:maxnum',{
-
-            templateUrl:'templates/EventDetails.html',
-            controller: 'EventController'
-        });
 
 
-        $routeProvider.when('/search_list/:key',{
 
-            templateUrl:'templates/EventDetails.html',
-            controller: 'EventController'
-        });
+
 
         $routeProvider.otherwise({redirectTo:'/list/:action/:num'});
 

@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     # 开始一次
     sync(startweixin,(5001,))
-    sync(startresetful,(5002,))
+    sync(startresetful,(5003,))
 
     # 循环任务
     count = 1

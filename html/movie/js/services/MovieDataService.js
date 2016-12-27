@@ -3,8 +3,8 @@
  */
 app.factory('moviedataservice',['$http','$q','$resource',function ($http,$q,$resource) {
 
-    root = "http://x2020.top/v1"
-    //root = "http://localhost:5003"
+    //root = "http://x2020.top/v1"
+    root = "http://localhost:5003"
 
 
     req_get = function(path) {
@@ -45,7 +45,7 @@ app.factory('moviedataservice',['$http','$q','$resource',function ($http,$q,$res
         },
         
         req_downloaded_list:function () {
-            
+            return req_get('/movies/download/')
         },
 
 
