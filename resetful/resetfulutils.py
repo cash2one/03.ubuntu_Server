@@ -11,7 +11,7 @@ def init_aria2():
     return aria2
 
 # 这个任务应该单独起个线程
-def download_task(id,path='/data/download'):
+def download_task(id,path='./data/download'):
     path = path+'/'+id + '/'
 
     # 1. 如果已经下载中(查找tb_downloads),有没有linkid == id的数据，如果已经在下载中，不进行任何操作
@@ -51,10 +51,13 @@ def create_download_task(id,path,url):
             time.sleep(1)
             result = aria2.tellStatus(followedBy_gid)
             print result
-            query = tb_links.update(gid = followedBy_gid,status=result['status'],downloadpath=result['files'][0]['path'],errorMessage=result['errorMessage'],completedLength=result['completedLength'],totalLength= result['totalLength'],downloadSpeed=result['downloadSpeed']).where(tb_links.id == id)
-            query.execute()
+            if result.has_key('errorMessage'):
+                query = tb_links.update(gid = followedBy_gid,status=result['status'],downloadpath=result['files'][0]['path'],errorMessage=result['errorMessage'],completedLength=result['completedLength'],totalLength= result['totalLength'],downloadSpeed=result['downloadSpeed']).where(tb_links.id == id)
+                query.execute()
 
-
+            else:
+                query = tb_links.update(gid = followedBy_gid,status=result['status'],downloadpath=result['files'][0]['path'],completedLength=result['completedLength'],totalLength= result['totalLength'],downloadSpeed=result['downloadSpeed']).where(tb_links.id == id)
+                query.execute()
 
 
     else:
