@@ -12,33 +12,28 @@ var app= angular.module('movieApp', ['ngResource', 'ngRoute'])
         $routeProvider.when('/list/:action/:param',{
 
             templateUrl:'view/MovieList.html',
-           // controller: 'MovieListController'
 
         });
 
         $routeProvider.when('/downloaded_list/',{
 
             templateUrl:'view/DownloadList.html',
-            //controller: 'DownloadListController'
         });
 
         $routeProvider.when('/search_list/:key',{
 
             templateUrl:'view/MovieList.html',
-            //controller: 'EventController'
         });
 
-        $routeProvider.when('/cate_list/:maxnum',{
+        $routeProvider.when('/player/:name',{
 
-            templateUrl:'templates/EventDetails.html',
-            controller: 'EventController'
+            templateUrl:'view/Player.html',
         });
 
 
         $routeProvider.when('/movies/year/:year',{
 
             templateUrl:'view/MovieList.html',
-           // controller: 'EventController'
         });
 
 

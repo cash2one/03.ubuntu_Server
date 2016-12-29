@@ -10,7 +10,7 @@ import json
 apiapp = Flask(__name__)
 apiapp.secret_key = 'some_secret'
 
-MAX_NUM = 40
+MAX_NUM = 60
 def startresetful(port):
     print "启动电影的api %s" %port
     apiapp.run(host='0.0.0.0',port=port)

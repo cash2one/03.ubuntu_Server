@@ -1,17 +1,36 @@
 /**
  * Created by xuqi on 16/12/27.
  */
-app.controller('DownloadListController', function($scope, $http,$routeParams,moviedataservice) {
+app.controller('DownloadListController', function($scope,$timeout, $http,$routeParams,moviedataservice) {
     $scope.links = []
 
     $scope.initList = function(){
         console.log('DownloadListController initlist')
-        moviedataservice.req_downloaded_list().then(function(data) {
-            $scope.list_datas = data
-        },function(data) {
-            $scope.list_datas = []
-        });
+
+        var update_status = function(){
+
+            moviedataservice.req_downloaded_list().then(function(data) {
+                $scope.list_datas = data
+                console.log(data)
+
+            },function(data) {
+                $scope.list_datas = []
+            });
+
+        }
+
+
+        update_status();
+
+        var updateClock=function(){
+            $timeout(function(){
+                update_status();
+                updateClock();
+            },5000);
+        };
+        updateClock();
     }
+
     $scope.getstatus = function(status) {
         if(status == 'error')
             return 'danger'
@@ -21,11 +40,41 @@ app.controller('DownloadListController', function($scope, $http,$routeParams,mov
             return 'info'
     }
 
-    $scope.getPer = function(completedLength,totalLength) {
-        if (totalLength == '0')
-            return "width: 0%"
+    // gets the progress in percentages
+    $scope.getProgress = function(d) {
+        var percentage = 0
+        if (d.verifiedLength)
+            percentage = (d.verifiedLength / d.totalLength) * 100 || 0;
+        else
+            percentage = (d.completedLength / d.totalLength) * 100 || 0;
+        percentage = percentage.toFixed(2);
+        if(!percentage) percentage = 0;
 
-        return "width: "+ totalLength/completedLength * 100 +"%"
+        return percentage;
+    };
 
+    $scope.pause = function(d) {
+
+
+    };
+    $scope.resume = function(d) {
+
+    };
+    $scope.restart = function(d) {
+
+    };
+
+    $scope.remove = function(d) {
+
+    };
+
+    $scope.hasStatus = function hasStatus(d, status) {
+        return d.status == status;
+    };
+
+    $scope.getEta = function(d) {
+        return (d.totalLength-d.completedLength) / d.downloadSpeed;
     }
+
+
 });
