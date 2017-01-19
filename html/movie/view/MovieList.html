@@ -69,6 +69,9 @@
                                     <li class="list-group-item">
                                         <h5>下载地址:
                                             <small class="text-primary">{{link.status}}</small>
+                                            <button id="btn_cpylink_{{$index}}"type="button" class="btn btn-primary" ng-click="copylink(link.sourceurl,$index)">复制链接
+                                            </button>
+
                                             <button type="button" class="btn btn-primary" ng-click="download(link.sourceurl,link.id)">下载
                                             </button>
                                         </h5>

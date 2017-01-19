@@ -7,7 +7,7 @@ from movie.items import *
 import sys
 import re
 from douban import DoubanMovie
-
+from scrapy import log
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -54,7 +54,7 @@ class HdwanSpider(CrawlSpider):
         return item
 
     def closed(self, reason):
-        print("HdwanSpider Closed:" + reason)
+        log.WARNING("HdwanSpider Closed:" + reason)
 
 
     def _get_name(self,sel):

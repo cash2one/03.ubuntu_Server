@@ -4,6 +4,7 @@ from flask import Flask,g,request,render_template,request,flash,url_for
 from wechatAPI import Wechat
 
 from helper import *
+from common import  getweixin_port
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 api = Wechat()
@@ -33,8 +34,8 @@ def wechat():
 def test():
     return make_response('hello')
 
-def startweixin(port):
-    print "启动微信服务 %s" %port
+def startweixin(port=getweixin_port()):
+    print "启动微信服务 %s, 进程:%s" %(port,os.getpid())
     app.run(host='0.0.0.0',port=port)
 
 

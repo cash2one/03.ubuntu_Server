@@ -38,6 +38,10 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
         }
     };
 
+    $scope.copylink = function(url,index) {
+
+    };
+
     $scope.download = function(url,linkid){
         moviedataservice.req_start_download(linkid).then(function(data){
 
@@ -55,6 +59,13 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
             $scope.download_links =data
         },function(data) {
             console.log(data)
+        });
+
+
+        new Clipboard('#btn_cpylink_'+index, {
+            text: function() {
+                return url;
+            }
         });
     };
 

@@ -32,6 +32,13 @@ def getrootpath(section):
         return conf.get(section,'root')
     else:
         return './'
+
+def getmovie_port():
+    return conf.get('movie','port')
+
+def getweixin_port():
+    return conf.get('weixin','port')
+
 #以列表形式返回所有的section
 #sections = conf.sections()
 # #得到指定section的所有option

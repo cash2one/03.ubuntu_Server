@@ -1,56 +1,30 @@
 # -*- coding: utf-8 -*-
-import subprocess
+
 import time
+
 
 from common.tools import *
 from resetful.resetfulapi import startresetful
+import os
 from weixin.weixin import startweixin
-
-
-def isRunning(name):
-    pgrep_process = subprocess.Popen('pgrep -l %s'%name, shell=True, stdout=subprocess.PIPE)
-
-    if pgrep_process.stdout.readline() == b'':
-        return False
-    else:
-        return True
-
-def Run(cmd):
-    subprocess.Popen(cmd, shell=True)
-    pass
-
-
-def runWeixin():
-    cmd = 'python'\
-          ' weixin/weixin.py'
-    if not isRunning('weixin'):
-        Run(cmd)
-    else:
-        print "weixin has been start"
+from celery_app.task_movie import scrapy_movie
 
 if __name__ == '__main__':
 
-    # 开始一次
-    sync(startweixin,(5001,))
-    sync(startresetful,(5002,))
+    try:
+        # start celery
+        Run("celery -B -A celery_app worker --loglevel=warning","启动celery",kill=True)
+        scrapy_movie.delay('hdwan')
+        function_list=  [startresetful, startweixin]
+        print "主程序进程id: %s" %(os.getpid())
+        pool=multiprocessing.Pool(2)
+        for func in function_list:
+            pool.apply_async(func)
 
-    # 循环任务
-    count = 1
-    SCRAPY_MOVIE = 60 * 60 * 12
-    MAX = SCRAPY_MOVIE + 1
+        print '等待所有进程结束'
+        pool.close()
+        pool.join()
 
-    while True:
-
-        if count % SCRAPY_MOVIE == 0:
-            print "-"*50
-            print "\nstart scrapy\n"
-            sync(Run,('scrapy crawl hdwan >>scrapy.log',))
-
-        if count % 2 == 0:
-            pass
-
-        count =(count + 1) % MAX
-
-        time.sleep(1)
-
-        pass
+    except (KeyboardInterrupt, SystemExit):
+        # 异常退出,关闭用run启动的进程
+        KillAll()

@@ -5,14 +5,14 @@ from flask import Flask,g,request,render_template,request,flash,url_for,make_res
 from database.datamodule import before_request_handler,after_request_handler,tb_movies,tb_links,tb_doubans
 from resetfulutils import *
 import json
-
+from common import getmovie_port
 
 apiapp = Flask(__name__)
 apiapp.secret_key = 'some_secret'
 
 MAX_NUM = 60
-def startresetful(port):
-    print "启动电影的api %s" %port
+def startresetful(port=getmovie_port()):
+    print "启动电影的api %s 进程:%s" %(port,os.getpid())
     apiapp.run(host='0.0.0.0',port=port)
 
 @apiapp.before_request
@@ -30,6 +30,7 @@ def new_update_movies_count():
     if request.method == "GET":
         data = [dic for dic in tb_movies.select(tb_movies,tb_doubans).join(tb_doubans).order_by(tb_movies.updatetime.desc()).limit(MAX_NUM).dicts()]
         return make_jsonresponse(data)
+
 # 查找最近更新的电影
 @apiapp.route('/movies/new_update_movies/<count>',methods= ['GET'])
 def new_update_movies(count):
