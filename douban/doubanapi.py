@@ -4,6 +4,7 @@ import requests
 from lxml import etree
 from urllib import quote
 import json
+from bs4 import BeautifulSoup
 
 class DoubanMovie():
 
@@ -56,10 +57,17 @@ class DoubanMovie():
             ret_dic['genres'] = u'|'.join(tree.xpath('//span[@property="v:genre"]/text()'))
             ret_dic['pubdates'] = u'|'.join(tree.xpath('//span[@property="v:initialReleaseDate"]/text()'))
             ret_dic['rating_betterthan'] = u'|'.join(tree.xpath('//div[@class="rating_betterthan"]/a/text()'))
-        print "="*100
+
+            info = BeautifulSoup(r.text,"lxml").find(id="info")
+            del info['id']
+            ret_dic['info']  = info.prettify()
+
+            ret_dic['summary'] = u''.join(tree.xpath('//span[@property="v:summary"]/text()')).strip()
+
+        print "$"*100
         for key in ret_dic:
             print ret_dic[key]
-        print "="*100
+        print "$"*100
         return ret_dic
 
         pass

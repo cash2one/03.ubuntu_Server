@@ -8,7 +8,7 @@ from database.movieDB import MovieModule
 from scrapy.exceptions import DropItem
 from database.datamodule import tb_movies,tb_links,tb_doubans,create_table,before_request_handler
 from douban import DoubanMovie
-
+from celery_app.task_movie import upload_image
 from oss.oss import OssSDK
 
 class MoviePipeline(object):
@@ -37,10 +37,11 @@ class MoviePipeline(object):
 
             # 如果没有重复
             if tb_movies.select().where(tb_movies.title==item['title']).count() == 0:
-                
+
                 if len(item['img']) > 0:
                     # 下载图片
-                    item['img'] = self.oss.put_url_auto_name(item['img'])
+                    upload_image.delay(item['img'],item['title'])
+                    pass
 
                 # 插入数据库
                 tb_movies.insert(title=item['title'],cate=item['cate'],img=item['img'],name=item['name'],org_url=item['url']).execute()
@@ -57,7 +58,7 @@ class MoviePipeline(object):
                     # get detial info
                     if data.has_key('title'):
                         # 将电影保存到豆瓣数据库中
-                        tb_doubans.insert(movie=id,title=data['title'],year=data['year'],douban_url=data['alt'],rating=data['rating'],directors=data['directors'],genres=data['genres'],pubdates=data['pubdates'],rating_betterthan=data['rating_betterthan']).execute()
+                        tb_doubans.insert(movie=id,title=data['title'],year=data['year'],douban_url=data['alt'],rating=data['rating'],directors=data['directors'],genres=data['genres'],pubdates=data['pubdates'],rating_betterthan=data['rating_betterthan'],summary=data['summary'],info=data['info']).execute()
                 return item
             else:
                 raise DropItem(u"重复项: %s" % item['title'])

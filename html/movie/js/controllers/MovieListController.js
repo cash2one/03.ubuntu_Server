@@ -42,6 +42,7 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
 
     };
 
+
     $scope.download = function(url,linkid){
         moviedataservice.req_start_download(linkid).then(function(data){
 
@@ -54,7 +55,10 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
         console.log(url)
     };
 
-    $scope.loadlink = function(movie) {
+    $scope.load_detail_info = function(movie,index,html_text) {
+        // set info to html
+        $('#detail_info'+index).html(html_text)
+        // load link
         moviedataservice.req_links(movie).then(function(data) {
             $scope.download_links =data
         },function(data) {
@@ -68,6 +72,18 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
             }
         });
     };
+
+
+    $scope.getfilename = function(path)
+    {
+        var pos1 = path.lastIndexOf('/');
+        var pos2 = path.lastIndexOf('\\');
+        var pos  = Math.max(pos1, pos2)
+        if( pos<0 )
+            return path;
+        else
+            return path.substring(pos+1);
+    }
 
     $scope.loadimage = function(index,url) {
 

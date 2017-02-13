@@ -17,4 +17,6 @@ class MovieInfo(Item):
     img = Field()
     link = Field()
     url = Field()
+    summary = Field()
+    info = Field()
 

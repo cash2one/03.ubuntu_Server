@@ -4,6 +4,7 @@ from common.config import *
 import datetime
 from peewee import *
 from playhouse.sqlite_ext import SqliteExtDatabase
+import redis
 
 DATABASE = getmoviedb()
 
@@ -14,6 +15,7 @@ def create_table():
     database_object.create_table(tb_movies,safe=True)
     database_object.create_table(tb_doubans,safe=True)
     database_object.create_table(tb_downloads,safe=True)
+    database_object.create_table(tb_test,safe=True)
 
 def before_request_handler():
     database_object.connect()
@@ -51,7 +53,10 @@ class tb_doubans(BaseModel):
     pubdates = TextField(default=u'')
     year = TextField(default=u'')
     rating_betterthan = TextField(default=u'')
+    summary = TextField(default=u'')
+    info = TextField(default=u'')
     movie = ForeignKeyField(tb_movies)
+
 
 
 class tb_links(BaseModel):
@@ -73,7 +78,47 @@ class tb_downloads(BaseModel):
     id = IntegerField(primary_key=True)
     link = ForeignKeyField(tb_links)
 
-class testdb(BaseModel):
+class tb_test(BaseModel):
     id = IntegerField(primary_key=True)
     name = TextField(default=u'')
+
+# Redis DataBase 设计
+# key 表名:主键值:列名
+
+class db_Movie():
+    def __init__(self):
+        self.r = redis.StrictRedis(host='127.0.0.1', port=6379, db=0)
+        self.tb_movies = 'tb_movies'
+    # 字符串
+    # table:count value
+    # table:id:列名 value
+    # table:value id
+    def _id(self,tb_name):
+        if self.r.exists('%s:count' % tb_name):
+            self.r.incr('%s:count' % tb_name)
+        else:
+            self.r.set('%s:count' % tb_name,0)
+
+        return self.r.get('%s:count' % tb_name)
+
+    def insert_tb_movies(self,**kwargs):
+
+        id = self._id(self.tb_movies)
+
+        for key in kwargs:
+            self.r.set('%s:%s:%s'%(self.tb_movies,id,key),kwargs[key])
+            if key == "title":
+                self.r.zadd('%s:%s' %(self.tb_movies,kwargs[key]),id)
+                pass
+            pass
+        else:
+            pass
+        pass
+
+
+    def exist_tb_movies(self,title):
+        return  self.r.sismember('%s:%s'%(self.tb_movies,'title'),title)
+
+
+
 

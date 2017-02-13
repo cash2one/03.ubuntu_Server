@@ -43,6 +43,7 @@ class HdwanSpider(CrawlSpider):
         else:
             item['img'] = u''
 
+
         item['link'] = u'\n'.join(sel.xpath('//div[contains(@class,"dw-box")]/a/@href').extract())
 
         print "-"*100
