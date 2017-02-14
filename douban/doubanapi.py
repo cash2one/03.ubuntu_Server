@@ -18,7 +18,7 @@ class DoubanMovie():
         if r.status_code == 200:
             return r
         else:
-            print "=====> status_code is not 200"
+            print "[Error]status_code is not 200 url=%s \n"%url
             return None
 
     def searchMovie(self,*args):
@@ -38,7 +38,8 @@ class DoubanMovie():
                             ret_dic['url'] = u''.join(node.xpath('@href'))
                 pass
             else:
-                print "=======> no result"
+                pass
+
 
         return ret_dic
 
@@ -64,10 +65,8 @@ class DoubanMovie():
 
             ret_dic['summary'] = u''.join(tree.xpath('//span[@property="v:summary"]/text()')).strip()
 
-        print "$"*100
-        for key in ret_dic:
-            print ret_dic[key]
-        print "$"*100
+
+            print "Douban :  %s\n"%(ret_dic['title'])
         return ret_dic
 
         pass
@@ -83,7 +82,7 @@ class DoubanMovie():
         # 欧美
         # 喜剧
         # 科幻
-        url = "https://movie.douban.com/j/search_subjects?type=movie&tag=%s&sort=recommend&page_limit=20&page_start=0"%(quote(type))
+        url = "https://movie.douban.com/j/search_subjects?type=movieflask&tag=%s&sort=recommend&page_limit=20&page_start=0"%(quote(type))
         r = self._get(url)
         ret_dic = {}
         if r != None:

@@ -5,37 +5,37 @@ from wechatAPI import Wechat
 
 from helper import *
 from common import  getweixin_port
-app = Flask(__name__)
-app.secret_key = 'some_secret'
+weixin_app = Flask(__name__)
+weixin_app.secret_key = 'some_secret'
 api = Wechat()
 
 
-@app.before_request
+@weixin_app.before_request
 def before_request():
     pass
 
 
-@app.teardown_request
+@weixin_app.teardown_request
 def teardown_request(exception):
     pass
 
-@app.route('/photolist/')
+@weixin_app.route('/photolist/')
 def getphotolist():
     return get_photolist()
 
-@app.route('/', methods = ['GET', 'POST'] )
+@weixin_app.route('/', methods = ['GET', 'POST'])
 def wechat():
     if request.method == 'GET':
         # 用于接入微信
         return api.check_signature(request)
     if request.method == 'POST':
         return api.response_msg(request)
-@app.route('/test/')
+@weixin_app.route('/test/')
 def test():
     return make_response('hello')
 
 def startweixin(port=getweixin_port()):
     print "启动微信服务 %s, 进程:%s" %(port,os.getpid())
-    app.run(host='0.0.0.0',port=port)
+    weixin_app.run(host='0.0.0.0', port=port)
 
 

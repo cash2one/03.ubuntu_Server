@@ -3,7 +3,7 @@ import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from scrapy.selector import Selector
-from movie.items import *
+from moviespider.items import *
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")

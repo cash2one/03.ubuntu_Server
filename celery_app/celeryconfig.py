@@ -2,13 +2,14 @@
 
 from datetime import timedelta
 from celery.schedules import crontab
-
+from common.config import getceleryip,getceleryport
 # Broker and Backend
 #BROKER_URL = 'redis://x2020.top:6379'
 #CELERY_RESULT_BACKEND = 'redis://x2020.top:6379/0'
 
-BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+BROKER_URL = 'redis://%s:%s'%(getceleryip(),getceleryport())
+CELERY_RESULT_BACKEND = 'redis://%s:%s/0'%(getceleryip(),getceleryport())
 
 # Timezone
 CELERY_TIMEZONE='Asia/Shanghai'    # 指定时区，不指定默认为 'UTC'

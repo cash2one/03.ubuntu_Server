@@ -13,18 +13,18 @@ else:
     print "file not find"
 
 def getweixindb():
-    print "getweixindb: " + getrootpath('weixin') + conf.get('weixin','database')
-    return getrootpath('weixin') + conf.get('weixin','database')
+    print "getweixindb: " + getrootpath('weixinflask') + conf.get('weixinflask','database')
+    return getrootpath('weixinflask') + conf.get('weixinflask','database')
 
 def getphoto():
-    return getrootpath('weixin') + conf.get('weixin','photo')
+    return getrootpath('weixinflask') + conf.get('weixinflask','photo')
 
 def getthumbnail():
-    return getrootpath('weixin')+ conf.get('weixin','thumbnail')
+    return getrootpath('weixinflask')+ conf.get('weixinflask','thumbnail')
 
 def getmoviedb():
-    print "getmoviedb : "  +  getrootpath('movie') + conf.get('movie','database')
-    return getrootpath('movie') + conf.get('movie','database')
+    print "getmoviedb : "  +  getrootpath('movieflask') + conf.get('movieflask','database')
+    return getrootpath('movieflask') + conf.get('movieflask','database')
 
 
 def getrootpath(section):
@@ -34,11 +34,15 @@ def getrootpath(section):
         return './'
 
 def getmovie_port():
-    return conf.get('movie','port')
+    return conf.get('movieflask','port')
 
 def getweixin_port():
-    return conf.get('weixin','port')
+    return conf.get('weixinflask','port')
 
+def getceleryip():
+    return conf.get('common','celeryip')
+def getceleryport():
+    return conf.get('common','celeryport')
 #以列表形式返回所有的section
 #sections = conf.sections()
 # #得到指定section的所有option

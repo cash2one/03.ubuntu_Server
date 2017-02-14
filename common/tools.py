@@ -1,7 +1,8 @@
 # -*- coding:utf8 -*-
 import multiprocessing
 import subprocess
-
+import redis
+from common.config import getceleryip,getceleryport
 pid_list = []
 
 def sync(targget,args):
@@ -21,9 +22,16 @@ def isRunning(name):
         return True
 
 def KillAll():
+    # 清空 celery task
+    r = redis.StrictRedis(host=getceleryip(), port=getceleryport(), db=0)
+    r.flushdb()
+    print "task 已清空"
+    # 杀死进程
     for pid in pid_list:
         print "杀死进程 %s" % pid
         subprocess.Popen("kill -9 %s" % pid,shell=True)
+
+
 
 def Run(cmd,log="",kill=True):
     pid = subprocess.Popen(cmd, shell=True).pid

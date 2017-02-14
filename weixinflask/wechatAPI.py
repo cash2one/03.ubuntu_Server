@@ -82,7 +82,7 @@ class Wechat():
         params = {'grant_type':'client_credential',
                   'appid':'wxe589b00c17795e10',
                   'secret':'577a346208002399faf26896e6462f12'}
-        url = "https://api.weixin.qq.com/cgi-bin/token"
+        url = "https://api.weixinflask.qq.com/cgi-bin/token"
 
         if self.token == '':
             resp = self.get(url,params)

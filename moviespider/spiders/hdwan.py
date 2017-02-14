@@ -3,7 +3,7 @@ import scrapy
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from scrapy.selector import Selector
-from movie.items import *
+from moviespider.items import *
 import sys
 import re
 from douban import DoubanMovie
@@ -46,11 +46,6 @@ class HdwanSpider(CrawlSpider):
 
         item['link'] = u'\n'.join(sel.xpath('//div[contains(@class,"dw-box")]/a/@href').extract())
 
-        print "-"*100
-        print item['name']
-        print item['cate']
-        print item['link']
-        print "-"*100
         item['url'] = response.url
         return item
 

@@ -10,7 +10,9 @@ DATABASE = getmoviedb()
 
 database_object = SqliteDatabase(DATABASE)
 
-def create_table():
+
+
+def create_init_table():
     database_object.create_table(tb_links,safe=True)
     database_object.create_table(tb_movies,safe=True)
     database_object.create_table(tb_doubans,safe=True)
@@ -28,14 +30,13 @@ class BaseModel(Model):
         database = database_object
 
 
-
 class tb_movies(BaseModel):
     id = IntegerField(primary_key=True)
     org_url = TextField(default=u'')
     title =TextField(default=u'')
     name = TextField(default=u'')
     cate = TextField(default=u'')
-    updatetime = TextField(default=datetime.datetime.now().strftime(u"%Y-%m-%d"))
+    updatetime = TextField(default=datetime.datetime.now().strftime(u"%Y-%m-%d %H:%M:%S"))
     img = TextField(default=u'')
     #douban = ForeignKeyField(tb_doubans,related_name='douban')
 
