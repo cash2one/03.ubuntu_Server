@@ -38,6 +38,14 @@ class tb_movies(BaseModel):
     cate = TextField(default=u'')
     updatetime = TextField(default=datetime.datetime.now().strftime(u"%Y-%m-%d %H:%M:%S"))
     img = TextField(default=u'')
+    rating = TextField(default=u'')
+    directors = TextField(default=u'')
+    genres = TextField(default=u'')
+    pubdates = TextField(default=u'')
+    year = TextField(default=u'')
+    rating_betterthan = TextField(default=u'')
+
+
     #douban = ForeignKeyField(tb_doubans,related_name='douban')
 
 class tb_subscript(BaseModel):
@@ -48,12 +56,12 @@ class tb_doubans(BaseModel):
     title = TextField(default=u'')
     #original_title = TextField(default=u'')
     douban_url = TextField(default=u'')
-    rating = TextField(default=u'')
-    directors = TextField(default=u'')
-    genres = TextField(default=u'')
-    pubdates = TextField(default=u'')
-    year = TextField(default=u'')
-    rating_betterthan = TextField(default=u'')
+    # rating = TextField(default=u'')
+    # directors = TextField(default=u'')
+    # genres = TextField(default=u'')
+    # pubdates = TextField(default=u'')
+    # year = TextField(default=u'')
+    # rating_betterthan = TextField(default=u'')
     summary = TextField(default=u'')
     info = TextField(default=u'')
     movie = ForeignKeyField(tb_movies)

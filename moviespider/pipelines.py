@@ -41,13 +41,6 @@ class MoviePipeline(object):
 
                 if len(item['img']) > 0:
 
-                    # r = requests.get(item['img'])
-                    # if r.status_code == 200:
-                    #     upload_image.delay(r.content,item['title'])
-                    #     print "\n"
-                    # else:
-                    #print "图片下载,10秒后尝试重新下载 : %s\n"%item['img']
-
                     download_upload_image.apply_async(args=(item['img'],item['title']),countdown=random.randint(1, 10))
 
                     # 下载图片
@@ -58,6 +51,7 @@ class MoviePipeline(object):
 
                 # 更新链接
                 id = tb_movies.get(tb_movies.title==item['title']).id
+
                 for link in item['link'].split('\n'):
                     tb_links.insert(movie=id,sourceurl=link).execute()
 
@@ -68,7 +62,10 @@ class MoviePipeline(object):
                     # get detial info
                     if data.has_key('title'):
                         # 将电影保存到豆瓣数据库中
-                        tb_doubans.insert(movie=id,title=data['title'],year=data['year'],douban_url=data['alt'],rating=data['rating'],directors=data['directors'],genres=data['genres'],pubdates=data['pubdates'],rating_betterthan=data['rating_betterthan'],summary=data['summary'],info=data['info']).execute()
+                        tb_doubans.insert(movie=id,title=data['title'],douban_url=data['alt'],summary=data['summary'],info=data['info']).execute()
+                        # 豆瓣信息更新电影数据库
+                        tb_movies.update(year=data['year'],rating=data['rating'],directors=data['directors'],genres=data['genres'],pubdates=data['pubdates'],rating_betterthan=data['rating_betterthan']).where(tb_movies.id == id).execute()
+
                 return item
             else:
                 DropItem(u"重复项: %s" % item['title'])

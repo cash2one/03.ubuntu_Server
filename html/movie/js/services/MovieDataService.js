@@ -3,8 +3,8 @@
  */
 app.factory('moviedataservice',['$http','$q','$resource',function ($http,$q,$resource) {
 
-    root = "http://x2020.top/v1"
-    //root = "http://localhost:5002"
+    //root = "http://x2020.top/v1"
+    root = "http://localhost:5002"
 
 
     req_get = function(path) {
@@ -23,7 +23,8 @@ app.factory('moviedataservice',['$http','$q','$resource',function ($http,$q,$res
     }
     var service = {
         list_datas:[],
-        
+
+
         req_new_update_list:function () {
             return req_get('/movies/new_update_movies/')
         },
@@ -54,6 +55,9 @@ app.factory('moviedataservice',['$http','$q','$resource',function ($http,$q,$res
         },
         req_links:function(id) {
             return req_get('/movies/link/'+id)
+        },
+        req_detail:function(id) {
+            return req_get('/movies/detail/' + id)
         },
 
         req_years:function(){

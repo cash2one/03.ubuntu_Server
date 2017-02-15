@@ -55,9 +55,21 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
         console.log(url)
     };
 
-    $scope.load_detail_info = function(movie,index,html_text) {
-        // set info to html
-        $('#detail_info'+index).html(html_text)
+    $scope.load_detail_info = function(movie,index) {
+
+        // request detail info
+        moviedataservice.req_detail(movie).then(function(data) {
+            $scope.item_detial =data[0]
+            // set info to html
+            if (data.length > 0) {
+                $('#detail_info'+index).html(data[0].info)
+            }
+        },function(data) {
+            console.log(data)
+        });
+
+
+
         // load link
         moviedataservice.req_links(movie).then(function(data) {
             $scope.download_links =data
