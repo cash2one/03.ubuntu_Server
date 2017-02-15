@@ -20,7 +20,7 @@ if __name__ == '__main__':
         # start celery
         Run("celery -B -A celery_app worker --loglevel=warning","启动celery",kill=True)
 
-        #scrapy_movie.delay('hdwan')
+        scrapy_movie.delay('hdwan')
 
         # run weixin flask
         Run("gunicorn -w4 -b0.0.0.0:%s weixinflask.weixin:weixin_app"%getweixin_port(),"Weixin Server",kill=True)
