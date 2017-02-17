@@ -2,102 +2,114 @@
  * Created by admini on 16-12-16.
  */
 
-app.controller('MovieListController', function($scope, $http,$routeParams,moviedataservice) {
+app.controller('MovieListController', function ($scope, $http, $routeParams, moviedataservice) {
     console.log("MovieListController")
     $scope.links = []
 
-    $scope.initList  = function(){
-        if ($routeParams.action == "new_update"){
-            moviedataservice.req_new_update_list().then(function(data) {
+
+    $scope.initList = function () {
+        if ($routeParams.action == "new_update") {
+            moviedataservice.req_new_update_list().then(function (data) {
                 $scope.list_datas = data
-            },function(data) {
+            }, function (data) {
                 $scope.list_datas = []
             });
         }
-        else if ($routeParams.action == "year"){
-            moviedataservice.req_year_list($routeParams.param).then(function(data) {
+        else if ($routeParams.action == "year") {
+            moviedataservice.req_year_list($routeParams.param).then(function (data) {
                 $scope.list_datas = data
-            },function(data) {
+            }, function (data) {
                 $scope.list_datas = []
             });
         }
-        else if ($routeParams.action == "cate"){
-            moviedataservice.req_cate_list($routeParams.param).then(function(data) {
+        else if ($routeParams.action == "cate") {
+            moviedataservice.req_cate_list($routeParams.param).then(function (data) {
                 $scope.list_datas = data
-            },function(data) {
+            }, function (data) {
                 $scope.list_datas = []
             });
         }
         else if ($routeParams.action == "search") {
             console.log("ssss")
-            moviedataservice.req_search_list($routeParams.param).then(function(data) {
+            moviedataservice.req_search_list($routeParams.param).then(function (data) {
                 $scope.list_datas = data
-            },function(data) {
+            }, function (data) {
                 $scope.list_datas = []
             });
         }
     };
 
-    $scope.copylink = function(url,index) {
+    $scope.copylink = function (index) {
 
+        var clipboard = new Clipboard('#btn_cpylink_' + index);
+
+        clipboard.on('success', function (e) {
+            console.info('Action:', e.action);
+            console.info('Text:', e.text);
+            console.info('Trigger:', e.trigger);
+            alert("复制成功:" + e.text);
+            e.clearSelection();
+            //e.clearSelection();
+            clipboard.destroy();
+        });
+
+        clipboard.on('error', function (e) {
+            console.error('Action:', e.action);
+            console.error('Trigger:', e.trigger);
+        });
     };
 
 
-    $scope.download = function(url,linkid){
-        moviedataservice.req_start_download(linkid).then(function(data){
+    $scope.download = function (url, linkid) {
+        moviedataservice.req_start_download(linkid).then(function (data) {
 
-        },function(data) {
+        }, function (data) {
 
         });
     };
 
-    $scope.play = function(url,linkid) {
+    $scope.play = function (url, linkid) {
         console.log(url)
     };
 
-    $scope.load_detail_info = function(movie,index) {
+    $scope.load_detail_info = function (movie, index, url) {
 
         // request detail info
-        moviedataservice.req_detail(movie).then(function(data) {
-            $scope.item_detial =data[0]
+        moviedataservice.req_detail(movie).then(function (data) {
+            $scope.item_detial = data[0]
             // set info to html
             if (data.length > 0) {
-                $('#detail_info'+index).html(data[0].info)
+                $('#detail_info' + index).html(data[0].info)
+
+                // load link
+                moviedataservice.req_links(movie).then(function (data) {
+                    $scope.download_links = data
+                }, function (data) {
+                    console.log(data)
+                });
+
             }
-        },function(data) {
+        }, function (data) {
             console.log(data)
         });
 
 
 
-        // load link
-        moviedataservice.req_links(movie).then(function(data) {
-            $scope.download_links =data
-        },function(data) {
-            console.log(data)
-        });
-
-
-        new Clipboard('#btn_cpylink_'+index, {
-            text: function() {
-                return url;
-            }
-        });
     };
 
 
-    $scope.getfilename = function(path)
-    {
+    $scope.getfilename = function (path) {
         var pos1 = path.lastIndexOf('/');
         var pos2 = path.lastIndexOf('\\');
-        var pos  = Math.max(pos1, pos2)
-        if( pos<0 )
+        var pos = Math.max(pos1, pos2)
+        if (pos < 0)
             return path;
         else
-            return path.substring(pos+1);
+            return path.substring(pos + 1);
     }
 
-    $scope.loadimage = function(index,url) {
+
+    $scope.loadimage = function (index, url) {
 
         //loading参数
         var opts = {
@@ -123,33 +135,35 @@ app.controller('MovieListController', function($scope, $http,$routeParams,movied
             , position: 'absolute' // Element positioning
         };
 
-        var target = $("#image"+index)
+        var target = $("#image" + index)
 
         var spinner = new Spinner(opts).spin(target);
 
-        var surl=url + '?x-oss-process=image/resize,m_fill,h_370,w_250';
+        var surl = url + '?x-oss-process=image/resize,m_fill,h_370,w_250';
 
-        function imgLoadAsync(url){
-            return new Promise(function(resolve,reject){
-                var img=new Image();
-                img.onload=function(){
+        function imgLoadAsync(url) {
+            return new Promise(function (resolve, reject) {
+                var img = new Image();
+                img.onload = function () {
                     resolve(img);
                 }
-                img.onerror=function(){
+                img.onerror = function () {
+
                     img.src = "http://x2020-movie.oss-cn-shanghai.aliyuncs.com/NotFind.jpg?x-oss-process=image/resize,m_pad,h_370,w_250,color_ffffff"
                     reject(img);
                 }
-                img.src=url;
+                img.style = "width: 100%;";
+                img.src = url;
 
 
             });
         }
 
-        imgLoadAsync(surl).then(function(data){
+        imgLoadAsync(surl).then(function (data) {
             spinner.stop();
-            $("#image"+index).append(data);
-        },function(data) {
-            $("#image"+index).append(data);
+            $("#image" + index).append(data);
+        }, function (data) {
+            $("#image" + index).append(data);
         })
     };
 

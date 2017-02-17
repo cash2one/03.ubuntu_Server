@@ -3,7 +3,7 @@
 
     <div class="col-sm-6 col-md-3" ng-repeat="item in list_datas">
         <div class="thumbnail" data-toggle="modal" data-target="#myModal{{$index}}">
-            <span ng-click="load_detail_info(item.id,$index)">
+            <span ng-click="load_detail_info(item.id,$index,item.img)">
                 <span id="image{{$index}}" ng-init="loadimage($index,item.img)">
                 </span>
 
@@ -51,7 +51,7 @@
         <!--</div>-->
 
         <!-- Modal -->
-        <div class="modal fade bs-example-modal-sm" id="myModal{{$index}}" tabindex="-1" role="dialog"
+        <div class="modal fade bs-example-modal-sm"  id="myModal{{$index}}" tabindex="-1" role="dialog"
              aria-labelledby="myModalLabel{{$index}}" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -71,55 +71,62 @@
                                 <div class="images_3_of_2">
                                     <div class="movie_image">
                                         <span class="movie_rating">{{item_detial.rating}}</span>
-                                        <img class="img-thumbnail"
-                                             src="{{item_detial.img+'?x-oss-process=image/resize,m_fill,h_370,w_250'}}"
+                                        <img id="thumbnail_pic" class="img-thumbnail" style="width: 100%;"
+                                             src="{{item.img}}"
+
                                              class="img-responsive" alt=""/>
                                     </div>
 
                                 </div>
-                                <div id="detail_info{{$index}}" class="desc1 span_3_of_2">
-
-
+                                <div id="detail_info{{$index}}" style="overflow:scroll; height:250px;" class="desc1 span_3_of_2">
 
                                 </div>
                                 <div class="clearfix"></div>
-                                <h5><strong>下载地址:</strong></h5>
+                                </br>
 
                                 <div class="row">
-                                        <span ng-repeat="link in download_links">
 
-                                             <div class="col-md-8">
-                                                 <div class="well well-sm">
-                                                     <small><a href="{{link.sourceurl}}" alert="{{link.sourceurl}}" target="_blank">{{getfilename(link.sourceurl)}}</a></small>
-                                                 </div>
-                                             </div>
-                                             <div class="col-md-4">
-                                                 <button id="btn_cpylink_{{$index}}" type="button" class="btn btn-primary" ng-click="copylink(link.sourceurl,$index)">复制
-                                                 </button>
 
-                                                 <button type="button" class="btn btn-primary" ng-click="download(link.sourceurl,link.id)">下载
-                                                 </button>
-                                             </div>
+                                    <div class="panel panel-default">
+                                        <!-- Default panel contents -->
+                                        <div class="panel-heading"><a href="{{item_detial.douban_url}}" target="_blank"><strong>简介:</strong></a>
+                                        </div>
+                                        <div class="panel-body">
+                                            {{item_detial.summary}}
+                                        </div>
 
-                                        </span>
+                                        <!-- List group -->
+                                        <ul class="list-group">
 
+                                            <li class="list-group-item" ng-repeat="link in download_links">
+
+                                                <button id="btn_cpylink_{{$index}}" type="button"
+                                                        class="label label-success"
+                                                        data-clipboard-text="{{link.sourceurl}}" ng-click="copylink($index)()">复制
+                                                </button>
+
+                                                <button type="button" class="label label-success"
+                                                        ng-click="download(link.sourceurl,link.id)">下载
+                                                </button>
+
+                                                    <small><a href="{{link.sourceurl}}" alert="{{link.sourceurl}}"
+                                                              target="_blank">{{getfilename(link.sourceurl)}}</a></small>
+
+                                            </li>
+                                        </ul>
+                                    </div>
 
                                 </div>
-
-
-                                <h5><strong>豆瓣介绍:</strong><a class="label label-default" href="{{item_detial.douban_url}}" target="_blank">详细</a></h5>
-
-                                <p class="m_4">
-                                    {{item_detial.summary}}
-                                </p>
 
                             </div>
 
                             <div class="clearfix"></div>
                         </div>
 
+                    </div>
+
                     <div class="modal-footer">
-                        <a class="btn btn-info" href="{{item_detial.org_url}}" target="_blank">采集原地址</a>
+                        <a class="btn btn-info" href="{{item.org_url}}" target="_blank">采集原地址</a>
                         <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭
                         </button>
 
@@ -127,9 +134,15 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
     </div>
 
 </div>
+
+<nav aria-label="...">
+    <ul class="pager">
+        <li class="previous"><a href="#"><span aria-hidden="true">&larr;</span> Older</a></li>
+        <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+    </ul>
+</nav>
