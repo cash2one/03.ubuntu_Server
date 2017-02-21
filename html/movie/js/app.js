@@ -15,6 +15,10 @@ var app= angular.module('movieApp', ['ngResource', 'ngRoute'])
 
         });
 
+        $routeProvider.when('/homepage',{
+            templateUrl:'view/HomePage.html',
+        });
+
         $routeProvider.when('/downloaded_list/',{
 
             templateUrl:'view/DownloadList.html',
@@ -37,12 +41,7 @@ var app= angular.module('movieApp', ['ngResource', 'ngRoute'])
         });
 
 
-
-
-
-
-
-        $routeProvider.otherwise({redirectTo:'/list/:action/:num'});
+        $routeProvider.otherwise({redirectTo:'/homepage'});
 
         console.log('App called.');
     });

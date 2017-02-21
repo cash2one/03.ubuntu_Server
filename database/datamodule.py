@@ -44,6 +44,7 @@ class tb_movies(BaseModel):
     pubdates = TextField(default=u'')
     year = TextField(default=u'')
     rating_betterthan = TextField(default=u'')
+    douban_id = TextField(default=u'')
 
 
     #douban = ForeignKeyField(tb_doubans,related_name='douban')

@@ -51,6 +51,7 @@ class DoubanMovie():
 
         if r != None:
             tree = etree.HTML(r.text)
+
             ret_dic['title'] = u''.join(tree.xpath('//span[@property="v:itemreviewed"]/text()'))
             ret_dic['year'] = u''.join(tree.xpath('//span[@class="year"]/text()'))[1:-1]
             ret_dic['rating'] = u''.join(tree.xpath('//strong[@property="v:average"]/text()'))
@@ -64,7 +65,7 @@ class DoubanMovie():
             ret_dic['info']  = info.prettify()
 
             ret_dic['summary'] = u''.join(tree.xpath('//span[@property="v:summary"]/text()')).strip()
-
+            ret_dic['douban_id'] = url.split('/')[-2]
 
             print "Douban :  %s\n"%(ret_dic['title'])
         return ret_dic

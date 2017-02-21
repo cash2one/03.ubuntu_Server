@@ -21,32 +21,44 @@ app.factory('moviedataservice',['$http','$q','$resource',function ($http,$q,$res
 
         return deferred.promise;   // 返回承诺，这里并不是最终数据，而是访问最终数据的API
     }
+
+    get_param = function() {
+        args = '?page_limit='+ page_limit +'&page_start=' +page_start;
+        return args
+    }
+
+    page_limit = 28
+    page_start = 1
+
     var service = {
-        list_datas:[],
 
-
-        req_new_update_list:function () {
-            return req_get('/movies/new_update_movies/')
+        set_param:function(limit,start){
+            page_start = limit;
+            page_start = start;
         },
 
-        req_high_rank_list:function (maxnum) {
-            return req_get('/movies/new_movies/' + maxnum)
+        req_new_update_list:function() {
+            return req_get('/movies/new_update_movies/'+ get_param())
+        },
+
+        req_high_rank_list:function() {
+            return req_get('/movies/new_movies/'+ get_param())
         },
 
         req_cate_list:function (cate) {
-            return req_get('/movies/cate/' + cate)
+            return req_get('/movies/cate/' + cate + get_param())
         },
 
         req_search_list:function(name) {
-            return req_get('/movies/name/'+name)
+            return req_get('/movies/name/'+name + get_param())
         },
 
         req_year_list:function (year) {
-            return req_get('/movies/year/' + year)
+            return req_get('/movies/year/' + year + get_param())
         },
         
         req_downloaded_list:function () {
-            return req_get('/movies/download/')
+            return req_get('/movies/download/'+get_param())
         },
 
 

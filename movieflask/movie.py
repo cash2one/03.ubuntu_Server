@@ -24,32 +24,47 @@ def before_request():
 def teardown_request(exception):
     after_request_handler()
 
+
+def get_args(args):
+
+    page_limit = int(args.get('page_limit')) if args.get('page_limit') else 20
+    page_start = int(args.get('page_start')) if args.get('page_start') else 0
+
+    return {
+        'page_limit':page_limit,
+        'page_start':page_start,
+    }
+
 # 查找最近更新的电影
 @movie_app.route('/movies/new_update_movies/', methods= ['GET'])
 def new_update_movies_count():
     if request.method == "GET":
-        data = [dic for dic in tb_movies.select().order_by(tb_movies.updatetime.desc()).limit(MAX_NUM).dicts()]
-        return make_jsonresponse(data)
+        opt = get_args(request.args)
+        data = [dic for dic in tb_movies.select().order_by(tb_movies.updatetime.desc()).paginate(opt['page_start'],opt['page_limit']).dicts()]
+        page = tb_movies.select().count() / opt['page_limit'] + (1 if len(data) % opt['page_limit'] >0 else 0)
+        current = opt['page_start']
+        d = {'data':data,'page':page,'current':current}
 
-# 查找最近更新的电影
-@movie_app.route('/movies/new_update_movies/<count>', methods= ['GET'])
-def new_update_movies(count):
-    if request.method == "GET":
-        data = [dic for dic in tb_movies.select().order_by(tb_movies.updatetime.desc()).limit(count).dicts()]
-        return make_jsonresponse(data)
+        return make_jsonresponse(d)
 
 # 查找某年的电影
 @movie_app.route('/movies/year/<year>', methods= ['GET'])
 def new_movies(year):
     if request.method == "GET":
-        data = [dic for dic in tb_movies.select().where(tb_movies.year == year).order_by(tb_movies.rating.desc()).limit(MAX_NUM).dicts()]
-        return make_jsonresponse(data)
+        opt = get_args(request.args)
+        data = [dic for dic in tb_movies.select().where(tb_movies.year == year).order_by(tb_movies.rating.desc()).paginate(opt['page_start'],opt['page_limit']).dicts()]
+        page = tb_movies.select().where(tb_movies.year == year).count() / opt['page_limit']
+        current = opt['page_start']
+        d = {'data':data,'page':page,'current':current}
+
+        return make_jsonresponse(d)
 
 # 查找所有年份
 @movie_app.route('/movies/years/', methods = ['GET'])
 def get_years():
     if request.method == "GET":
         data = [dic for dic in tb_movies.select().group_by(tb_movies.year).order_by(tb_movies.year.desc()).dicts()]
+
         return make_jsonresponse(data)
 
 # 查找种类
@@ -57,15 +72,26 @@ def get_years():
 def cate_movies(cate):
     if request.method == "GET":
         if cate == 'science':
-            data = [dic for dic in tb_movies.select().where(tb_movies.cate.contains('科幻')).order_by(tb_movies.rating.desc()).limit(MAX_NUM).dicts()]
-            return make_jsonresponse(data)
+            opt = get_args(request.args)
+            data = [dic for dic in tb_movies.select().where(tb_movies.cate.contains('科幻')).order_by(tb_movies.rating.desc()).paginate(opt['page_start'],opt['page_limit']).dicts()]
+
+            page = tb_movies.select().where(tb_movies.cate.contains('科幻')).count() / opt['page_limit']
+            current = opt['page_start']
+            d = {'data':data,'page':page,'current':current}
+
+            return make_jsonresponse(d)
 
 # 查找某个名字的电影
 @movie_app.route('/movies/name/<name>', methods = ['GET', 'POST'])
 def search(name):
     if request.method == "GET":
-        data = [dic for dic in tb_movies.select().where(tb_movies.name.contains(name)).limit(MAX_NUM).dicts()]
-        return make_jsonresponse(data)
+        opt = get_args(request.args)
+        data = [dic for dic in tb_movies.select().where(tb_movies.name.contains(name)).paginate(opt['page_start'],opt['page_limit']).dicts()]
+        page = tb_movies.select().where(tb_movies.name.contains(name)).count() / opt['page_limit']
+        current = opt['page_start']
+        d = {'data':data,'page':page,'current':current}
+
+        return make_jsonresponse(d)
     else:
         pass
 
@@ -73,6 +99,7 @@ def search(name):
 @movie_app.route('/movies/link/<id>')
 def links(id):
     if request.method == "GET":
+
         data = [dic for dic in tb_links.select().where(tb_links.movie == id).dicts()]
         return make_jsonresponse(data)
     else:
@@ -115,6 +142,7 @@ def remotepaths():
 @movie_app.route('/test/', methods = ['GET'])
 def test():
     if request.method == "GET":
+        print request.args
         data = [dic for dic in tb_movies.select().dicts()]
         return make_jsonresponse(data)
     else:

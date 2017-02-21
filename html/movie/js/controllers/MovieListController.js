@@ -8,36 +8,99 @@ app.controller('MovieListController', function ($scope, $http, $routeParams, mov
 
 
     $scope.initList = function () {
+
         if ($routeParams.action == "new_update") {
             moviedataservice.req_new_update_list().then(function (data) {
-                $scope.list_datas = data
+                $scope.list_datas = data['data']
+                $scope.page_num = data['page']
+                $scope.current = data['current']
+                $scope.init_page();
             }, function (data) {
                 $scope.list_datas = []
             });
         }
         else if ($routeParams.action == "year") {
             moviedataservice.req_year_list($routeParams.param).then(function (data) {
-                $scope.list_datas = data
+                $scope.list_datas = data['data']
+                $scope.page_num = data['page']
+                $scope.current = data['current']
+                $scope.init_page();
             }, function (data) {
                 $scope.list_datas = []
             });
         }
         else if ($routeParams.action == "cate") {
             moviedataservice.req_cate_list($routeParams.param).then(function (data) {
-                $scope.list_datas = data
+                $scope.list_datas = data['data']
+                $scope.page_num = data['page']
+                $scope.current = data['current']
+                $scope.init_page();
             }, function (data) {
                 $scope.list_datas = []
             });
         }
         else if ($routeParams.action == "search") {
-            console.log("ssss")
             moviedataservice.req_search_list($routeParams.param).then(function (data) {
-                $scope.list_datas = data
+                $scope.list_datas = data['data']
+                $scope.page_num = data['page']
+                $scope.current = data['current']
+                $scope.init_page();
             }, function (data) {
                 $scope.list_datas = []
             });
         }
+
+
     };
+
+    $scope.req_page = function(index) {
+        console.log('req_page' + index)
+        moviedataservice.set_param(index,28);
+        $scope.initList()
+    };
+
+
+    $scope.init_page = function() {
+
+
+
+        var txt = "";
+
+        if ($scope.page_num > 1) {
+
+            //// 上一页
+            //if ($scope.current == 1) {
+            //    txt = "<li class='disabled'><a href='#'>&laquo;</a></li>";
+            //}
+            //
+            //else {
+            //    txt = "<li><a href='#'>&laquo;</a></li>";
+            //}
+
+
+            for (var i = 1; i < $scope.page_num + 1; i++) {
+                if ($scope.current == i) {
+                    txt = txt + "<li class='active'' ><a>" + i + "</a></li>";
+                }
+                else {
+                    txt = txt + "<li><a>" + i + "</a></li>";
+                }
+            }
+
+            //// 下一页
+            //if ($scope.current == $scope.page_num) {
+            //    txt = txt + " <li class='disabled'><a href='#'>&raquo;</a></li>";
+            //}
+            //else {
+            //    txt = txt + " <li><a href='#'>&raquo;</a></li>";
+            //}
+
+            $('#page').append(txt);
+        }
+    };
+    $('#page li').click(function(){
+       console.log("ssss")
+    });
 
     $scope.copylink = function (index) {
 
@@ -92,11 +155,7 @@ app.controller('MovieListController', function ($scope, $http, $routeParams, mov
         }, function (data) {
             console.log(data)
         });
-
-
-
     };
-
 
     $scope.getfilename = function (path) {
         var pos1 = path.lastIndexOf('/');
@@ -144,17 +203,18 @@ app.controller('MovieListController', function ($scope, $http, $routeParams, mov
         function imgLoadAsync(url) {
             return new Promise(function (resolve, reject) {
                 var img = new Image();
+
                 img.onload = function () {
                     resolve(img);
                 }
-                img.onerror = function () {
 
+                img.onerror = function () {
                     img.src = "http://x2020-movie.oss-cn-shanghai.aliyuncs.com/NotFind.jpg?x-oss-process=image/resize,m_pad,h_370,w_250,color_ffffff"
                     reject(img);
                 }
+
                 img.style = "width: 100%;";
                 img.src = url;
-
 
             });
         }

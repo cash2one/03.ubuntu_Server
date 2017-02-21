@@ -64,7 +64,7 @@ class MoviePipeline(object):
                         # 将电影保存到豆瓣数据库中
                         tb_doubans.insert(movie=id,title=data['title'],douban_url=data['alt'],summary=data['summary'],info=data['info']).execute()
                         # 豆瓣信息更新电影数据库
-                        tb_movies.update(year=data['year'],rating=data['rating'],directors=data['directors'],genres=data['genres'],pubdates=data['pubdates'],rating_betterthan=data['rating_betterthan']).where(tb_movies.id == id).execute()
+                        tb_movies.update(year=data['year'],rating=data['rating'],directors=data['directors'],genres=data['genres'],pubdates=data['pubdates'],rating_betterthan=data['rating_betterthan'],douban_id=data['douban_id']).where(tb_movies.id == id).execute()
 
                 return item
             else:
