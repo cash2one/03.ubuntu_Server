@@ -5,6 +5,7 @@ import urllib
 import os
 from common.tools import sync
 import requests
+from douban.doubanapi import DoubanMovie
 
 def init_aria2():
     aria2 = PyAria2()
@@ -99,7 +100,10 @@ def download_thread(id,path='/data/download'):
     return result
     pass
 
-
+def req_douban_hot_movie():
+    douban = DoubanMovie()
+    dic = douban.pick_movie('热门')
+    print dic
 # print gid
 #
 # while True:

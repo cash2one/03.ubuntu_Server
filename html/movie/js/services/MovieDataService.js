@@ -33,7 +33,7 @@ app.factory('moviedataservice',['$http','$q','$resource',function ($http,$q,$res
     var service = {
 
         set_param:function(limit,start){
-            page_start = limit;
+            page_limit = limit;
             page_start = start;
         },
 

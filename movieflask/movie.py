@@ -27,12 +27,12 @@ def teardown_request(exception):
 
 def get_args(args):
 
-    page_limit = int(args.get('page_limit')) if args.get('page_limit') else 20
-    page_start = int(args.get('page_start')) if args.get('page_start') else 0
+    page_limit = args.get('page_limit') if args.get('page_limit') else 20
+    page_start = args.get('page_start') if args.get('page_start') else 0
 
     return {
-        'page_limit':page_limit,
-        'page_start':page_start,
+        'page_limit':int(page_limit),
+        'page_start':int(page_start),
     }
 
 # 查找最近更新的电影
@@ -42,8 +42,8 @@ def new_update_movies_count():
         opt = get_args(request.args)
         data = [dic for dic in tb_movies.select().order_by(tb_movies.updatetime.desc()).paginate(opt['page_start'],opt['page_limit']).dicts()]
         page = tb_movies.select().count() / opt['page_limit'] + (1 if len(data) % opt['page_limit'] >0 else 0)
-        current = opt['page_start']
-        d = {'data':data,'page':page,'current':current}
+
+        d = {'data':data,'page':page,'page_start':opt['page_start'],'page_limit':opt['page_limit']}
 
         return make_jsonresponse(d)
 
@@ -54,8 +54,8 @@ def new_movies(year):
         opt = get_args(request.args)
         data = [dic for dic in tb_movies.select().where(tb_movies.year == year).order_by(tb_movies.rating.desc()).paginate(opt['page_start'],opt['page_limit']).dicts()]
         page = tb_movies.select().where(tb_movies.year == year).count() / opt['page_limit']
-        current = opt['page_start']
-        d = {'data':data,'page':page,'current':current}
+
+        d = {'data':data,'page':page,'page_start':opt['page_start'],'page_limit':opt['page_limit']}
 
         return make_jsonresponse(d)
 
@@ -76,8 +76,8 @@ def cate_movies(cate):
             data = [dic for dic in tb_movies.select().where(tb_movies.cate.contains('科幻')).order_by(tb_movies.rating.desc()).paginate(opt['page_start'],opt['page_limit']).dicts()]
 
             page = tb_movies.select().where(tb_movies.cate.contains('科幻')).count() / opt['page_limit']
-            current = opt['page_start']
-            d = {'data':data,'page':page,'current':current}
+
+            d = {'data':data,'page':page,'page_start':opt['page_start'],'page_limit':opt['page_limit']}
 
             return make_jsonresponse(d)
 
@@ -88,8 +88,24 @@ def search(name):
         opt = get_args(request.args)
         data = [dic for dic in tb_movies.select().where(tb_movies.name.contains(name)).paginate(opt['page_start'],opt['page_limit']).dicts()]
         page = tb_movies.select().where(tb_movies.name.contains(name)).count() / opt['page_limit']
-        current = opt['page_start']
-        d = {'data':data,'page':page,'current':current}
+
+        d = {'data':data,'page':page,'page_start':opt['page_start'],'page_limit':opt['page_limit']}
+
+        return make_jsonresponse(d)
+    else:
+        pass
+
+# 查找豆瓣热门电影
+@movie_app.route('/movies/douban/hot',methods = ['GET', 'POST'])
+def get_hot_movies():
+    if request.method == "GET":
+        opt = get_args(request.args)
+
+
+        data = [dic for dic in tb_movies.select().where(tb_movies.name.contains(name)).paginate(opt['page_start'],opt['page_limit']).dicts()]
+        page = tb_movies.select().where(tb_movies.name.contains(name)).count() / opt['page_limit']
+
+        d = {'data':data,'page':page,'page_start':opt['page_start'],'page_limit':opt['page_limit']}
 
         return make_jsonresponse(d)
     else:

@@ -83,7 +83,7 @@ class DoubanMovie():
         # 欧美
         # 喜剧
         # 科幻
-        url = "https://movie.douban.com/j/search_subjects?type=movieflask&tag=%s&sort=recommend&page_limit=20&page_start=0"%(quote(type))
+        url = "https://movie.douban.com/j/search_subjects?type=movieflask&tag=%s&sort=recommend&page_limit=100&page_start=0"%(quote(type))
         r = self._get(url)
         ret_dic = {}
         if r != None:

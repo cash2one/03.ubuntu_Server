@@ -8,6 +8,6 @@ app.controller('NavigationController', function($scope,$rootScope, $location,$ht
     }
 
     $scope.btn_search = function(name){
-        $location.path("/list/search/"+name);
+        $location.url("/list/search/"+name);
     }
 });

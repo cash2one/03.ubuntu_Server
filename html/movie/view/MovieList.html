@@ -4,17 +4,10 @@
     <div class="col-sm-6 col-md-3" ng-repeat="item in list_datas">
         <div class="thumbnail" data-toggle="modal" data-target="#myModal{{$index}}">
             <span ng-click="load_detail_info(item.id,$index,item.img)">
-                <span id="image{{$index}}" ng-init="loadimage($index,item.img)">
+                <span id="img_span{{$index}}">
+                    <img id="image{{$index}}" style="width: 100%" ng-init="loadimage($index,item.img)" src="http://x2020-movie.oss-cn-shanghai.aliyuncs.com/NotFind.jpg?x-oss-process=image/resize,m_pad,h_370,w_250,color_ffffff" >
                 </span>
 
-                <!--<span ng-switch="item.img">-->
-
-                <!--<img ng-switch-when=''-->
-                <!--ng-src="http://x2020-movie.oss-cn-shanghai.aliyuncs.com/NotFind.jpg?x-oss-process=image/resize,m_pad,h_370,w_250,color_ffffff"-->
-                <!--alt="">-->
-                <!--<img ng-switch-default ng-src={{item.img+'?x-oss-process=image/resize,m_fill,h_370,w_250'}}-->
-                <!--alt="">-->
-                <!--</span>-->
             <div class="caption">
                 <ul class="list-unstyled">
                     <li class="cut">
@@ -41,15 +34,6 @@
 
         </div>
 
-        <!--<a data-toggle="modal" href="http://www.ziqiangxuetang.com/bootstrap/bootstrap-modal-plugin.html" data-target="#modal">Click me</a>-->
-        <!--<div id="modal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">-->
-        <!--<div class="modal-dialog modal-sm">-->
-        <!--<div class="modal-content">-->
-        <!--...-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-
         <!-- Modal -->
         <div class="modal fade bs-example-modal-sm"  id="myModal{{$index}}" tabindex="-1" role="dialog"
              aria-labelledby="myModalLabel{{$index}}" aria-hidden="true">
@@ -71,10 +55,11 @@
                                 <div class="images_3_of_2">
                                     <div class="movie_image">
                                         <span class="movie_rating">{{item_detial.rating}}</span>
-                                        <img id="thumbnail_pic" class="img-thumbnail" style="width: 100%;"
+                                        <span id="thumbnail_pic" >
+                                        <img class="img-thumbnail" style="width: 100%;"
                                              src="{{item.img}}"
-
-                                             class="img-responsive" alt=""/>
+                                        />
+                                        </span>
                                     </div>
 
                                 </div>
@@ -85,8 +70,7 @@
                                 </br>
 
                                 <div class="row">
-
-
+                                    
                                     <div class="panel panel-default">
                                         <!-- Default panel contents -->
                                         <div class="panel-heading"><a href="{{item_detial.douban_url}}" target="_blank"><strong>简介:</strong></a>
