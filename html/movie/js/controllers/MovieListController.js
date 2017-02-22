@@ -13,7 +13,9 @@ app.controller('MovieListController', function ($location,$scope, $http, $routeP
         {
             moviedataservice.set_param($location.search().page_limit,$location.search().page_start)
         }
-
+        else {
+            moviedataservice.clear_param()
+        }
 
         if ($routeParams.action == "new_update") {
             moviedataservice.req_new_update_list().then(function (data) {

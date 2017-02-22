@@ -36,7 +36,10 @@ app.factory('moviedataservice',['$http','$q','$resource',function ($http,$q,$res
             page_limit = limit;
             page_start = start;
         },
-
+        clear_param:function(){
+          page_limit = 28
+            page_start = 1
+        },
         req_new_update_list:function() {
             return req_get('/movies/new_update_movies/'+ get_param())
         },
